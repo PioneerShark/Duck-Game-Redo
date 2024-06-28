@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestEntity : BaseEntity
 {
     // Start is called before the first frame update
+    
    public override void Start()
     {
         base.Start();
@@ -18,5 +19,9 @@ public class TestEntity : BaseEntity
     public override void Move(int moveX, int moveY)
     {
         base.Move(moveX, moveY);
+    }
+    public override void LookAt(int lookX, int lookY)
+    {
+        base.LookAt(lookX, lookY);
     }
 }
