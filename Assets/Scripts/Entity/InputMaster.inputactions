@@ -18,7 +18,34 @@
                     "name": "Movement",
                     "type": "Value",
                     "id": "db9af60a-cc79-40d9-abb6-ff8293aafb12",
-                    "expectedControlType": "Dpad",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "b8c57f5e-45cc-47eb-ba6b-6553e6972323",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AimKbm",
+                    "type": "Value",
+                    "id": "f344814d-02f7-4b92-97ae-82ebe4e295a7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AimGamepad",
+                    "type": "Value",
+                    "id": "a6e4a22f-c542-477a-9a5e-d521823cc9b3",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -31,7 +58,18 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "kbam",
+                    "groups": "kbm",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c80382e-a239-4445-807c-0c5a6115539f",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "gamepad",
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -53,7 +91,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "kbam",
+                    "groups": "kbm",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -64,7 +102,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "kbam",
+                    "groups": "kbm",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -75,7 +113,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "kbam",
+                    "groups": "kbm",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -86,23 +124,133 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "kbam",
+                    "groups": "kbm",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "cbc12436-4a4b-4bb4-9a05-fdcabed69d01",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "6920db46-912b-48d9-aaa0-040b4bb1843a",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "808e7fa7-b0b6-4333-8bb7-6ff20b367883",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "b3d084e7-0a93-4c2c-a276-b132d6fb2124",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "cb7f6e34-61d6-49b6-bcf8-c71bbb782cf5",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d36e288f-16ff-4653-83e2-9172faf5984b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "kbm",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b6c76dd-ba15-4367-848d-9c69957cf617",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "kbm",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e89d8d16-7761-47c4-a7d8-9d4f060fb671",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "gamepad",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a7fc19a-1579-4e02-a1a0-a6b468cdc559",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "kbm",
+                    "action": "AimKbm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c269032-d05e-470b-b9bc-e1e41a699545",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "gamepad",
+                    "action": "AimGamepad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
     ],
     "controlSchemes": [
         {
-            "name": "kbam",
-            "bindingGroup": "kbam",
+            "name": "kbm",
+            "bindingGroup": "kbm",
             "devices": []
         },
         {
-            "name": "controller",
-            "bindingGroup": "controller",
+            "name": "gamepad",
+            "bindingGroup": "gamepad",
             "devices": []
         }
     ]

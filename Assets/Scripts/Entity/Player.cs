@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
         controls = new InputMaster();
         controls.Player.Shoot.performed += _ => Shoot();
         controls.Player.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>());
+        controls.Player.Roll.performed += _ => Roll();
+        // controls.Player.AimKbm.performed += ctx => AimKbm(ctx.ReadValue<Vector2>());
+        // controls.Player.AimGamepad.performed += ctx => AimGamepad(ctx.ReadValue<Vector2>());
     }
 
     void Move (Vector2 direction)
@@ -22,6 +25,19 @@ public class Player : MonoBehaviour
     void Shoot ()
     {
         Debug.Log("the duck shot");
+    }
+
+    void Roll ()
+    {
+        Debug.Log("rolled");
+    }
+
+    void AimKbm (Vector2 posistion) {
+        Debug.Log("Aiming with mouse " + posistion);
+    }
+
+    void AimGamepad(Vector2 direction) {
+        Debug.Log("Aiming with gamepad " + direction);
     }
 
     private void OnEnable()
