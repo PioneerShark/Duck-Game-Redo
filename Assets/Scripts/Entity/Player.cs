@@ -3,36 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : BaseEntity
 {
    public InputMaster controls;
 
-    void Awake ()
+    void Awake()
     {
         controls = new InputMaster();
         controls.Player.Shoot.performed += _ => Shoot();
         controls.Player.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>());
+        controls.Player.Movement.canceled += _ => Move(Vector2.zero);
         controls.Player.Roll.performed += _ => Roll();
         // controls.Player.AimKbm.performed += ctx => AimKbm(ctx.ReadValue<Vector2>());
         // controls.Player.AimGamepad.performed += ctx => AimGamepad(ctx.ReadValue<Vector2>());
     }
 
-    void Move (Vector2 direction)
+    void Move(Vector2 direction)
     {
+        velocity = direction;
         Debug.Log("player wants to move " + direction);
     }
 
-    void Shoot ()
+    void Shoot()
     {
         Debug.Log("the duck shot");
     }
 
-    void Roll ()
+    void Roll()
     {
         Debug.Log("rolled");
     }
 
-    void AimKbm (Vector2 posistion) {
+    void AimKbm(Vector2 posistion) {
         Debug.Log("Aiming with mouse " + posistion);
     }
 
