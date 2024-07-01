@@ -249,7 +249,9 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   moveSpeed: 1
-  lookSpeed: 2
+  lookSpeed: 140
+  turning: 0
+  turnAngle: 0
 --- !u!50 &811161643
 Rigidbody2D:
   serializedVersion: 4
