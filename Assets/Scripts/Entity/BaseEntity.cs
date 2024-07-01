@@ -61,7 +61,7 @@ public abstract class BaseEntity : MonoBehaviour
     {
         Vector3 moveVector = new Vector3(velocity.x * moveSpeed, velocity.y * moveSpeed, 0);
         moveVector *= Time.deltaTime;
-        transform.Translate(moveVector);
+        transform.Translate(moveVector, Space.World);
     }
     
 }

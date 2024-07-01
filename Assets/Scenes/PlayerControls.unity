@@ -226,7 +226,6 @@ GameObject:
   - component: {fileID: 811161645}
   - component: {fileID: 811161644}
   - component: {fileID: 811161643}
-  - component: {fileID: 811161642}
   - component: {fileID: 811161647}
   m_Layer: 0
   m_Name: Duck
@@ -235,21 +234,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &811161642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 811161641}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 767e34a20ce61cd4db72c71835386926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
-  moveSpeed: 1
 --- !u!50 &811161643
 Rigidbody2D:
   serializedVersion: 4
@@ -401,6 +385,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de03b4748e8a1ab40a145c30b2c2b849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  moveSpeed: 10
+  lookSpeed: 0
+  turning: 0
+  turnAngle: 0
+  velocity: {x: 0, y: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

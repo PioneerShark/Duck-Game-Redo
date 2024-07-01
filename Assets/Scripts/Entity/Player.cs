@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player : BaseEntity
 {
@@ -16,6 +15,12 @@ public class Player : BaseEntity
         controls.Player.Roll.performed += _ => Roll();
         // controls.Player.AimKbm.performed += ctx => AimKbm(ctx.ReadValue<Vector2>());
         // controls.Player.AimGamepad.performed += ctx => AimGamepad(ctx.ReadValue<Vector2>());
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        Waddle();
     }
 
     void Move(Vector2 direction)
@@ -40,6 +45,16 @@ public class Player : BaseEntity
 
     void AimGamepad(Vector2 direction) {
         Debug.Log("Aiming with gamepad " + direction);
+    }
+
+    void Waddle()
+    {
+        /* Notes for Katalytic, 'cause I'm forgetful like that
+        The waddling should be based on it's velocity
+        Should be a kinda swinging motion, so rotation value should flip every so often...
+        */
+        float rotation = Mathf.Sqrt(Mathf.Pow(velocity.x, 2) + Mathf.Pow(velocity.y, 2));
+        transform.Rotate(Vector3.forward, rotation);
     }
 
     private void OnEnable()
