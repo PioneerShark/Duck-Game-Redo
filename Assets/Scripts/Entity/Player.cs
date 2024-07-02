@@ -54,7 +54,7 @@ public class Player : BaseEntity
         Should be a kinda swinging motion, so rotation value should flip every so often...
         */
         float rotation = Mathf.Sqrt(Mathf.Pow(velocity.x, 2) + Mathf.Pow(velocity.y, 2));
-        transform.Rotate(Vector3.forward, rotation);
+        transform.Rotate(Vector3.forward, -rotation);
     }
 
     private void OnEnable()
