@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class BaseEntity : MonoBehaviour
@@ -12,6 +13,8 @@ public abstract class BaseEntity : MonoBehaviour
     public float turnAngle;
     [HideInInspector]
     public Vector2 velocity;
+    [HideInInspector]
+    
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -59,9 +62,16 @@ public abstract class BaseEntity : MonoBehaviour
 
     public virtual void TriggerMove()
     {
+        velocity.Normalize();
         Vector3 moveVector = new Vector3(velocity.x * moveSpeed, velocity.y * moveSpeed, 0);
         moveVector *= Time.deltaTime;
         transform.Translate(moveVector, Space.World);
+    }
+
+    public virtual void TriggerMoveTo(Vector2 targetPos) {
+        Vector2 entityPos = new Vector2(transform.position.x, transform.position.y);
+        Vector2 moveDist = targetPos - entityPos;
+        velocity = moveDist;
     }
     
 }

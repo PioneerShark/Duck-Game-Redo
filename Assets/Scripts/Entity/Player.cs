@@ -26,7 +26,7 @@ public class Player : BaseEntity
     void Move(Vector2 direction)
     {
         velocity = direction;
-        Debug.Log("player wants to move " + direction);
+        //Debug.Log("player wants to move " + direction);
     }
 
     void Shoot()
