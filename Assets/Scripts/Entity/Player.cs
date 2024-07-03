@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : BaseEntity
 {
-   public InputMaster controls;
+    public InputMaster controls;
 
     void Awake()
     {
@@ -50,9 +50,10 @@ public class Player : BaseEntity
     void Waddle()
     {
         /* Notes for Katalytic, 'cause I'm forgetful like that
-        The waddling should be based on it's velocity
-        Should be a kinda swinging motion, so rotation value should flip every so often...
+        Rotation is in the z axis!
+        programming is so much fun (i hate this)
         */
+
         float rotation = Mathf.Sqrt(Mathf.Pow(velocity.x, 2) + Mathf.Pow(velocity.y, 2));
         transform.Rotate(Vector3.forward, rotation);
     }
