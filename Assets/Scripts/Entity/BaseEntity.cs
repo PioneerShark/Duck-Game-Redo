@@ -12,21 +12,30 @@ public abstract class BaseEntity : MonoBehaviour
     [HideInInspector]
     public float turnAngle;
     [HideInInspector]
-    public Vector2 velocity;
+    public Vector2 velocity, dashVelocity;
     [HideInInspector]
+    public float dashDistance;
     
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-
+        TriggerDash(90, 5f, 10);
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
+        if (dashDistance > 0)
+        {
+            dashDistance = Dash(dashDistance);
+        }
+        else
+        {
+            TriggerMove();
+        }
         if (turning) turnAngle = Rotate(turnAngle);
-        TriggerMove();
+        
     }
 
     // 
@@ -72,6 +81,24 @@ public abstract class BaseEntity : MonoBehaviour
         Vector2 entityPos = new Vector2(transform.position.x, transform.position.y);
         Vector2 moveDist = targetPos - entityPos;
         velocity = moveDist;
+        
     }
-    
+
+    public virtual void TriggerDash(float dashAngleDeg, float speedMult, float dashDis) { 
+        Vector2 dashDir = new Vector2(Mathf.Sin(dashAngleDeg), Mathf.Cos(dashAngleDeg));
+        dashDir.Normalize();
+        dashVelocity = dashDir * speedMult * moveSpeed;
+        dashDistance = dashDis;
+    }
+    float Dash(float dashDis)
+    {
+        Vector2 dashSegment = Time.deltaTime * dashVelocity;
+        transform.Translate(dashSegment, Space.World);
+        dashDis -= dashSegment.magnitude;
+        if (dashDis < 0)
+        {
+            return 0;
+        }
+        return dashDis;
+    }
 }
