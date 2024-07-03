@@ -5,9 +5,7 @@ using UnityEngine;
 public class Player : BaseEntity
 {
     public InputMaster controls;
-
     float maxWaddleAngle = 45f;
-
 
     void Awake()
     {
@@ -51,10 +49,10 @@ public class Player : BaseEntity
 
     void Waddle()
     {
-        if (maxWaddleAngle > 0) transform.Rotate(Vector3.forward, 1);
-        else transform.Rotate(Vector3.forward, -1);
+        if (maxWaddleAngle > 0) sprite.transform.Rotate(Vector3.forward, 1);
+        else sprite.transform.Rotate(Vector3.forward, -1);
 
-        if (Mathf.Abs(transform.rotation.eulerAngles.z) >= Mathf.Abs(maxWaddleAngle)) maxWaddleAngle *= -1;
+        if (Mathf.Abs(sprite.transform.rotation.eulerAngles.z) >= Mathf.Abs(maxWaddleAngle)) maxWaddleAngle *= -1;
     }
 
     private void OnEnable()

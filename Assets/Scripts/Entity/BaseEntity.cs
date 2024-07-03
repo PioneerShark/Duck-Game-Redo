@@ -15,12 +15,15 @@ public abstract class BaseEntity : MonoBehaviour
     public Vector2 velocity, dashVelocity;
     [HideInInspector]
     public float dashDistance;
-    
+    [HideInInspector]
+    public GameObject sprite;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         TriggerDash(90, 5f, 10);
+        sprite = transform.Find("Sprite").gameObject;
+        Debug.Log(sprite);
     }
 
     // Update is called once per frame
