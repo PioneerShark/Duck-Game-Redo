@@ -6,6 +6,9 @@ public class Player : BaseEntity
 {
     public InputMaster controls;
 
+    float maxWaddleAngle = 45f;
+
+
     void Awake()
     {
         controls = new InputMaster();
@@ -20,13 +23,12 @@ public class Player : BaseEntity
     public override void Update()
     {
         base.Update();
-        Waddle();
+        if (velocity != Vector2.zero) Waddle();
     }
 
     void Move(Vector2 direction)
     {
         velocity = direction;
-        //Debug.Log("player wants to move " + direction);
     }
 
     void Shoot()
@@ -49,13 +51,10 @@ public class Player : BaseEntity
 
     void Waddle()
     {
-        /* Notes for Katalytic, 'cause I'm forgetful like that
-        Rotation is in the z axis!
-        programming is so much fun (i hate this)
-        */
+        if (maxWaddleAngle > 0) transform.Rotate(Vector3.forward, 1);
+        else transform.Rotate(Vector3.forward, -1);
 
-        float rotation = Mathf.Sqrt(Mathf.Pow(velocity.x, 2) + Mathf.Pow(velocity.y, 2));
-        transform.Rotate(Vector3.forward, rotation);
+        if (Mathf.Abs(transform.rotation.eulerAngles.z) >= Mathf.Abs(maxWaddleAngle)) maxWaddleAngle *= -1;
     }
 
     private void OnEnable()
