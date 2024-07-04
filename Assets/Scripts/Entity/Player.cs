@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : BaseEntity
 {
@@ -14,8 +15,8 @@ public class Player : BaseEntity
         controls.Player.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>());
         controls.Player.Movement.canceled += _ => Move(Vector2.zero);
         controls.Player.Roll.performed += _ => Roll();
-        // controls.Player.AimKbm.performed += ctx => AimKbm(ctx.ReadValue<Vector2>());
-        // controls.Player.AimGamepad.performed += ctx => AimGamepad(ctx.ReadValue<Vector2>());
+        controls.Player.AimKbm.performed += ctx => AimKbm(ctx.ReadValue<Vector2>());
+        controls.Player.AimGamepad.performed += ctx => AimGamepad(ctx.ReadValue<Vector2>());
     }
 
     public override void Update()
@@ -39,12 +40,16 @@ public class Player : BaseEntity
         Debug.Log("rolled");
     }
 
-    void AimKbm(Vector2 posistion) {
-        Debug.Log("Aiming with mouse " + posistion);
+    void AimKbm(Vector2 position) {
+        //Debug.Log("Aiming with mouse " + position);
+        TriggerLookAt(MouseToWorldPos(position));
+        
+        
     }
 
     void AimGamepad(Vector2 direction) {
-        Debug.Log("Aiming with gamepad " + direction);
+        float distanceMult = 2f;
+        TriggerLookAt((Vector2)transform.position + (direction * distanceMult));
     }
 
     void Waddle()

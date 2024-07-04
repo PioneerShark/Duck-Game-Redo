@@ -7,23 +7,30 @@ public abstract class BaseEntity : MonoBehaviour
 {
     public int health, maxHealth, moveSpeed;
     public float lookSpeed;
+
     [HideInInspector]
     public bool turning;
     [HideInInspector]
     public float turnAngle;
+
     [HideInInspector]
     public Vector2 velocity, dashVelocity;
     [HideInInspector]
     public float dashDistance;
+
     [HideInInspector]
     public GameObject sprite;
+    [HideInInspector]
+    public Transform armSprite;
+
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        TriggerDash(90, 5f, 10);
+        //TriggerDash(90, 5f, 10);
         sprite = transform.Find("Sprite").gameObject;
-        Debug.Log(sprite);
+        if (transform.Find("Arm").gameObject)
+        armSprite = transform.Find("Arm");
     }
 
     // Update is called once per frame
@@ -41,16 +48,23 @@ public abstract class BaseEntity : MonoBehaviour
         
     }
 
-    // 
+    
     public virtual void TriggerAttack()
     {
       
     }
-    //Looks at a position based on in world coordinates, turnrate is how fast an entity looks at an  based on degrees per second
-    public virtual void TriggerLookAt(int lookX, int lookY)
+    public virtual void TriggerLookAt(Vector2 look)
     {
-        Vector3 lookDirection = new Vector3 (lookX, lookY, transform.position.z) - transform.position;
+        Vector2 lookDirection = look - (Vector2)transform.position;
+        
         float resultantAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        if (armSprite) resultantAngle -= armSprite.rotation.eulerAngles.z;
+        else resultantAngle -= transform.rotation.eulerAngles.z;
+        if (resultantAngle > 180)
+        {
+            resultantAngle -= 360;
+        }
+        else if (resultantAngle < -180) resultantAngle += 360;
         turnAngle = resultantAngle;
         turning = true;
     }
@@ -58,17 +72,34 @@ public abstract class BaseEntity : MonoBehaviour
     float Rotate(float angleFull)
     {
         bool positiveAngle = angleFull < 0 ? false : true;
-
         float turnSegment = lookSpeed * Time.deltaTime;
 
         if (turnSegment > Mathf.Abs(angleFull)) turnSegment = angleFull;
         else if(!positiveAngle) turnSegment *= -1;
-
-        transform.Rotate(Vector3.forward, turnSegment);
+        if (armSprite)
+        {
+            armSprite.transform.Rotate(Vector3.forward, turnSegment);
+        }
+        else
+        {
+            transform.Rotate(Vector3.forward, turnSegment);
+        }
+        
         angleFull -= turnSegment;
 
         if (angleFull == 0) turning = false;
-
+        if (armSprite)
+        {
+            if (Mathf.Abs(armSprite.transform.rotation.eulerAngles.z) < 91 || Mathf.Abs(armSprite.transform.rotation.eulerAngles.z) > 270)
+            {
+                sprite.GetComponent<SpriteRenderer>().flipX = false;
+                armSprite.GetComponent<SpriteRenderer>().flipY = false;
+            }
+            else { 
+                sprite.GetComponent<SpriteRenderer>().flipX = true;
+                armSprite.GetComponent<SpriteRenderer>().flipY = true;
+            }
+        }
         return angleFull;
     }
 
@@ -103,5 +134,10 @@ public abstract class BaseEntity : MonoBehaviour
             return 0;
         }
         return dashDis;
+    }
+    public Vector2 MouseToWorldPos(Vector2 pos)
+    {
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(pos);
+        return worldPos;
     }
 }
