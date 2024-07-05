@@ -36,14 +36,9 @@ public abstract class BaseEntity : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        if (dashDistance > 0)
-        {
-            dashDistance = Dash(dashDistance);
-        }
-        else
-        {
-            TriggerMove();
-        }
+        if (dashDistance > 0) dashDistance = Dash(dashDistance);
+        else TriggerMove();
+
         if (turning) turnAngle = Rotate(turnAngle);
         
     }
