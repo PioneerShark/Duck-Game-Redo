@@ -48,8 +48,6 @@ public class Player : BaseEntity
     void AimKbm(Vector2 position) {
         //Debug.Log("Aiming with mouse " + position);
         TriggerLookAt(MouseToWorldPos(position));
-        
-        
     }
 
     void AimGamepad(Vector2 direction) {
@@ -59,8 +57,8 @@ public class Player : BaseEntity
 
     void Waddle()
     {
-        if (maxWaddleAngle > 0) sprite.transform.Rotate(Vector3.forward, 1);
-        else sprite.transform.Rotate(Vector3.forward, -1);
+        float waddleAngle = maxWaddleAngle > 0 ? velocity.magnitude : -velocity.magnitude;
+        sprite.transform.Rotate(Vector3.forward, waddleAngle);
 
         if (Mathf.Abs(sprite.transform.rotation.eulerAngles.z) >= Mathf.Abs(maxWaddleAngle)) maxWaddleAngle *= -1;
     }
