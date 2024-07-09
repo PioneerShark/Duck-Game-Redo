@@ -43,9 +43,8 @@ public class Player : BaseEntity
     void Roll()
     {
         // call dash and do an animation
-        float dashAngleDeg = Mathf.Atan2(velocity.x, velocity.y) * Mathf.Rad2Deg;
-        TriggerDash(dashAngleDeg, 2, 5);
-        Debug.Log("rolled " + dashAngleDeg);
+        TriggerDash(velocity, 5, 5);
+        Debug.Log("rolled");
     }
 
     void AimKbm(Vector2 position) {
