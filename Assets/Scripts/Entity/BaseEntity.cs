@@ -119,7 +119,7 @@ public abstract class BaseEntity : MonoBehaviour
         dashVelocity = dashDir * speedMult * moveSpeed;
         dashDistance = dashDis;
     }
-    float Dash(float dashDis)
+    protected float Dash(float dashDis)
     {
         Vector2 dashSegment = Time.deltaTime * dashVelocity;
         transform.Translate(dashSegment, Space.World);
