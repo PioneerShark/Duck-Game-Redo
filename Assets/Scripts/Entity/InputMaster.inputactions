@@ -186,17 +186,6 @@
                 },
                 {
                     "name": "",
-                    "id": "d36e288f-16ff-4653-83e2-9172faf5984b",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "kbm",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7b6c76dd-ba15-4367-848d-9c69957cf617",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -213,6 +202,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "gamepad",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e2bb6b6-e1a1-4c0d-a438-b5e47308777b",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "kbm",
                     "action": "Roll",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -42,7 +42,10 @@ public class Player : BaseEntity
 
     void Roll()
     {
-        Debug.Log("rolled");
+        // call dash and do an animation
+        float dashAngleDeg = Mathf.Atan2(velocity.x, velocity.y) * Mathf.Rad2Deg;
+        TriggerDash(dashAngleDeg, 2, 5);
+        Debug.Log("rolled " + dashAngleDeg);
     }
 
     void AimKbm(Vector2 position) {
@@ -57,6 +60,7 @@ public class Player : BaseEntity
 
     void Waddle()
     {
+        // it works on my pc! ~ Katalytic
         float waddleAngle = maxWaddleAngle > 0 ? velocity.magnitude : -velocity.magnitude;
         sprite.transform.Rotate(Vector3.forward, waddleAngle);
 
