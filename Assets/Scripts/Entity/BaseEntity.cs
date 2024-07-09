@@ -113,13 +113,13 @@ public abstract class BaseEntity : MonoBehaviour
         
     }
 
-    public virtual void TriggerDash(float dashAngleDeg, float speedMult, float dashDis) { 
-        Vector2 dashDir = new Vector2(Mathf.Sin(dashAngleDeg), Mathf.Cos(dashAngleDeg));
+    public virtual void TriggerDash(Vector2 dashDir, float speedMult, float dashDis) { 
+        //Vector2 dashDir = new Vector2(Mathf.Sin(dashAngleDeg), Mathf.Cos(dashAngleDeg));
         dashDir.Normalize();
         dashVelocity = dashDir * speedMult * moveSpeed;
         dashDistance = dashDis;
     }
-    protected float Dash(float dashDis)
+    float Dash(float dashDis)
     {
         Vector2 dashSegment = Time.deltaTime * dashVelocity;
         transform.Translate(dashSegment, Space.World);
