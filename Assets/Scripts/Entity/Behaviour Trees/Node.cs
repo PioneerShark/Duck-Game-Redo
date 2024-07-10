@@ -47,13 +47,9 @@ namespace BehaviourTree
             object value = null;
             if (_dataContext.TryGetValue(key, out value))
                 return value;
-            Node node = parent;
-            while (node != null)
+            if (parent != null)
             {
-                value = node.GetData(key);
-                if (value != null) 
-                    return value;
-                node = node.parent;
+                return parent.GetData(key);
             }
             return null;
         }
