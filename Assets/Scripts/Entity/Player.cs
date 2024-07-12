@@ -44,6 +44,7 @@ public class Player : BaseEntity
     {
         // call dash and do an animation
         TriggerDash(velocity, 5, 5);
+        sprite.transform.Rotate(Vector3.forward, 360);
         Debug.Log("rolled");
     }
 
