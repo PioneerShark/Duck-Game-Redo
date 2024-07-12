@@ -508,7 +508,6 @@ MonoBehaviour:
   moveSpeed: 10
   lookSpeed: 360
   turning: 0
-  turnAngle: 0
   velocity: {x: 0, y: 0}
   dashVelocity: {x: 0, y: 0}
   dashDistance: 0
@@ -526,6 +525,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c829ed0fe5ac5204ca88dde7cb6b40ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  moveSpeed: 10
+  lookSpeed: 5
+  turning: 0
+  velocity: {x: 0, y: 0}
+  dashVelocity: {x: 0, y: 0}
+  dashDistance: 0
+  sprite: {fileID: 0}
+  armSprite: {fileID: 0}
 --- !u!1 &1238635336
 GameObject:
   m_ObjectHideFlags: 0
