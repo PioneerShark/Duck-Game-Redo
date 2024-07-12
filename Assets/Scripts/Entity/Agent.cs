@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Agent : BaseEntity
 {
-    public Vector2 targetPosition;
-    public Vector2 targetLookAtPosition;
+    [HideInInspector]
+    public Vector2 _targetPosition, _targetLookAtPosition;
 
     public void MoveTo()
     {
+        TriggerMoveTo(_targetPosition);
+    }
 
+    public void SetTarget(Vector2 targetPosition)
+    {
+        _targetPosition = targetPosition;
     }
 
     public void LookAt()

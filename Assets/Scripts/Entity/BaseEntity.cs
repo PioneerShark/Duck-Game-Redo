@@ -10,11 +10,16 @@ public abstract class BaseEntity : MonoBehaviour
 
     [HideInInspector]
     public bool turning;
-    [HideInInspector]
-    public float turnAngle;
+
+    protected float turnAngle;
 
     [HideInInspector]
     public Vector2 velocity, dashVelocity;
+
+    protected Transform moveTarget;
+
+    protected Transform waypoint;
+
     [HideInInspector]
     public float dashDistance;
 
@@ -29,7 +34,14 @@ public abstract class BaseEntity : MonoBehaviour
     {
         //TriggerDash(90, 5f, 10);
         sprite = transform.Find("Sprite").gameObject;
-        if (transform.Find("Arm").gameObject)
+        try
+        {
+            armSprite = transform.Find("Arm");
+        }
+        catch
+        {
+            Debug.LogWarning("No child arm gameobject");
+        }
         armSprite = transform.Find("Arm");
     }
 
@@ -98,7 +110,7 @@ public abstract class BaseEntity : MonoBehaviour
         return angleFull;
     }
 
-    public virtual void TriggerMove()
+    protected void TriggerMove()
     {
         velocity.Normalize();
         Vector3 moveVector = new Vector3(velocity.x * moveSpeed, velocity.y * moveSpeed, 0);
@@ -106,14 +118,11 @@ public abstract class BaseEntity : MonoBehaviour
         transform.Translate(moveVector, Space.World);
     }
 
-    public virtual void TriggerMoveTo(Vector2 targetPos) {
-        Vector2 entityPos = new Vector2(transform.position.x, transform.position.y);
-        Vector2 moveDist = targetPos - entityPos;
-        velocity = moveDist;
-        
+    protected void TriggerMoveTo(Vector2 targetPos) {
+        transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed*Time.deltaTime);
     }
 
-    public virtual void TriggerDash(Vector2 dashDir, float speedMult, float dashDis) {
+    protected void TriggerDash(Vector2 dashDir, float speedMult, float dashDis) {
         //Vector2 dashDir = new Vector2(Mathf.Sin(dashAngleDeg), Mathf.Cos(dashAngleDeg));
         if (dashDir != Vector2.zero) dashDir.Normalize();
         else dashDir = new Vector2(0, 1);
