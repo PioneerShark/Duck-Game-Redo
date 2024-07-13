@@ -528,7 +528,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   moveSpeed: 10
-  lookSpeed: 5
+  lookSpeed: 10
   turning: 0
   velocity: {x: 0, y: 0}
   dashVelocity: {x: 0, y: 0}
