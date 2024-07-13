@@ -122,7 +122,7 @@ public abstract class BaseEntity : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed*Time.deltaTime);
     }
 
-    protected void TriggerDash(Vector2 dashDir, float speedMult, float dashDis) {
+    public void TriggerDash(Vector2 dashDir, float speedMult, float dashDis) {
         //Vector2 dashDir = new Vector2(Mathf.Sin(dashAngleDeg), Mathf.Cos(dashAngleDeg));
         if (dashDir != Vector2.zero) dashDir.Normalize();
         else dashDir = new Vector2(0, 1);
