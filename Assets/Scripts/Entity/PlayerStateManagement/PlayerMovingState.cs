@@ -17,8 +17,9 @@ public class PlayerMovingState : PlayerBaseState
     public override void UpdateState(PlayerStateManager player)
     {
         Waddle(player);
-        // need a diff check to move back into idle... sometimes rolling keeps player here, I think
-        if (player.controls.Player.Movement.WasReleasedThisFrame()) player.SwitchState(player.idleState);
+
+        // add condition for downed state being entered
+        if (!player.controls.Player.Movement.IsInProgress()) player.SwitchState(player.idleState);
         if (player.controls.Player.Roll.IsPressed()) player.SwitchState(player.rollingState);
     }
 

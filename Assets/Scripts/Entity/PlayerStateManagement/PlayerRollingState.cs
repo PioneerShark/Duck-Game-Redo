@@ -11,13 +11,14 @@ public class PlayerRollingState : PlayerBaseState
         Debug.Log("Hello from the rolling state >:)");
         rollComplete = false;
         amountRolled = 0f;
-        player.TriggerDash(player.velocity, 3f, 0.5f);
+        player.TriggerDash(player.velocity, 3f, 5f);
     }
 
     public override void UpdateState(PlayerStateManager player)
     {
         Roll(player);
 
+        // add condition for downed state being entered
         if (rollComplete)
         {
             if (player.velocity == Vector2.zero) player.SwitchState(player.idleState);
