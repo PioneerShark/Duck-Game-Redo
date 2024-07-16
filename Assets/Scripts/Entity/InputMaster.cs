@@ -71,6 +71,24 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TESTTakeDamage"",
+                    ""type"": ""Button"",
+                    ""id"": ""70f91aaf-ab32-41c7-bb82-0bd24ac899ae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TESTGainHealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""76d7b8e9-3cce-464b-8ef9-f0d7267bdf48"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -260,6 +278,28 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""action"": ""AimGamepad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55f688d0-b793-43e6-8660-808e4144b867"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""gamepad;kbm"",
+                    ""action"": ""TESTTakeDamage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e53e326a-46c3-47b4-91fb-6fa924b1f160"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""kbm;gamepad"",
+                    ""action"": ""TESTGainHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -284,6 +324,8 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
         m_Player_AimKbm = m_Player.FindAction("AimKbm", throwIfNotFound: true);
         m_Player_AimGamepad = m_Player.FindAction("AimGamepad", throwIfNotFound: true);
+        m_Player_TESTTakeDamage = m_Player.FindAction("TESTTakeDamage", throwIfNotFound: true);
+        m_Player_TESTGainHealth = m_Player.FindAction("TESTGainHealth", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -350,6 +392,8 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Roll;
     private readonly InputAction m_Player_AimKbm;
     private readonly InputAction m_Player_AimGamepad;
+    private readonly InputAction m_Player_TESTTakeDamage;
+    private readonly InputAction m_Player_TESTGainHealth;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -359,6 +403,8 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputAction @AimKbm => m_Wrapper.m_Player_AimKbm;
         public InputAction @AimGamepad => m_Wrapper.m_Player_AimGamepad;
+        public InputAction @TESTTakeDamage => m_Wrapper.m_Player_TESTTakeDamage;
+        public InputAction @TESTGainHealth => m_Wrapper.m_Player_TESTGainHealth;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -383,6 +429,12 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @AimGamepad.started += instance.OnAimGamepad;
             @AimGamepad.performed += instance.OnAimGamepad;
             @AimGamepad.canceled += instance.OnAimGamepad;
+            @TESTTakeDamage.started += instance.OnTESTTakeDamage;
+            @TESTTakeDamage.performed += instance.OnTESTTakeDamage;
+            @TESTTakeDamage.canceled += instance.OnTESTTakeDamage;
+            @TESTGainHealth.started += instance.OnTESTGainHealth;
+            @TESTGainHealth.performed += instance.OnTESTGainHealth;
+            @TESTGainHealth.canceled += instance.OnTESTGainHealth;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -402,6 +454,12 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @AimGamepad.started -= instance.OnAimGamepad;
             @AimGamepad.performed -= instance.OnAimGamepad;
             @AimGamepad.canceled -= instance.OnAimGamepad;
+            @TESTTakeDamage.started -= instance.OnTESTTakeDamage;
+            @TESTTakeDamage.performed -= instance.OnTESTTakeDamage;
+            @TESTTakeDamage.canceled -= instance.OnTESTTakeDamage;
+            @TESTGainHealth.started -= instance.OnTESTGainHealth;
+            @TESTGainHealth.performed -= instance.OnTESTGainHealth;
+            @TESTGainHealth.canceled -= instance.OnTESTGainHealth;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -444,5 +502,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         void OnRoll(InputAction.CallbackContext context);
         void OnAimKbm(InputAction.CallbackContext context);
         void OnAimGamepad(InputAction.CallbackContext context);
+        void OnTESTTakeDamage(InputAction.CallbackContext context);
+        void OnTESTGainHealth(InputAction.CallbackContext context);
     }
 }

@@ -19,6 +19,7 @@ public class PlayerMovingState : PlayerBaseState
         Waddle(player);
 
         // add condition for downed state being entered
+        if (player.health <= 0) player.SwitchState(player.downedState);
         if (!player.controls.Player.Movement.IsInProgress()) player.SwitchState(player.idleState);
         if (player.controls.Player.Roll.IsPressed()) player.SwitchState(player.rollingState);
     }

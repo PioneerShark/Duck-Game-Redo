@@ -19,6 +19,7 @@ public class PlayerRollingState : PlayerBaseState
         Roll(player);
 
         // add condition for downed state being entered
+        if (player.health <= 0) player.SwitchState(player.downedState);
         if (rollComplete)
         {
             if (player.velocity == Vector2.zero) player.SwitchState(player.idleState);

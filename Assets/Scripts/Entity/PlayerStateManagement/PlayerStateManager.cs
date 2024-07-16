@@ -8,10 +8,10 @@ public class PlayerStateManager : BaseEntity
     public InputMaster controls;
 
     PlayerBaseState currentState;
-    public PlayerIdleState idleState = new PlayerIdleState();
-    public PlayerMovingState movingState = new PlayerMovingState();
-    public PlayerRollingState rollingState = new PlayerRollingState();
-    public PlayerDownedState downedState = new PlayerDownedState();
+    public PlayerIdleState idleState = new();
+    public PlayerMovingState movingState = new();
+    public PlayerRollingState rollingState = new();
+    public PlayerDownedState downedState = new();
 
 
     public void Awake()
@@ -26,6 +26,16 @@ public class PlayerStateManager : BaseEntity
 
         currentState = idleState;
         currentState.EnterState(this);
+
+        controls.Player.TESTTakeDamage.performed += _ => { 
+            health -= 50;
+            Debug.Log("Took damage and health is at " + health);
+        };
+        controls.Player.TESTGainHealth.performed += _ =>
+        {
+            health += 50;
+            Debug.Log("Gained health and health is at " + health);
+        };
     }
 
     // Update is called once per frame
