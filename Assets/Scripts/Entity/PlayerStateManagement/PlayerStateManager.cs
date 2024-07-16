@@ -19,7 +19,6 @@ public class PlayerStateManager : BaseEntity
         controls = new InputMaster();
     }
 
-    // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
@@ -38,7 +37,6 @@ public class PlayerStateManager : BaseEntity
         };
     }
 
-    // Update is called once per frame
     public override void Update()
     {
         base.Update();
@@ -48,6 +46,7 @@ public class PlayerStateManager : BaseEntity
     public void SwitchState(PlayerBaseState state)
     {
         currentState = state;
+        controls.Disable();
         state.EnterState(this);
     }
 

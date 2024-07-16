@@ -7,6 +7,7 @@ public class PlayerMovingState : PlayerBaseState
     public override void EnterState(PlayerStateManager player)
     {
         Debug.Log("Hello from the moving state :)");
+        player.controls.Enable();
         player.sprite.transform.rotation = Quaternion.identity;
         player.controls.Player.Movement.performed += ctx =>
         {
@@ -18,7 +19,6 @@ public class PlayerMovingState : PlayerBaseState
     {
         Waddle(player);
 
-        // add condition for downed state being entered
         if (player.health <= 0) player.SwitchState(player.downedState);
         if (!player.controls.Player.Movement.IsInProgress()) player.SwitchState(player.idleState);
         if (player.controls.Player.Roll.IsPressed()) player.SwitchState(player.rollingState);
@@ -26,7 +26,6 @@ public class PlayerMovingState : PlayerBaseState
 
     void Waddle(PlayerStateManager player)
     {
-        // it works on my pc! ~ Katalytic
         float waddleAngle = maxWaddleAngle > 0 ? player.velocity.magnitude : -player.velocity.magnitude;
         player.sprite.transform.Rotate(Vector3.forward, waddleAngle);
 
