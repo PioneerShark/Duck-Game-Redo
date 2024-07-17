@@ -125,7 +125,7 @@ public abstract class BaseEntity : MonoBehaviour
     public void TriggerDash(Vector2 dashDir, float speedMult, float dashDis) {
         //Vector2 dashDir = new Vector2(Mathf.Sin(dashAngleDeg), Mathf.Cos(dashAngleDeg));
         if (dashDir != Vector2.zero) dashDir.Normalize();
-        else dashDir = new Vector2(0, 1);
+        else dashDir = new Vector2(1, 0);
 
         dashVelocity = dashDir * speedMult * moveSpeed;
         dashDistance = dashDis;

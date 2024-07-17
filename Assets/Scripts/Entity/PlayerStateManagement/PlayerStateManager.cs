@@ -17,6 +17,10 @@ public class PlayerStateManager : BaseEntity
     public void Awake()
     {
         controls = new InputMaster();
+
+        controls.Player.Shoot.performed += _ => Shoot();
+        controls.Player.AimKbm.performed += ctx => AimKbm(ctx.ReadValue<Vector2>());
+        controls.Player.AimGamepad.performed += ctx => AimGamepad(ctx.ReadValue<Vector2>());
     }
 
     public override void Start()
@@ -48,6 +52,23 @@ public class PlayerStateManager : BaseEntity
         currentState = state;
         controls.Disable();
         state.EnterState(this);
+    }
+
+    void Shoot()
+    {
+        Debug.Log("the duck shot");
+    }
+
+    void AimKbm(Vector2 position)
+    {
+        //Debug.Log("Aiming with mouse " + position);
+        TriggerLookAt(MouseToWorldPos(position));
+    }
+
+    void AimGamepad(Vector2 direction)
+    {
+        float distanceMult = 2f;
+        TriggerLookAt((Vector2)transform.position + (direction * distanceMult));
     }
 
     private void OnEnable()

@@ -4,13 +4,14 @@ public class PlayerRollingState : PlayerBaseState
 {
     bool rollComplete;
     float amountRolled;
-    readonly float rollIncrement = -2f;
+    float rollIncrement;
 
     public override void EnterState(PlayerStateManager player)
     {
         Debug.Log("Hello from the rolling state >:)");
         rollComplete = false;
         amountRolled = 0f;
+        rollIncrement = player.velocity.x <= 0 ? 2f : -2f;
         player.TriggerDash(player.velocity, 3f, 5f);
     }
 
