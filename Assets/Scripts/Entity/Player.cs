@@ -3,36 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : BaseEntity
+public class PlayerStateManager : BaseEntity
 {
     public InputMaster controls;
-    float maxWaddleAngle = 45f;
 
-    void Awake()
+    PlayerBaseState currentState;
+    public PlayerIdleState idleState = new();
+    public PlayerMovingState movingState = new();
+    public PlayerRollingState rollingState = new();
+    public PlayerDownedState downedState = new();
+
+
+    public void Awake()
     {
         controls = new InputMaster();
+
         controls.Player.Shoot.performed += _ => Shoot();
-        controls.Player.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>());
-        controls.Player.Movement.canceled += _ => Stop();
-        controls.Player.Roll.performed += _ => Roll();
         controls.Player.AimKbm.performed += ctx => AimKbm(ctx.ReadValue<Vector2>());
         controls.Player.AimGamepad.performed += ctx => AimGamepad(ctx.ReadValue<Vector2>());
+    }
+
+    public override void Start()
+    {
+        base.Start();
+
+        currentState = idleState;
+        currentState.EnterState(this);
+
+        controls.Player.TESTTakeDamage.performed += _ => { 
+            health -= 50;
+            Debug.Log("Took damage and health is at " + health);
+        };
+        controls.Player.TESTGainHealth.performed += _ =>
+        {
+            health += 50;
+            Debug.Log("Gained health and health is at " + health);
+        };
     }
 
     public override void Update()
     {
         base.Update();
-        if (velocity != Vector2.zero) Waddle();
+        currentState.UpdateState(this);
     }
 
-    void Move(Vector2 direction)
+    public void SwitchState(PlayerBaseState state)
     {
-        velocity = direction;
-    }
-    void Stop()
-    {
-        velocity = Vector2.zero;
-        sprite.transform.rotation = Quaternion.identity; // rotate back to zero (this is just a quick fix)
+        currentState = state;
+        controls.Disable();
+        state.EnterState(this);
     }
 
     void Shoot()
@@ -40,31 +59,16 @@ public class Player : BaseEntity
         Debug.Log("the duck shot");
     }
 
-    void Roll()
+    void AimKbm(Vector2 position)
     {
-        // call dash and do an animation
-        TriggerDash(velocity, 5, 5);
-        sprite.transform.Rotate(Vector3.forward, 360);
-        Debug.Log("rolled");
-    }
-
-    void AimKbm(Vector2 position) {
         //Debug.Log("Aiming with mouse " + position);
         TriggerLookAt(MouseToWorldPos(position));
     }
 
-    void AimGamepad(Vector2 direction) {
+    void AimGamepad(Vector2 direction)
+    {
         float distanceMult = 2f;
         TriggerLookAt((Vector2)transform.position + (direction * distanceMult));
-    }
-
-    void Waddle()
-    {
-        // it works on my pc! ~ Katalytic
-        float waddleAngle = maxWaddleAngle > 0 ? velocity.magnitude : -velocity.magnitude;
-        sprite.transform.Rotate(Vector3.forward, waddleAngle);
-
-        if (Mathf.Abs(sprite.transform.rotation.eulerAngles.z) >= Mathf.Abs(maxWaddleAngle)) maxWaddleAngle *= -1;
     }
 
     private void OnEnable()

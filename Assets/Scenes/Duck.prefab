@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4619073272908173294}
   - component: {fileID: 8325065466983716041}
   - component: {fileID: 3607692715529240314}
-  - component: {fileID: 4092234958643173391}
+  - component: {fileID: 7562912452485115072}
   m_Layer: 0
   m_Name: Duck
   m_TagString: Untagged
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4092234958643173391
+--- !u!114 &7562912452485115072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,19 +117,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2128846655716917224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de03b4748e8a1ab40a145c30b2c2b849, type: 3}
+  m_Script: {fileID: 11500000, guid: c829ed0fe5ac5204ca88dde7cb6b40ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 0
+  health: 100
+  maxHealth: 100
   moveSpeed: 10
-  lookSpeed: 360
+  lookSpeed: 350
   turning: 0
   velocity: {x: 0, y: 0}
   dashVelocity: {x: 0, y: 0}
   dashDistance: 0
   sprite: {fileID: 0}
-  armSprite: {fileID: 1113780232553162050}
+  armSprite: {fileID: 0}
 --- !u!1 &5732141334935794988
 GameObject:
   m_ObjectHideFlags: 0
