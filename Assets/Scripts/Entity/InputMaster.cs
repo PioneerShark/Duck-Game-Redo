@@ -73,6 +73,15 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ccefb5a-0523-4cdf-be48-c5bc3ec7f88e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""TESTTakeDamage"",
                     ""type"": ""Button"",
                     ""id"": ""70f91aaf-ab32-41c7-bb82-0bd24ac899ae"",
@@ -300,6 +309,28 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""action"": ""TESTGainHealth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ffdda0d7-1ae8-4ba8-b33f-5dd0a4109050"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""kbm"",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a046a086-8816-4698-a186-8a0fd2eea0b2"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""gamepad"",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -324,6 +355,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
         m_Player_AimKbm = m_Player.FindAction("AimKbm", throwIfNotFound: true);
         m_Player_AimGamepad = m_Player.FindAction("AimGamepad", throwIfNotFound: true);
+        m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_TESTTakeDamage = m_Player.FindAction("TESTTakeDamage", throwIfNotFound: true);
         m_Player_TESTGainHealth = m_Player.FindAction("TESTGainHealth", throwIfNotFound: true);
     }
@@ -392,6 +424,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Roll;
     private readonly InputAction m_Player_AimKbm;
     private readonly InputAction m_Player_AimGamepad;
+    private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_TESTTakeDamage;
     private readonly InputAction m_Player_TESTGainHealth;
     public struct PlayerActions
@@ -403,6 +436,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputAction @AimKbm => m_Wrapper.m_Player_AimKbm;
         public InputAction @AimGamepad => m_Wrapper.m_Player_AimGamepad;
+        public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @TESTTakeDamage => m_Wrapper.m_Player_TESTTakeDamage;
         public InputAction @TESTGainHealth => m_Wrapper.m_Player_TESTGainHealth;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -429,6 +463,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @AimGamepad.started += instance.OnAimGamepad;
             @AimGamepad.performed += instance.OnAimGamepad;
             @AimGamepad.canceled += instance.OnAimGamepad;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
             @TESTTakeDamage.started += instance.OnTESTTakeDamage;
             @TESTTakeDamage.performed += instance.OnTESTTakeDamage;
             @TESTTakeDamage.canceled += instance.OnTESTTakeDamage;
@@ -454,6 +491,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @AimGamepad.started -= instance.OnAimGamepad;
             @AimGamepad.performed -= instance.OnAimGamepad;
             @AimGamepad.canceled -= instance.OnAimGamepad;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
             @TESTTakeDamage.started -= instance.OnTESTTakeDamage;
             @TESTTakeDamage.performed -= instance.OnTESTTakeDamage;
             @TESTTakeDamage.canceled -= instance.OnTESTTakeDamage;
@@ -502,6 +542,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         void OnRoll(InputAction.CallbackContext context);
         void OnAimKbm(InputAction.CallbackContext context);
         void OnAimGamepad(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
         void OnTESTTakeDamage(InputAction.CallbackContext context);
         void OnTESTGainHealth(InputAction.CallbackContext context);
     }

@@ -51,6 +51,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "6ccefb5a-0523-4cdf-be48-c5bc3ec7f88e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "TESTTakeDamage",
                     "type": "Button",
                     "id": "70f91aaf-ab32-41c7-bb82-0bd24ac899ae",
@@ -276,6 +285,28 @@
                     "processors": "",
                     "groups": "kbm;gamepad",
                     "action": "TESTGainHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ffdda0d7-1ae8-4ba8-b33f-5dd0a4109050",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "kbm",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a046a086-8816-4698-a186-8a0fd2eea0b2",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "gamepad",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

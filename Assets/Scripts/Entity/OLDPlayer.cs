@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : BaseEntity
+public class OLDPlayer : BaseEntity
 {
     public InputMaster controls;
     float maxWaddleAngle = 45f;

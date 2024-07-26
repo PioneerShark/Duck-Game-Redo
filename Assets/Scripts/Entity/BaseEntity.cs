@@ -25,6 +25,7 @@ public abstract class BaseEntity : MonoBehaviour
 
     [HideInInspector]
     public GameObject sprite;
+
     [HideInInspector]
     public Transform armSprite;
 

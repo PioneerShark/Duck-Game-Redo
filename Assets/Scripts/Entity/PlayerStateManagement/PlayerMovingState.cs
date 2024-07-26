@@ -4,7 +4,7 @@ public class PlayerMovingState : PlayerBaseState
 {
     float maxWaddleAngle = 45f;
 
-    public override void EnterState(PlayerStateManager player)
+    public override void EnterState(Player player)
     {
         Debug.Log("Hello from the moving state :)");
         player.controls.Enable();
@@ -15,7 +15,7 @@ public class PlayerMovingState : PlayerBaseState
         };
     }
 
-    public override void UpdateState(PlayerStateManager player)
+    public override void UpdateState(Player player)
     {
         Waddle(player);
 
@@ -24,7 +24,7 @@ public class PlayerMovingState : PlayerBaseState
         if (player.controls.Player.Roll.IsPressed()) player.SwitchState(player.rollingState);
     }
 
-    void Waddle(PlayerStateManager player)
+    void Waddle(Player player)
     {
         float waddleAngle = maxWaddleAngle > 0 ? player.velocity.magnitude : -player.velocity.magnitude;
         player.sprite.transform.Rotate(Vector3.forward, waddleAngle);

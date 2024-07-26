@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerIdleState : PlayerBaseState
 {
-    public override void EnterState(PlayerStateManager player)
+    public override void EnterState(Player player)
     {
         Debug.Log("Hello from the Idle State!");
         player.controls.Enable();
@@ -11,7 +11,7 @@ public class PlayerIdleState : PlayerBaseState
         player.sprite.transform.rotation = Quaternion.identity;
     }
 
-    public override void UpdateState(PlayerStateManager player)
+    public override void UpdateState(Player player)
     {
         if (player.health <= 0) player.SwitchState(player.downedState);
         if (player.controls.Player.Movement.IsPressed()) player.SwitchState(player.movingState);

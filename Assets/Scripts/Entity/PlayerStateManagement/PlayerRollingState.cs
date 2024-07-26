@@ -6,7 +6,7 @@ public class PlayerRollingState : PlayerBaseState
     float amountRolled;
     float rollIncrement;
 
-    public override void EnterState(PlayerStateManager player)
+    public override void EnterState(Player player)
     {
         Debug.Log("Hello from the rolling state >:)");
         rollComplete = false;
@@ -15,7 +15,7 @@ public class PlayerRollingState : PlayerBaseState
         player.TriggerDash(player.velocity, 3f, 5f);
     }
 
-    public override void UpdateState(PlayerStateManager player)
+    public override void UpdateState(Player player)
     {
         Roll(player);
 
@@ -27,7 +27,7 @@ public class PlayerRollingState : PlayerBaseState
         }
     }
 
-    void Roll(PlayerStateManager player)
+    void Roll(Player player)
     {
         player.sprite.transform.Rotate(Vector3.forward, rollIncrement);
         amountRolled += rollIncrement;

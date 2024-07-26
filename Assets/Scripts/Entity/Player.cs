@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerStateManager : BaseEntity
+public class Player : BaseEntity
 {
     public InputMaster controls;
 
@@ -13,11 +13,14 @@ public class PlayerStateManager : BaseEntity
     public PlayerRollingState rollingState = new();
     public PlayerDownedState downedState = new();
 
+    public BaseProjectileWeapon currentWeapon;
+
 
     public void Awake()
     {
         controls = new InputMaster();
 
+        // add reload action
         controls.Player.Shoot.performed += _ => Shoot();
         controls.Player.AimKbm.performed += ctx => AimKbm(ctx.ReadValue<Vector2>());
         controls.Player.AimGamepad.performed += ctx => AimGamepad(ctx.ReadValue<Vector2>());
@@ -26,6 +29,8 @@ public class PlayerStateManager : BaseEntity
     public override void Start()
     {
         base.Start();
+
+        currentWeapon = (Pistol) GameObject.Find("Pistol").GetComponent(typeof(Pistol));
 
         currentState = idleState;
         currentState.EnterState(this);
@@ -56,7 +61,8 @@ public class PlayerStateManager : BaseEntity
 
     void Shoot()
     {
-        Debug.Log("the duck shot");
+        //Debug.Log("the duck shot");
+        currentWeapon.TriggerFire(velocity); // will have to find aim direction in a bit
     }
 
     void AimKbm(Vector2 position)

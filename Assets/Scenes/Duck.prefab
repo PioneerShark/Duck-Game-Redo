@@ -130,6 +130,7 @@ MonoBehaviour:
   dashDistance: 0
   sprite: {fileID: 0}
   armSprite: {fileID: 0}
+  currentWeapon: {fileID: 0}
 --- !u!1 &5732141334935794988
 GameObject:
   m_ObjectHideFlags: 0

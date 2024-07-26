@@ -7,7 +7,7 @@ public class PlayerDownedState : PlayerBaseState
      will revive or whatever. So this has been put together so we can move between 
     downed and the other states :)
      */
-    public override void EnterState(PlayerStateManager player)
+    public override void EnterState(Player player)
     {
         player.controls.Disable();
         player.controls.Player.TESTGainHealth.Enable(); // press G to Gain health
@@ -18,7 +18,7 @@ public class PlayerDownedState : PlayerBaseState
         Debug.Log("They've fallen, and they can't get up!");
     }
 
-    public override void UpdateState(PlayerStateManager player)
+    public override void UpdateState(Player player)
     {
         if (player.health > 0) player.SwitchState(player.idleState);
     }
