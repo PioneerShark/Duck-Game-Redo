@@ -15,13 +15,12 @@ public class Player : BaseEntity
 
     public BaseProjectileWeapon currentWeapon;
 
-
     public void Awake()
     {
         controls = new InputMaster();
-
         // add reload action
         controls.Player.Shoot.performed += _ => Shoot();
+        controls.Player.Reload.performed += _ => { currentWeapon.TriggerReload(); };
         controls.Player.AimKbm.performed += ctx => AimKbm(ctx.ReadValue<Vector2>());
         controls.Player.AimGamepad.performed += ctx => AimGamepad(ctx.ReadValue<Vector2>());
     }
@@ -30,6 +29,7 @@ public class Player : BaseEntity
     {
         base.Start();
 
+        // this works, but I don't like how it looks...
         currentWeapon = (Pistol) GameObject.Find("Pistol").GetComponent(typeof(Pistol));
 
         currentState = idleState;
@@ -62,8 +62,9 @@ public class Player : BaseEntity
     void Shoot()
     {
         //Debug.Log("the duck shot");
-        currentWeapon.TriggerFire(velocity); // will have to find aim direction in a bit
+        currentWeapon.TriggerShoot(velocity); // will have to find aim direction in a bit
     }
+
 
     void AimKbm(Vector2 position)
     {

@@ -629,8 +629,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1994236078}
   - component: {fileID: 1994236079}
+  - component: {fileID: 1994236080}
   m_Layer: 0
-  m_Name: pistol
+  m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -703,6 +704,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1994236080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994236077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1db5b625069074c93ae1c3c2c27f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 2
+  reloadSpeed: 2
+  fireCost: 1
+  currentAmmoCount: 3
+  maxAmmoCount: 3
+  reserves: 7
+  projectile: {fileID: 0}
+  sprite: {fileID: 1994236077}
 --- !u!1001 &7077026850714107235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -769,34 +790,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1113780232553162050, guid: 52350f556722c4043ac8a7defd3d333b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1994236078}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2128846655716917224, guid: 52350f556722c4043ac8a7defd3d333b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7077026850714107237}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52350f556722c4043ac8a7defd3d333b, type: 3}
---- !u!1 &7077026850714107236 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2128846655716917224, guid: 52350f556722c4043ac8a7defd3d333b, type: 3}
-  m_PrefabInstance: {fileID: 7077026850714107235}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7077026850714107237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7077026850714107236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c1db5b625069074c93ae1c3c2c27f34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireRate: 1
-  reloadSpeed: 1
-  clipSize: 5
-  ammoCount: 10
-  maxAmmoCount: 20
-  sprite: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -8,23 +8,27 @@ public abstract class BaseProjectileWeapon : MonoBehaviour
 
     public int fireCost, currentAmmoCount, maxAmmoCount, reserves;
 
-    BaseProjectile projectile;
+    [HideInInspector]
+    public BaseProjectile projectile;
 
     public GameObject sprite;
 
-    // fire
+    // shoot
     // reload
 
-    public void TriggerFire(Vector2 aimDirection)
+    public void TriggerShoot(Vector2 aimDirection)
     {
-        Debug.Log("Shots have been fired!");
         // will refine check later
         if (currentAmmoCount - fireCost < 0)
         {
             TriggerReload();
         }
-
-        currentAmmoCount -= fireCost;
+        else
+        {
+            Debug.Log("Shots have been fired!");
+            currentAmmoCount -= fireCost;
+        }
+        
     }
 
     public void TriggerReload()
@@ -32,7 +36,7 @@ public abstract class BaseProjectileWeapon : MonoBehaviour
         int reloadAmount = maxAmmoCount - currentAmmoCount;
 
         Debug.Log("Reloading weapon.");
-        if (reserves == 0) { Debug.Log("Oops, out of ammo!"); }
+        if (reserves == 0) { Debug.Log("Oops, all out of ammo!"); }
 
         if (reloadAmount <= reserves) 
         {
