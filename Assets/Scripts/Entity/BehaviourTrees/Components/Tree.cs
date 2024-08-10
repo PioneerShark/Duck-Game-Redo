@@ -18,6 +18,11 @@ namespace BehaviourTree
                 _root.Evaluate();
         }
         protected abstract Node SetupTree();
+
+        public Node GetNode()
+        {
+            return _root;
+        }
     }
 }
 

@@ -14,9 +14,11 @@ public class TestBT : Tree
                 new FindTargetTask(self, targetObject),
                 new IdleTask(self)
             ),
-            new MoveToTargetTask(self, targetObject),
-            new AttackTargetTask(self, targetObject),
-            new KiteTargetTask(self, targetObject)
+            new BasicAttackTree(self, targetObject)
+                // Basically acts as another Tree and executes the following
+                //new MoveToTargetTask(self, targetObject)
+                //new AttackTargetTask(self, targetObject)
+                //new KiteTargetTask(self, targetObject)
         );
         return root;
     }
