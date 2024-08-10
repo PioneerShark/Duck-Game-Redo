@@ -142,9 +142,4 @@ public abstract class BaseEntity : MonoBehaviour
         }
         return dashDis;
     }
-    public Vector2 MouseToWorldPos(Vector2 pos)
-    {
-        Vector2 worldPos = Camera.main.ScreenToWorldPoint(pos);
-        return worldPos;
-    }
 }

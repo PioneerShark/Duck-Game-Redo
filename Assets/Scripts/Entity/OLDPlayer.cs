@@ -50,7 +50,7 @@ public class OLDPlayer : BaseEntity
 
     void AimKbm(Vector2 position) {
         //Debug.Log("Aiming with mouse " + position);
-        TriggerLookAt(MouseToWorldPos(position));
+        //TriggerLookAt(MouseToWorldPos(position));
     }
 
     void AimGamepad(Vector2 direction) {
