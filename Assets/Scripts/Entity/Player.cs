@@ -30,7 +30,7 @@ public class Player : BaseEntity
     {
         base.Start();
 
-        currentWeapon = (Pistol) GameObject.Find("Pistol").GetComponent(typeof(Pistol));
+        //currentWeapon = (Pistol) GameObject.Find("Pistol").GetComponent(typeof(Pistol));
 
         currentState = idleState;
         currentState.EnterState(this);
