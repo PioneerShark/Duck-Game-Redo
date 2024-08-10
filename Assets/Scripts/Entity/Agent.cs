@@ -6,6 +6,8 @@ public class Agent : BaseEntity
 {
     [HideInInspector]
     public Vector2 _targetPosition, _targetLookAtPosition;
+    public float sightRange = 20f;
+    public float attackRange = 15f; // Temporary stand in value that is meant to be gotten from an attack object
 
     public void MoveTo()
     {
