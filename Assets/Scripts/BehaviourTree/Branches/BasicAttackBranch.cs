@@ -1,13 +1,13 @@
 using UnityEngine;
 using BehaviourTree;
 
-public class BasicAttackTree : Node
+public class BasicAttackBranch : Node
 {
     private Agent self;
     private GameObject target;
 
     // Constructor
-    public BasicAttackTree(Agent setSelf, GameObject setTarget)
+    public BasicAttackBranch(Agent setSelf, GameObject setTarget)
     {
         this.self = setSelf;
         this.target = setTarget;

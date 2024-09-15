@@ -1,6 +1,6 @@
 using BehaviourTree;
 
-public class TestBT : Tree
+public class BasicAI : Tree
 {
     public Agent self;
     public UnityEngine.GameObject targetObject;
@@ -14,7 +14,7 @@ public class TestBT : Tree
                 new FindTargetTask(self, targetObject),
                 new IdleTask(self)
             ),
-            new BasicAttackTree(self, targetObject)
+            new BasicAttackBranch(self, targetObject)
                 // Basically acts as another Tree and executes the following
                 //new MoveToTargetTask(self, targetObject)
                 //new AttackTargetTask(self, targetObject)
