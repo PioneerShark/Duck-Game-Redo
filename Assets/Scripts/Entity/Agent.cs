@@ -23,4 +23,11 @@ public class Agent : BaseEntity
     {
 
     }
+    private void OnDestroy()
+    {
+        if (GameObject.FindGameObjectWithTag("WaveSpawner") != null)
+        {
+            GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<WaveSpawner>().RemoveEnemy();
+        }
+    }
 }
