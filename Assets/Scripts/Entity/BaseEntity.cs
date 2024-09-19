@@ -23,16 +23,22 @@ public abstract class BaseEntity : MonoBehaviour
     [HideInInspector]
     public float dashDistance;
 
+
     [HideInInspector]
     public GameObject sprite;
 
     [HideInInspector]
     public Transform armSprite;
 
+    protected Rigidbody2D rb;
+
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        if (!TryGetComponent<Rigidbody2D>(out rb)) {
+            Debug.LogError("no RigidBody2D component on Entity");
+        }
         //TriggerDash(90, 5f, 10);
         sprite = transform.Find("Sprite").gameObject;
         try
@@ -114,9 +120,10 @@ public abstract class BaseEntity : MonoBehaviour
     protected void TriggerMove()
     {
         velocity.Normalize();
-        Vector3 moveVector = new Vector3(velocity.x * moveSpeed, velocity.y * moveSpeed, 0);
-        moveVector *= Time.deltaTime;
-        transform.Translate(moveVector, Space.World);
+        Vector2 moveVector = new Vector2(velocity.x * moveSpeed, velocity.y * moveSpeed);
+        moveVector *= 0.1f;
+        //transform.Translate(moveVector, Space.World);
+        rb.MovePosition((Vector2)transform.position + moveVector);
     }
 
     protected void TriggerMoveTo(Vector2 targetPos) {
