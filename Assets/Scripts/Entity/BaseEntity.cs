@@ -16,13 +16,15 @@ public abstract class BaseEntity : MonoBehaviour
     [HideInInspector]
     public Vector2 velocity, dashVelocity;
 
+    
+    protected bool isDashing;
+
     protected Transform moveTarget;
 
     protected Transform waypoint;
 
     [HideInInspector]
-    public float dashDistance;
-
+    public float dashDistance, dashTime;
 
     [HideInInspector]
     public GameObject sprite;
