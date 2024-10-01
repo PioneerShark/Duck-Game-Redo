@@ -15,4 +15,9 @@ public class Player2D : Character2D
     {
         
     }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
 }
