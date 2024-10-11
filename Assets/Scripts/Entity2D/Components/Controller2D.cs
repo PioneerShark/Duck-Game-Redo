@@ -9,8 +9,8 @@ public class Controller2D : MonoBehaviour
 {
     public Character2D targetCharacter; 
     private Vector2 movementInput = Vector2.zero;
+    private bool dashInput = false;
 
-    // Set the character to control
     public void SetCharacter(Character2D character)
     {
         targetCharacter = character;
@@ -20,14 +20,23 @@ public class Controller2D : MonoBehaviour
     {
         movementInput = context.ReadValue<Vector2>();
     }
+    
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        dashInput = context.action.triggered;
+    }
 
-    // Update method to handle inputs (if controlling with player input)
     void Update()
     {
         if (targetCharacter != null)
         {
-            //Debug.Log(movementInput);
             targetCharacter.SetMoveVector(movementInput);
+
+            if (dashInput)
+            {
+                targetCharacter.TriggerDash();
+                dashInput = false;
+            }
         }
     }
 }
