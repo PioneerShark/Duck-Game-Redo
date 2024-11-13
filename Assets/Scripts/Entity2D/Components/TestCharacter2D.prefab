@@ -218,6 +218,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: caddc91e-0513-4582-a772-8da51b39cf1e
     m_ActionName: Player1/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7a5afb9e-50e1-4b99-811f-0912eb04c5a3
+    m_ActionName: Player1/Dash[/Keyboard/leftShift,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard 1
   m_DefaultActionMap: Player1
@@ -362,6 +366,8 @@ MonoBehaviour:
   rigidbody: {fileID: 7526718202330854373}
   entityModel: {fileID: 8486405483048870556}
   moveSpeed: 8
+  dashPower: 20
+  dashDuration: 0.2
   moveVector: {x: 0, y: 0}
 --- !u!61 &7764584940656119567
 BoxCollider2D:
