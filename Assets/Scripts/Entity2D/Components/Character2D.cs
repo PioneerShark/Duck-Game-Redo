@@ -35,7 +35,7 @@ public class Character2D : Entity2D
         if (rigidbody != null)
         {
             Vector2 finalVelocity = moveVector.normalized * moveSpeed + dashVector;
-            rigidbody.velocity = finalVelocity;
+            rigidbody.linearVelocity = finalVelocity;
         }
 
         if (isDashing && Time.time >= dashEndTime)
