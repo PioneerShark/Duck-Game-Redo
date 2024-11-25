@@ -5,8 +5,8 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "Look Towards", story: "[Agent] looks towards [Target]", category: "Action/Agent2D", id: "e1f06affc2ea3efe278d896bf6f8bb19")]
-public partial class LookTowards : Action
+[NodeDescription(name: "Look Towards", story: "[Agent] looks towards [Target]", category: "Action/Agent2D", id: "b6663fd69a03f4a0428f97d0276121d3")]
+public partial class LookTowardsAction : Action
 {
     [SerializeReference] public BlackboardVariable<Agent2D> Agent;
     [SerializeReference] public BlackboardVariable<GameObject> Target;
@@ -30,7 +30,7 @@ public partial class LookTowards : Action
         targetPosition = target.transform.position;
         agent.SetAimVector((targetPosition - agent.position).normalized);
 
-        return Status.Success;
+        return Status.Running;
     }
 
     protected override void OnEnd()
