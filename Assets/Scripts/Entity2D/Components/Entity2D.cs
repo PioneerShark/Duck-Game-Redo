@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity2D : MonoBehaviour 
@@ -26,6 +27,11 @@ public class Entity2D : MonoBehaviour
     {
         get => this._invulnerable;
         set => this._invulnerable = value;
+    }
+
+    public Vector3 position
+    {
+        get => this.gameObject.transform.position;
     }
 
     public virtual void Restore()
