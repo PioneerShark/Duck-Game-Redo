@@ -13,7 +13,7 @@ public class Player : BaseEntity
     public PlayerRollingState rollingState = new();
     public PlayerDownedState downedState = new();
 
-    public BaseProjectileWeapon currentWeapon;
+    private AbilityHolder currentWeapon;
 
 
     public void Awake()
@@ -21,7 +21,8 @@ public class Player : BaseEntity
         controls = new InputMaster();
 
         // add reload action
-        controls.Player.Shoot.performed += _ => Shoot();
+        controls.Player.Shoot.performed += _ => ShootDown();
+        controls.Player.Shoot.canceled += _ => ShootUp();
         controls.Player.AimKbm.performed += ctx => AimKbm(ctx.ReadValue<Vector2>());
         controls.Player.AimGamepad.performed += ctx => AimGamepad(ctx.ReadValue<Vector2>());
     }
@@ -29,7 +30,7 @@ public class Player : BaseEntity
     public override void Start()
     {
         base.Start();
-
+        currentWeapon = gameObject.GetComponent<AbilityHolder>();
         //currentWeapon = (Pistol) GameObject.Find("Pistol").GetComponent(typeof(Pistol));
 
         currentState = idleState;
@@ -59,12 +60,21 @@ public class Player : BaseEntity
         state.EnterState(this);
     }
 
-    void Shoot()
+    void ShootDown()
     {
-        //Debug.Log("the duck shot");
-        currentWeapon.TriggerFire(velocity); // will have to find aim direction in a bit
+        
+        if (currentWeapon != null)
+        {
+            currentWeapon.TriggerAbility();
+        }
     }
+    void ShootUp()
+    {
+        if (currentWeapon != null)
+        {
 
+        }
+    }
     void AimKbm(Vector2 position)
     {
         //Debug.Log("Aiming with mouse " + position);
