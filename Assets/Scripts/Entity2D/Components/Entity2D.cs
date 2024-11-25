@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class Entity2D : MonoBehaviour 
 {
+    [Header("Entity")]
     public BoxCollider2D worldCollider;
     public EdgeCollider2D hitboxCollider;
     public Rigidbody2D rigidbody;
     public Model2D entityModel;
 
+    [Header("Entity Properties")]
     public float healthMax = 100;
     public float health;
 

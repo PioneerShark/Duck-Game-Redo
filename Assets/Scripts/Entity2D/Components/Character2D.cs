@@ -5,15 +5,25 @@ using UnityEngine;
 
 public class Character2D : Entity2D
 {
+    [Header("Inventory")]
+    public AbilityHolder primary;
+    public AbilityHolder secondary;
+
+    [Header("Properties")]
     public float moveSpeed = 16f;
     public float dashPower = 20f;
     public float dashDuration = 0.2f; 
+
     private bool isDashing = false;
     private float dashEndTime = 0f;
+
+    [Header("Readonly")]
     public Vector2 moveVector = Vector2.zero;
     public Vector2 aimVector = Vector2.right;
     private Vector2 dashVector = Vector2.zero;  // Dash vector
+    public bool isAttacking = false;
 
+    [Header("Debugging")]
     public bool showDebugLines = true;
 
     // Start is called before the first frame update
@@ -25,6 +35,8 @@ public class Character2D : Entity2D
     // Update is called once per frame
     protected override void Update()
     {
+        // Attack logic here
+
         base.Update();
     }
 
@@ -56,6 +68,11 @@ public class Character2D : Entity2D
         {
             this.aimVector = newAimVector.normalized;
         }
+    }
+
+    public void SetAttack(bool newIsAttacking)
+    {
+        this.isAttacking = newIsAttacking;
     }
 
     public void TriggerDash()

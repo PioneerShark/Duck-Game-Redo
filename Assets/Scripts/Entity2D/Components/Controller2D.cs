@@ -11,6 +11,7 @@ public class Controller2D : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
     private Vector2 aimInput = Vector2.zero;
     private bool dashInput = false;
+    private bool attackInput = false;
 
     public void SetCharacter(Character2D character)
     {
@@ -32,11 +33,17 @@ public class Controller2D : MonoBehaviour
         aimInput = context.ReadValue<Vector2>();
     }
 
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        attackInput = context.action.triggered;
+    }
+
     void Update()
     {
         if (targetCharacter != null)
         {
             targetCharacter.SetMoveVector(movementInput);
+            targetCharacter.SetAttack(attackInput);
 
             if (dashInput)
             {
