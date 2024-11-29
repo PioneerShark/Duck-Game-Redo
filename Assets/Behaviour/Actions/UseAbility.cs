@@ -24,7 +24,7 @@ public partial class AttackNoTargetAction : Action
 
     protected override Status OnUpdate()
     {
-        ability.TriggerAbility();
+        ability.TriggerAbility(0);
 
         return Status.Success;
     }

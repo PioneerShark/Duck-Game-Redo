@@ -15,6 +15,7 @@ public class GunBase : Ability
     private float weaponRange = 10f;
     public override void Activate(GameObject parent)
     {
+        
         if (arm == null)
         arm = parent.transform.Find("Arm");
         Debug.Log(arm.transform.position.x + " " + arm.transform.position.y);

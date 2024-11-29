@@ -15,9 +15,10 @@ MonoBehaviour:
   name: 
   cooldown: 1
   activeTime: 0
+  inputType: 0
   velocity: 0
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 96
   bulletTrail: {fileID: 190337558420888727, guid: 68f491fabca949542a41ca05cac10733, type: 3}
   weaponRange: 10

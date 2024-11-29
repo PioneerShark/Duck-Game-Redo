@@ -7,6 +7,14 @@ public class Ability : ScriptableObject
     public new string name;
     public float cooldown;
     public float activeTime;
+    public enum InputType
+    {
+        repeat,
+        single,
+        extend
+    };
+    public InputType inputType;
+    
     public virtual void Activate(GameObject parent)
     {
 
