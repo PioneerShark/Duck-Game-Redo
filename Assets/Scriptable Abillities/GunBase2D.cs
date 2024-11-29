@@ -20,7 +20,7 @@ public class GunBase2D : Ability
         
         Vector3 origin = parent.transform.position;
 
-        RaycastHit2D hitinfo = Physics2D.Raycast(origin, character2D.aimVector, 1000f,  LayerMask.GetMask("Player"));
+        RaycastHit2D hitinfo = Physics2D.Raycast(origin, character2D.aimVector, 1000f,  playerMask);
         if (hitinfo)
         {
             //Debug.Log(hitinfo.transform.name);
@@ -29,6 +29,20 @@ public class GunBase2D : Ability
             var trail = Instantiate(bulletTrail, origin, parent.transform.rotation);
             var trailScript = trail.GetComponent<BulletTrail>();
             trailScript.SetTargetPosition(hitinfo.point);
+
+            Character2D hitCharacter2D = hitinfo.transform.GetComponent<Character2D>();
+            if (hitCharacter2D != null)
+            {
+                hitCharacter2D.TakeDamage(damage);
+            }
+        }
+        else
+        {
+            Vector3 endpoint = new Vector3(character2D.aimVector.x, character2D.aimVector.y, 0) * weaponRange;
+            CreateWeaponTracer(origin, endpoint);
+            var trail = Instantiate(bulletTrail, origin, parent.transform.rotation);
+            var trailScript = trail.GetComponent<BulletTrail>();
+            trailScript.SetTargetPosition(origin + endpoint);
         }
         
     }

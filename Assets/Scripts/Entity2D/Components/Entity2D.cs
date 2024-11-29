@@ -82,6 +82,16 @@ public class Entity2D : MonoBehaviour
         this.health = Mathf.Clamp(this.health + value, 0, this.healthMax);
     }
 
+    public virtual void TakeDamage(float value)
+    {
+        ModifyHealth(-value);
+    }
+
+    public virtual void GainHealth(float value)
+    {
+        ModifyHealth(value);
+    }
+
     protected virtual void Update()
     {
         if (this.health <= 0)

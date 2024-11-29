@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ability : ScriptableObject
 {
     public new string name;
+    public float damage;
     public float cooldown;
     public float activeTime;
     public enum InputType

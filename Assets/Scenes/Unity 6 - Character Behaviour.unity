@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &98685201 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 463914751491582255, guid: d711552d50ce38249aef879cb9df0d87, type: 3}
+  m_PrefabInstance: {fileID: 756460507533051517}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d295d5fd1ad980f4e9670c60fde88f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &283596051 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 504472243961528834, guid: 0d1f9c154cfff44448d09c4e63a7cab9, type: 3}
@@ -885,10 +896,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestAgent2D
       objectReference: {fileID: 0}
+    - target: {fileID: 4054422203505558547, guid: d711552d50ce38249aef879cb9df0d87, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158659901691924364, guid: d711552d50ce38249aef879cb9df0d87, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4158659901691924364, guid: d711552d50ce38249aef879cb9df0d87, type: 3}
       propertyPath: managedReferences[4200132796137865443].m_Value
       value: 
       objectReference: {fileID: 5336659937019479415}
+    - target: {fileID: 6127800864853858806, guid: d711552d50ce38249aef879cb9df0d87, type: 3}
+      propertyPath: abilityHolder
+      value: 
+      objectReference: {fileID: 98685201}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -917,6 +940,10 @@ PrefabInstance:
       propertyPath: isAttacking
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3179956584416819943, guid: 7d2dab08e6e5cd649ba62b03078a8082, type: 3}
+      propertyPath: abilityHolder
+      value: 
+      objectReference: {fileID: 5336659937019479420}
     - target: {fileID: 3612607653186519169, guid: 7d2dab08e6e5cd649ba62b03078a8082, type: 3}
       propertyPath: m_Name
       value: TestCharacter2D
@@ -964,13 +991,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3612607653186519169, guid: 7d2dab08e6e5cd649ba62b03078a8082, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5336659937019479420}
   m_SourcePrefab: {fileID: 100100000, guid: 7d2dab08e6e5cd649ba62b03078a8082, type: 3}
 --- !u!1 &5336659937019479415 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3612607653186519169, guid: 7d2dab08e6e5cd649ba62b03078a8082, type: 3}
   m_PrefabInstance: {fileID: 3510666472574995214}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5336659937019479420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5336659937019479415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d295d5fd1ad980f4e9670c60fde88f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities:
+  - {fileID: 11400000, guid: 0474ec691812626488c1965faadc4918, type: 2}
 --- !u!1001 &9152007358400260267
 PrefabInstance:
   m_ObjectHideFlags: 0

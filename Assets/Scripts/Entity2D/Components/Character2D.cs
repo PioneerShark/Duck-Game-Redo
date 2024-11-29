@@ -6,8 +6,7 @@ using UnityEngine;
 public class Character2D : Entity2D
 {
     [Header("Inventory")]
-    public AbilityHolder primary;
-    public AbilityHolder secondary;
+    public AbilityHolder abilityHolder;
 
     [Header("Properties")]
     public float moveSpeed = 16f;
@@ -73,6 +72,14 @@ public class Character2D : Entity2D
     public void SetAttack(bool newIsAttacking)
     {
         this.isAttacking = newIsAttacking;
+        if (this.isAttacking)
+        {
+            abilityHolder.TriggerAbility(0);
+        }
+        else
+        {
+            abilityHolder.CancelAbility(0);
+        }
     }
 
     public void TriggerDash()

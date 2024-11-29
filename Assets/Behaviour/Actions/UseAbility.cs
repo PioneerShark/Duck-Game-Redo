@@ -17,7 +17,7 @@ public partial class AttackNoTargetAction : Action
     protected override Status OnStart()
     {
         agent = Agent.Value;
-        ability = Ability.Value;
+        ability = agent.abilityHolder;
 
         return Status.Running;
     }
