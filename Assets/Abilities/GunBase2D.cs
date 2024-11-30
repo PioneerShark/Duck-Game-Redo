@@ -23,8 +23,6 @@ public class GunBase2D : Ability
         RaycastHit2D hitinfo = Physics2D.Raycast(origin, character2D.aimVector, 1000f,  playerMask);
         if (hitinfo)
         {
-            //Debug.Log(hitinfo.transform.name);
-            //Debug.DrawRay(origin, hitinfo.point, Color.white, 10f);
             CreateWeaponTracer(origin, hitinfo.point);
             var trail = Instantiate(bulletTrail, origin, parent.transform.rotation);
             var trailScript = trail.GetComponent<BulletTrail>();

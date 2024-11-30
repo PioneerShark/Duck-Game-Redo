@@ -74,7 +74,6 @@ public class AbilityHolder : MonoBehaviour
     {
         for (int i = 0; i < abilityCount; i++) 
         {
-            Debug.Log(i);
             AbilityUpdates(i);
         }
     }

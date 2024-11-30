@@ -141,6 +141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc1e490519221945a8ce30718b80f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &692867606 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6071564093318250158, guid: 7d2dab08e6e5cd649ba62b03078a8082, type: 3}
+  m_PrefabInstance: {fileID: 3510666472574995214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &781862603
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,7 +852,7 @@ PrefabInstance:
     - target: {fileID: 463914751491582255, guid: d711552d50ce38249aef879cb9df0d87, type: 3}
       propertyPath: 'abilities.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: ed868f8e102cb8b49a95e659b748d530, type: 2}
+      objectReference: {fileID: 11400000, guid: fb260fc80cb442041be8f0f32ad2bf42, type: 2}
     - target: {fileID: 463914751491582255, guid: d711552d50ce38249aef879cb9df0d87, type: 3}
       propertyPath: 'abilities.Array.data[1]'
       value: 
@@ -1014,7 +1019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - {fileID: 11400000, guid: 0474ec691812626488c1965faadc4918, type: 2}
+  - {fileID: 11400000, guid: fb260fc80cb442041be8f0f32ad2bf42, type: 2}
 --- !u!1001 &9152007358400260267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1027,6 +1032,10 @@ PrefabInstance:
       propertyPath: targetCharacter
       value: 
       objectReference: {fileID: 1567785668604170211}
+    - target: {fileID: 1225218659419584211, guid: 0d1f9c154cfff44448d09c4e63a7cab9, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 692867606}
     - target: {fileID: 1225218659419584211, guid: 0d1f9c154cfff44448d09c4e63a7cab9, type: 3}
       propertyPath: m_ActionEvents.Array.size
       value: 4

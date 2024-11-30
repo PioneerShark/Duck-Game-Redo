@@ -15,9 +15,9 @@ TagManager:
   - Player
   - World
   - Enemy
-  - 
-  - 
-  - 
+  - Player Damage
+  - Neutral Damage
+  - Enemy Damage
   - 
   - 
   - 
