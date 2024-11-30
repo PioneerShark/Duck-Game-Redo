@@ -14,6 +14,8 @@ public class Character2D : Entity2D
     public float dashDuration = 0.2f; 
 
     private bool isDashing = false;
+    private bool velocityOverride = false;
+    private Vector2 overrideVelocity;
     private float dashEndTime = 0f;
 
     [Header("Readonly")]
@@ -45,8 +47,16 @@ public class Character2D : Entity2D
 
         if (rigidbody != null)
         {
-            Vector2 finalVelocity = moveVector.normalized * moveSpeed + dashVector;
-            rigidbody.linearVelocity = finalVelocity;
+            if (!velocityOverride)
+            {
+                Vector2 finalVelocity = moveVector.normalized * moveSpeed + dashVector;
+                rigidbody.linearVelocity = finalVelocity;
+            }
+            else 
+            {
+                rigidbody.linearVelocity = overrideVelocity;
+            }
+            
         }
 
         if (isDashing && Time.time >= dashEndTime)
@@ -93,6 +103,11 @@ public class Character2D : Entity2D
             isDashing = true;
             dashEndTime = Time.time + dashDuration;
         }
+    }
+
+    public void VelocityOverride(bool start, Vector3 velocity) {
+        velocityOverride = start;
+        overrideVelocity = velocity;
     }
 
     void OnDrawGizmos()

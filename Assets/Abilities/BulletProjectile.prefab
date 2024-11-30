@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5718622162938847028}
   - component: {fileID: 1324380016863963453}
   - component: {fileID: -1037031506670889469}
+  - component: {fileID: 5565795710630145761}
   m_Layer: 0
   m_Name: BulletProjectile
   m_TagString: Untagged
@@ -172,13 +173,22 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.49999636
-        inSlope: -0.053698417
-        outSlope: -0.053698417
+        value: 0.43860334
+        inSlope: 1.3818811
+        outSlope: 1.3818811
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.12244898
+        outWeight: 0.44864604
+      - serializedVersion: 3
+        time: 0.2794284
+        value: 0.44804016
+        inSlope: -0.37136066
+        outSlope: -0.37136066
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.17461056
       - serializedVersion: 3
         time: 1
         value: 0
@@ -225,7 +235,7 @@ TrailRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-    textureScale: {x: 1, y: 1}
+    textureScale: {x: 0.5, y: 0.5}
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -246,3 +256,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 99
+  damage: 0
+--- !u!58 &5565795710630145761
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029234994514343034}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5

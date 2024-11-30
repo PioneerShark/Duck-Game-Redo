@@ -13,16 +13,14 @@ MonoBehaviour:
   m_Name: EnemyProjectile
   m_EditorClassIdentifier: 
   name: 
-  damage: 2
+  damage: 1
   cooldown: 4
   activeTime: 0
   inputType: 0
   velocity: 2
   projectile: {fileID: 9029234994514343034, guid: 73942bc0fa15a1647a3931f9f4f11b69, type: 3}
   spread: 0
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 2048
+  playerMask: 11
   duration: 3
   trailDuration: 3
   scale: 10

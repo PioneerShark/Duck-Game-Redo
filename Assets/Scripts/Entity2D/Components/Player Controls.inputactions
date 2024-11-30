@@ -144,7 +144,7 @@
                 },
                 {
                     "name": "",
-                    "id": "7f6f4394-3851-464b-a943-704128ee5728",
+                    "id": "72b78750-198e-4c24-ba1b-90676b1f4197",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
@@ -155,22 +155,11 @@
                 },
                 {
                     "name": "",
-                    "id": "bfab47e8-25b2-4f20-950a-982e1f504b0f",
-                    "path": "<VirtualMouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard 1",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "438d4469-741c-4dd7-b869-d39731427d99",
+                    "id": "f6c862fb-c6c6-4279-bc58-b5e50398076e",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard 1",
+                    "groups": ";Keyboard 1",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -185,6 +174,11 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }
