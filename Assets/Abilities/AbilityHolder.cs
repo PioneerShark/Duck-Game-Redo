@@ -70,6 +70,17 @@ public class AbilityHolder : MonoBehaviour
                 break;
         }
     }
+    public bool AbilityReady(int current)
+    {
+        if (states[current] == AbilityState.cooldown)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     void Update()
     {
         for (int i = 0; i < abilityCount; i++) 

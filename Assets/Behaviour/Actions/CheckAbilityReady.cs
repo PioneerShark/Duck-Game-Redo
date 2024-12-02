@@ -5,34 +5,24 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "UseAbility", story: "[Agent] uses [Ability]", category: "Action/Agent2D", id: "105db86407c43cae8369d5d0a8902d64")]
-public partial class AttackNoTargetAction : Action
+[NodeDescription(name: "CheckAbilityReady", story: "Checks if abillity is ready", category: "Action/Agent2D", id: "6f7661cd7a7556ca42cfa897791e8b2c")]
+public partial class CheckAbilityReady : Action
 {
-    [SerializeReference] public BlackboardVariable<Agent2D> Agent;
     [SerializeReference] public BlackboardVariable<AbilityHolder> Ability;
     [SerializeReference] public BlackboardVariable<int> AbilitySelected;
-
-    Agent2D agent;
-    AbilityHolder ability;
-
     protected override Status OnStart()
     {
-        agent = Agent.Value;
-        ability = agent.abilityHolder;
-
         return Status.Running;
     }
 
     protected override Status OnUpdate()
     {
-        if (ability.AbilityReady(AbilitySelected))
+        if (Ability.Value.AbilityReady(AbilitySelected.Value))
         {
-            ability.TriggerAbility(AbilitySelected);
-
             return Status.Success;
         }
-        else 
-        { 
+        else
+        {
             return Status.Failure;
         }
     }

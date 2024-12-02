@@ -34,6 +34,7 @@ public class Melee : Ability
         ExecuteMelee(parent);
         yield return new WaitForSeconds(0.3f);
         ExecuteMelee(parent);
+        yield return new WaitForSeconds(0.2f);
         character.VelocityOverride(false, character.aimVector * 10f);
     }
     private void ExecuteMelee(GameObject parent)

@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 1
   cooldown: 4
   activeTime: 0
-  inputType: 0
+  inputType: 1
   velocity: 2
   projectile: {fileID: 9029234994514343034, guid: 73942bc0fa15a1647a3931f9f4f11b69, type: 3}
   spread: 0

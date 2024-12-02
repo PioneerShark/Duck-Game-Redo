@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   damage: 10
-  cooldown: 1
+  cooldown: 2
   activeTime: 2
   inputType: 1
   scale: 3
   meleeObject: {fileID: 1421633523605559238, guid: 4d75cb64e84005a439d69e2f1a357147, type: 3}
-  playerMask: 9
+  playerMask: 11
   duration: 0.1
   fake: 0
