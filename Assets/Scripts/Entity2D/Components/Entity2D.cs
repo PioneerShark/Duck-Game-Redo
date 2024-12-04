@@ -6,7 +6,7 @@ public class Entity2D : MonoBehaviour
 {
     [Header("Entity")]
     public BoxCollider2D worldCollider;
-    public EdgeCollider2D hitboxCollider;
+    public Hitbox2D hitbox;
     public new Rigidbody2D rigidbody;
     public Model2D entityModel;
 
@@ -44,7 +44,6 @@ public class Entity2D : MonoBehaviour
     public virtual void Restore()
     {
         this.worldCollider = GetComponent<BoxCollider2D>();
-        this.hitboxCollider = GetComponent<EdgeCollider2D>();
         this.rigidbody = GetComponent<Rigidbody2D>();
 
         this.health = this.healthMax;

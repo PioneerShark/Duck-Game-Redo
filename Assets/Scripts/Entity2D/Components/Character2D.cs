@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Character2D : Entity2D
@@ -18,9 +19,13 @@ public class Character2D : Entity2D
     private Vector2 overrideVelocity;
     private float dashEndTime = 0f;
 
+    public GameObject arm;
+    public GameObject hand;
+
     [Header("Readonly")]
     public Vector2 moveVector = Vector2.zero;
     public Vector2 aimVector = Vector2.right;
+    public Vector2 armVector = Vector2.zero;
     private Vector2 dashVector = Vector2.zero;  // Dash vector
     public bool isAttacking = false;
 
@@ -31,7 +36,27 @@ public class Character2D : Entity2D
     // Update is called once per frame
     protected override void Update()
     {
-        // Attack logic here
+        bool hasArm = (this.arm != null);
+
+        // Flip duck
+        if (this.aimVector.x > 0)
+        {
+            this.transform.localScale = new Vector3(1, this.transform.localScale.y, this.transform.localScale.z);
+            if (hasArm)
+            {
+                armVector = new Vector2(Mathf.Abs(aimVector.x), aimVector.y);
+                arm.transform.right = armVector;
+            }
+        }
+        else
+        {
+            this.transform.localScale = new Vector3(-1, this.transform.localScale.y, this.transform.localScale.z);
+            if (hasArm)
+            {
+                armVector = new Vector2(Mathf.Abs(aimVector.x), -aimVector.y);
+                arm.transform.right = armVector;               
+            }
+        }
 
         base.Update();
     }

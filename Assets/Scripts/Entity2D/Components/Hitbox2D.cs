@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Model2D : MonoBehaviour
+public class Hitbox2D : MonoBehaviour
 {
-    public SpriteRenderer sprite;
+    public Collider2D hitboxCollider;
     public Entity2D target;
 }
