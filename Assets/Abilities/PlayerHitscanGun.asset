@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: PlayerHitscanGun
   m_EditorClassIdentifier: 
   name: 
-  damage: 0
-  cooldown: 0.005
+  damage: 1
+  cooldown: 0.19
   activeTime: 0
   inputType: 0
-  velocity: 0
   playerMask:
     serializedVersion: 2
     m_Bits: 256
-  bulletTrail: {fileID: 190337558420888727, guid: 68f491fabca949542a41ca05cac10733, type: 3}
-  weaponRange: 10
   hitStop: 0.001
+  velocity: 100
+  weaponRange: 17.03
+  trailDuration: 0.3
+  scale: 0.05
+  tracer: 0

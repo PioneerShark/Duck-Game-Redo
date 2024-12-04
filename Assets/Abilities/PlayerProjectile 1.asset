@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   damage: 0
-  cooldown: 0.01
+  cooldown: 0.5
   activeTime: 0
   inputType: 0
-  velocity: 15
-  projectile: {fileID: 9029234994514343034, guid: 73942bc0fa15a1647a3931f9f4f11b69, type: 3}
+  velocity: 5
+  projectile: 1
   spread: 0
   playerMask: 9
   duration: 1
-  trailDuration: 1
-  scale: 0.3
+  trailDuration: 0.2
+  scale: 1
   hitStop: 0.01

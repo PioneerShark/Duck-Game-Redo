@@ -1,0 +1,94 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using UnityEngine;
+
+public class Manager : MonoBehaviour
+{
+    public static Manager instance;
+    private bool waiting;
+    public Material flash;
+
+    [Header("Pooling")]
+    [Header("Tracers")]
+
+    [SerializeField] private int tracerAmount = 20;
+    [SerializeField] private GameObject tracerPrefab;
+    private List<GameObject> pooledTracers = new List<GameObject>();
+
+    [Header("Bullets")]
+
+    [SerializeField] private int bulletAmount = 20;
+    [SerializeField] private GameObject bulletPrefab;
+    private List<GameObject> pooledBullets = new List<GameObject>();
+
+    public enum PoolType
+    {
+        Tracers,
+        Bullets
+    };
+
+    void Awake()
+    {
+        Manager.instance = this;   
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < bulletAmount; i++)
+        {
+            GameObject obj = Instantiate(bulletPrefab);
+            obj.SetActive(false);
+            obj.transform.parent = GameObject.Find("Bullets").transform;
+            pooledBullets.Add(obj);
+        }
+
+        for (int i = 0; i < tracerAmount; i++)
+        {
+            GameObject obj = Instantiate(tracerPrefab);
+            obj.SetActive(false);
+            obj.transform.parent = GameObject.Find("Tracers").transform;
+            pooledTracers.Add(obj);
+        }
+
+        
+    }
+
+    public GameObject GetPooledObject(PoolType pool)
+    {
+        switch (pool) 
+        {
+            case PoolType.Tracers:
+                return PoolTask(pooledTracers);
+            case PoolType.Bullets:
+                return PoolTask(pooledBullets);
+        };
+        return null;
+        GameObject PoolTask(List<GameObject> pool)
+        {
+            for (int i = 0; i < pool.Count; i++)
+            {
+                if (!pool[i].activeInHierarchy)
+                {
+                    return pool[i];
+                }
+            }
+            return null;
+        }
+    }
+
+    public void HitStop(float duration)
+    {
+        if (waiting) return;
+        Time.timeScale = 0f;
+        StartCoroutine(Wait(duration));
+
+    }
+    IEnumerator Wait (float duration)
+    {
+        waiting = true;
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = 1f;
+        waiting = false;
+    }
+}
