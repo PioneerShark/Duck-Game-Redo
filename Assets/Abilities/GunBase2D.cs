@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using GeneralNameSpace;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 [CreateAssetMenu]
 public class GunBase2D : Ability
 {
-    public LayerMask playerMask;
+    public Layers playerMask;
     [SerializeField]
     private float hitStop = 0f, velocity = 2f, weaponRange = 10f, trailDuration = 0.1f, scale;
     [SerializeField]
@@ -15,10 +17,9 @@ public class GunBase2D : Ability
     public override void Activate(GameObject parent)
     {
         Character2D character2D = (Character2D) parent.GetComponent(typeof(Character2D));
-        
         Vector3 origin = parent.transform.position;
 
-        RaycastHit2D hitinfo = Physics2D.Raycast(origin, character2D.aimVector, weaponRange,  playerMask);
+        RaycastHit2D hitinfo = Physics2D.Raycast(origin, character2D.aimVector, weaponRange, Physics2D.GetLayerCollisionMask((int)playerMask));
         if (hitinfo)
         {
             CreateWeaponTracer(origin, hitinfo.point);

@@ -18,9 +18,10 @@ MonoBehaviour:
   activeTime: 0
   inputType: 1
   velocity: 2
-  projectile: {fileID: 9029234994514343034, guid: 73942bc0fa15a1647a3931f9f4f11b69, type: 3}
+  projectile: 1
   spread: 0
   playerMask: 11
   duration: 3
   trailDuration: 3
   scale: 10
+  hitStop: 0.01
