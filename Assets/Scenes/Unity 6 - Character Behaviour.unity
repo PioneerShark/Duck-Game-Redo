@@ -1147,6 +1147,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestCharacter2D
       objectReference: {fileID: 0}
+    - target: {fileID: 4073659462652166376, guid: 7d2dab08e6e5cd649ba62b03078a8082, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071564093318250158, guid: 7d2dab08e6e5cd649ba62b03078a8082, type: 3}
+      propertyPath: m_Depth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071564093318250158, guid: 7d2dab08e6e5cd649ba62b03078a8082, type: 3}
+      propertyPath: orthographic size
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6513838085226725827, guid: 7d2dab08e6e5cd649ba62b03078a8082, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9
