@@ -5,7 +5,7 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "CheckAbilityReady", story: "Checks if abillity is ready", category: "Action/Agent2D", id: "6f7661cd7a7556ca42cfa897791e8b2c")]
+[NodeDescription(name: "CheckAbilityReady", story: "Checks if [Ability] [AbilitySelected] is ready", category: "Action/Agent2D", id: "6f7661cd7a7556ca42cfa897791e8b2c")]
 public partial class CheckAbilityReady : Action
 {
     [SerializeReference] public BlackboardVariable<AbilityHolder> Ability;

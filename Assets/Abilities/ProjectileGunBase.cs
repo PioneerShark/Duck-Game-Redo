@@ -11,6 +11,7 @@ public class ProjectileGunBase : Ability
     public float duration = 2f;
     public float trailDuration = 1f;
     public float scale = 2f;
+    public float hitStop = 0.01f;
     public override void Activate(GameObject parent)
     {
         Character2D character2D = (Character2D)parent.GetComponent(typeof(Character2D));
@@ -19,6 +20,7 @@ public class ProjectileGunBase : Ability
         currentProjectile.transform.right = character2D.aimVector;
         currentProjectile.GetComponent<Projectile>().duration = duration;
         currentProjectile.GetComponent<Projectile>().damage = damage;
+        currentProjectile.GetComponent<Projectile>().hitStop = hitStop;
         currentProjectile.GetComponent<Rigidbody2D>().AddForce(character2D.aimVector*velocity*5, ForceMode2D.Impulse);
         currentProjectile.transform.localScale*= scale;
         currentProjectile.GetComponent<TrailRenderer>().widthMultiplier = scale;

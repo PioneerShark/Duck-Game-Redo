@@ -9,18 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4a1133d7ad14f4c9546c3f5a6291c0, type: 3}
-  m_Name: PlayerHitscanGun
+  m_Script: {fileID: 11500000, guid: 58bfcd9872dc6bc4bab9e4be23b7101b, type: 3}
+  m_Name: PlayerProjectile 1
   m_EditorClassIdentifier: 
   name: 
   damage: 0
-  cooldown: 0.005
+  cooldown: 0.01
   activeTime: 0
   inputType: 0
-  velocity: 0
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  bulletTrail: {fileID: 190337558420888727, guid: 68f491fabca949542a41ca05cac10733, type: 3}
-  weaponRange: 10
-  hitStop: 0.001
+  velocity: 15
+  projectile: {fileID: 9029234994514343034, guid: 73942bc0fa15a1647a3931f9f4f11b69, type: 3}
+  spread: 0
+  playerMask: 9
+  duration: 1
+  trailDuration: 1
+  scale: 0.3
+  hitStop: 0.01

@@ -13,6 +13,8 @@ public class GunBase2D : Ability
     private GameObject bulletTrail;
     [SerializeField] 
     private float weaponRange = 10f;
+    [SerializeField]
+    private float hitStop;
     
     public override void Activate(GameObject parent)
     {
@@ -32,6 +34,7 @@ public class GunBase2D : Ability
             if (hitCharacter2D != null)
             {
                 hitCharacter2D.TakeDamage(damage);
+                Manager.instance.HitStop(hitStop);
             }
         }
         else

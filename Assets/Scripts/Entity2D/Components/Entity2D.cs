@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class Entity2D : MonoBehaviour
     [Header("Entity")]
     public BoxCollider2D worldCollider;
     public EdgeCollider2D hitboxCollider;
-    public Rigidbody2D rigidbody;
+    public new Rigidbody2D rigidbody;
     public Model2D entityModel;
 
     [Header("Entity Properties")]
@@ -14,6 +15,10 @@ public class Entity2D : MonoBehaviour
     public float health;
 
     [SerializeField] private bool _anchored = false;
+
+    [HideInInspector]
+    private Material initialMaterial;
+    private bool flashing = false;
     public bool anchored
     {
         get => this._anchored;
@@ -68,6 +73,7 @@ public class Entity2D : MonoBehaviour
     void Start()
     {
         this.health = this.healthMax;
+        initialMaterial = entityModel.sprite.material;
     }
 
     public virtual void ModifyHealth(float value)
@@ -85,6 +91,17 @@ public class Entity2D : MonoBehaviour
     public virtual void TakeDamage(float value)
     {
         ModifyHealth(-value);
+        if (flashing) return;
+        StartCoroutine(Flash(0.1f));
+    }
+    IEnumerator Flash(float duration)
+    {
+        flashing = true;
+        Material material = entityModel.sprite.material;
+        this.entityModel.sprite.material = Manager.instance.flash;
+        yield return new WaitForSecondsRealtime(duration);
+        this.entityModel.sprite.material = material;
+        flashing = false;
     }
 
     public virtual void GainHealth(float value)

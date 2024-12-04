@@ -72,13 +72,13 @@ public class AbilityHolder : MonoBehaviour
     }
     public bool AbilityReady(int current)
     {
-        if (states[current] == AbilityState.cooldown)
+        if (states[current] == AbilityState.ready)
         {
-            return false;
+            return true;
         }
         else
         {
-            return true;
+            return false;
         }
     }
     void Update()

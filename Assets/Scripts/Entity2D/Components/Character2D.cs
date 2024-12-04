@@ -27,11 +27,6 @@ public class Character2D : Entity2D
     [Header("Debugging")]
     public bool showDebugLines = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     protected override void Update()

@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class Player2D : Character2D
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     protected override void FixedUpdate()
     {

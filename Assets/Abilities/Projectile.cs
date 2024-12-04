@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
     public float duration = 99f;
     [HideInInspector]
     public float damage;
+    [HideInInspector]
+    public float hitStop = 0.01f;
     private void Update()
     {
         duration -= Time.deltaTime;
@@ -17,7 +19,9 @@ public class Projectile : MonoBehaviour
         if (charScript != null)
         {
             charScript.TakeDamage(damage);
-            DestroyThis();
+            Manager.instance.HitStop(hitStop);
+            //DestroyThis();
+            
         }
         
     }

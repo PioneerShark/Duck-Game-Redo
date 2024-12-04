@@ -6,6 +6,8 @@ public class MeleeObject : MonoBehaviour
     public float duration = 99f;
     [HideInInspector]
     public float damage;
+    [HideInInspector]
+    public float hitStop;
 
     // Update is called once per frame
     void Update()
@@ -19,6 +21,7 @@ public class MeleeObject : MonoBehaviour
         if (charScript != null)
         {
             charScript.TakeDamage(damage);
+            Manager.instance.HitStop(hitStop);
             //DestroyThis();
         }
 
