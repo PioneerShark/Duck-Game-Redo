@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         rb.simulated = true;
         trail.time = trailDuration;
         rb.AddForce(force, ForceMode2D.Impulse);
-        Debug.Log(duration);
+        //Debug.Log(duration);
         Invoke("DeactivatePrep", duration);
 
 

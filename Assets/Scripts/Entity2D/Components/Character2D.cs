@@ -26,17 +26,32 @@ public class Character2D : Entity2D
     public Vector2 moveVector = Vector2.zero;
     public Vector2 aimVector = Vector2.right;
     public Vector2 armVector = Vector2.zero;
-    private Vector2 dashVector = Vector2.zero;  // Dash vector
+    private Vector2 dashVector = Vector2.zero;
     public bool isAttacking = false;
 
     [Header("Debugging")]
     public bool showDebugLines = true;
 
+    public override void IsReady()
+    {
+        if (hand == null)
+        {
+            Debug.LogWarning($"{gameObject.name}(Character2D) doesn't have a hand!", this);
+        }
+    }
+
+    void Start()
+    {
+        base.IsReady();
+        this.IsReady();
+    }
 
     // Update is called once per frame
     protected override void Update()
     {
         bool hasArm = (this.arm != null);
+        bool hasModel = (this.model != null);
+        bool hasAnimator = (hasModel) ? (this.model.animator != null) : false;
 
         // Flip duck
         if (this.aimVector.x > 0)
@@ -57,6 +72,9 @@ public class Character2D : Entity2D
                 arm.transform.right = armVector;               
             }
         }
+
+        // Set aniamtion stuff
+        
 
         base.Update();
     }

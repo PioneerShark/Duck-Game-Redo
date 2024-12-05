@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc1e490519221945a8ce30718b80f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &574602004 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1460911977412180869, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+--- !u!68 &308120621 stripped
+EdgeCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6938044770650750546, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
   m_PrefabInstance: {fileID: 282848561141899681}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &781862603
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cab79d91416f944ca51fe64932bfd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitboxCollider: {fileID: 1369629742}
+  hitbox: {fileID: 0}
   target: {fileID: 286506403051665127}
 --- !u!4 &1369629741
 Transform:
@@ -607,6 +607,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0651016, y: 1.0542514}
   m_EdgeRadius: 0
+--- !u!95 &1807214253 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7491914463493859825, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+  m_PrefabInstance: {fileID: 282848561141899681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1807214256 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2067868030995823082, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+  m_PrefabInstance: {fileID: 282848561141899681}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942d72bbfdc01564cb018c775362da56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1903653340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,10 +1021,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1168862221530297384, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00000028446527
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168862221530297384, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7660408
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168862221530297384, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168862221530297384, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168862221530297384, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.642792
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168862221530297384, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 80.001
+      objectReference: {fileID: 0}
     - target: {fileID: 1460911977412180869, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
       propertyPath: m_Name
       value: TestCharacter2D
       objectReference: {fileID: 0}
+    - target: {fileID: 2025950523571672142, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 308120621}
+    - target: {fileID: 2067868030995823082, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1807214253}
     - target: {fileID: 3804415627153042305, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1077,6 +1125,22 @@ PrefabInstance:
       propertyPath: hand
       value: 
       objectReference: {fileID: 1980211675}
+    - target: {fileID: 8579816554536744134, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 1807214256}
+    - target: {fileID: 8579816554536744134, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 6628343414558467018}
+    - target: {fileID: 8579816554536744134, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: worldCollider
+      value: 
+      objectReference: {fileID: 6628343414558467018}
+    - target: {fileID: 8579816554536744134, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: showDebugLines
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1097,14 +1161,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc09e417c570c34b90ab145666212a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldCollider: {fileID: 6753921284243978445}
+  collider: {fileID: 0}
   hitbox: {fileID: 1369629739}
   rigidbody: {fileID: 8743783138778300634}
-  entityModel: {fileID: 1045432486686720104}
+  model: {fileID: 0}
   healthMax: 100
   health: 100
-  _anchored: 0
-  _invulnerable: 0
+  anchored: 0
+  invulnerable: 0
   abilityHolder: {fileID: 5801650514312480318}
   moveSpeed: 4
   dashPower: 20
@@ -1390,6 +1454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 9026499248270702914}
+  animator: {fileID: 0}
   target: {fileID: 286506403051665127}
 --- !u!114 &1367721461548569929
 MonoBehaviour:
@@ -1404,6 +1469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 7322506916594527998}
+  animator: {fileID: 0}
   target: {fileID: 0}
 --- !u!61 &1374800357259554827
 BoxCollider2D:
@@ -1480,14 +1546,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de86d974c97b2c40af57aca0b00ecc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldCollider: {fileID: 1374800357259554827}
+  collider: {fileID: 0}
   hitbox: {fileID: 0}
   rigidbody: {fileID: 5069960126446668373}
-  entityModel: {fileID: 1367721461548569929}
+  model: {fileID: 0}
   healthMax: 100
   health: 100
-  _anchored: 0
-  _invulnerable: 0
+  anchored: 0
+  invulnerable: 0
   abilityHolder: {fileID: 5336659937019479420}
   moveSpeed: 8
   dashPower: 20
@@ -1808,12 +1874,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8579816554536744134, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
   m_PrefabInstance: {fileID: 282848561141899681}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574602004}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6de86d974c97b2c40af57aca0b00ecc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &6628343414558467018 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 206974025958921191, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+  m_PrefabInstance: {fileID: 282848561141899681}
+  m_PrefabAsset: {fileID: 0}
 --- !u!61 &6753921284243978445
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2014,7 +2085,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7977988093935430402}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
@@ -2043,7 +2114,7 @@ MonoBehaviour:
           m_Value0: 16241213005058307625
           m_Value1: 2659705244033071464
         Name: Target
-        m_Value: {fileID: 574602004}
+        m_Value: {fileID: 187720768572787599}
     - rid: 4200132796137865444
       type: {class: 'BlackboardVariable`1[[Agent2D, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
