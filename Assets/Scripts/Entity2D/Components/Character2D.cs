@@ -70,11 +70,11 @@ public class Character2D : Entity2D
             if (!velocityOverride)
             {
                 Vector2 finalVelocity = moveVector.normalized * moveSpeed + dashVector;
-                rigidbody.linearVelocity = finalVelocity;
+                rigidbody.linearVelocity = finalVelocity * Manager.instance.gameTimeScale;
             }
             else 
             {
-                rigidbody.linearVelocity = overrideVelocity;
+                rigidbody.linearVelocity = overrideVelocity * Manager.instance.gameTimeScale;
             }
             
         }

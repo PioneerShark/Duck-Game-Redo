@@ -112,7 +112,7 @@ public class AbilityHolder : MonoBehaviour
             case AbilityState.active:
                 if (activeTimes[i] > 0)
                 {
-                    activeTimes[i] -= Time.deltaTime;
+                    activeTimes[i] -= Time.deltaTime * Manager.instance.gameTimeScale;
                 }
                 else
                 {
@@ -129,7 +129,7 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else
                 {
-                    cooldowns[i] -= Time.deltaTime;
+                    cooldowns[i] -= Time.deltaTime * Manager.instance.gameTimeScale;
                 }
                 break;
         }
@@ -148,7 +148,7 @@ public class AbilityHolder : MonoBehaviour
             case AbilityState.active:
                 if (activeTimes[i] > 0)
                 {
-                    activeTimes[i] -= Time.deltaTime;
+                    activeTimes[i] -= Time.deltaTime * Manager.instance.gameTimeScale;
                 }
                 else
                 {
@@ -165,7 +165,7 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else
                 {
-                    cooldowns[i] -= Time.deltaTime;
+                    cooldowns[i] -= Time.deltaTime * Manager.instance.gameTimeScale;
                 }
                 break;
         }

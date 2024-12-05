@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   damage: 0
-  cooldown: 0.05
+  cooldown: 0.005
   activeTime: 0
   inputType: 0
   playerMask: 9
-  hitStop: 0.001
+  hitStop: 1
   velocity: 200
-  weaponRange: 17.03
-  trailDuration: 0.05
+  weaponRange: 17
+  trailDuration: 0.21
   scale: 0.1
   tracer: 0

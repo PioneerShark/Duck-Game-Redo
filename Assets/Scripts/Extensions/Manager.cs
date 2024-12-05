@@ -8,6 +8,9 @@ public class Manager : MonoBehaviour
     public static Manager instance;
     private bool waiting;
     public Material flash;
+    [HideInInspector]
+    public float gameTimeScale = 1f;
+    
 
     [Header("Pooling")]
     [Header("Tracers")]
@@ -80,7 +83,7 @@ public class Manager : MonoBehaviour
     public void HitStop(float duration)
     {
         if (waiting) return;
-        Time.timeScale = 0f;
+        gameTimeScale = 0f;
         StartCoroutine(Wait(duration));
 
     }
@@ -88,7 +91,7 @@ public class Manager : MonoBehaviour
     {
         waiting = true;
         yield return new WaitForSecondsRealtime(duration);
-        Time.timeScale = 1f;
+        gameTimeScale = 1f;
         waiting = false;
     }
 }

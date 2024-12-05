@@ -76,19 +76,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5354524262484418038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df19740b635b12d4082803514486222a, type: 3}
+  m_Script: {fileID: 11500000, guid: 84a6a6c6973348f46b0a81f71a1c47ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - enemyPrefab: {fileID: 4486741964712609001, guid: c72d7f991281947408b1f34642314409, type: 3}
+    - enemyPrefab: {fileID: 0}
       spawnPoint: {fileID: 2377446547968413009}
-    - enemyPrefab: {fileID: 4486741964712609001, guid: c72d7f991281947408b1f34642314409, type: 3}
-      spawnPoint: {fileID: 7817406924745806518}
-    - enemyPrefab: {fileID: 4486741964712609001, guid: c72d7f991281947408b1f34642314409, type: 3}
-      spawnPoint: {fileID: 725876416635655575}
-    - enemyPrefab: {fileID: 4486741964712609001, guid: c72d7f991281947408b1f34642314409, type: 3}
-      spawnPoint: {fileID: 1945499669921491201}
 --- !u!1 &6804733960964777331
 GameObject:
   m_ObjectHideFlags: 0
