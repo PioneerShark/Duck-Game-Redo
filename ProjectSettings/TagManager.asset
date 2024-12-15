@@ -9,7 +9,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - World2
   - Water
   - UI
   - Player
@@ -18,7 +18,7 @@ TagManager:
   - Player Damage
   - Neutral Damage
   - Enemy Damage
-  - 
+  - Foot Collider
   - 
   - 
   - 

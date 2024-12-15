@@ -46,9 +46,11 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Character2D charScript = collision.gameObject.GetComponent<Character2D>();
+        Character2D charScript = collision.transform.parent.gameObject.GetComponent<Character2D>();
+        
         if (charScript != null)
         {
+            Debug.Log("Collision");
             charScript.TakeDamage(damage);
             Manager.instance.HitStop(hitStop);
             DeactivatePrep();

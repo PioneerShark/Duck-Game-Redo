@@ -46,10 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flash: {fileID: 2100000, guid: 870f171adeccf9d48b77556b9ba73121, type: 2}
+  gameTimeScale: 1
   tracerAmount: 30
   tracerPrefab: {fileID: 7624854123794173581, guid: 7973e28cacda5814c8eba8d2dacbd290, type: 3}
   bulletAmount: 30
   bulletPrefab: {fileID: 9029234994514343034, guid: 73942bc0fa15a1647a3931f9f4f11b69, type: 3}
+  arrowAmount: 6
+  arrowPrefab: {fileID: 0}
 --- !u!1 &2200365445067193738
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +115,39 @@ Transform:
   m_Children:
   - {fileID: 5858443069112725340}
   - {fileID: 7081825074994174905}
+  - {fileID: 8841411332277809952}
   m_Father: {fileID: 1101479554721161955}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5819991013897766781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8841411332277809952}
+  m_Layer: 0
+  m_Name: Arrows
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8841411332277809952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819991013897766781}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2927158448785090731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7412328679891048975
 GameObject:

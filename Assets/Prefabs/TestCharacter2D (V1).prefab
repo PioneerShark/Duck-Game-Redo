@@ -24,13 +24,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752640867240387277}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0.80143565, w: 0.598081}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.66457856, y: 0.15569709, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5031077603231257200}
   m_Father: {fileID: 1168862221530297384}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &1460911977412180869
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +45,7 @@ GameObject:
   - component: {fileID: 206974025958921191}
   - component: {fileID: 6153513051096137322}
   - component: {fileID: 1439335135913094813}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TestCharacter2D (V1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,20 +82,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de86d974c97b2c40af57aca0b00ecc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldCollider: {fileID: 206974025958921191}
+  collider: {fileID: 206974025958921191}
   hitbox: {fileID: 2025950523571672142}
   rigidbody: {fileID: 6153513051096137322}
-  entityModel: {fileID: 2067868030995823082}
+  model: {fileID: 2067868030995823082}
   healthMax: 100
   health: 100
-  _anchored: 0
-  _invulnerable: 0
+  anchored: 0
+  invulnerable: 0
   abilityHolder: {fileID: 1439335135913094813}
   moveSpeed: 8
   dashPower: 20
   dashDuration: 0.2
+  arm: {fileID: 752640867240387277}
+  hand: {fileID: 4642138709470363460}
   moveVector: {x: 0, y: 0}
   aimVector: {x: 1, y: 0}
+  armVector: {x: 0, y: 0}
   isAttacking: 0
   showDebugLines: 1
 --- !u!61 &206974025958921191
@@ -110,10 +114,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 132
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -159,7 +163,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8c48781c18d99f744bdf3112e546b32f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -208,13 +212,44 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3804415627153042305}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.70710677, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.7622949, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.642792, w: 0.7660408}
+  m_LocalPosition: {x: -0.00000028446527, y: -0.7622949, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6497671178608245851}
   m_Father: {fileID: 6965785544991885966}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 80.001}
+--- !u!1 &4642138709470363460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5031077603231257200}
+  m_Layer: 0
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5031077603231257200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4642138709470363460}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.26708862, y: -0.042600412, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6497671178608245851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4692505479962241659
 GameObject:
@@ -261,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cab79d91416f944ca51fe64932bfd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitboxCollider: {fileID: 6938044770650750546}
+  hitbox: {fileID: 6938044770650750546}
   target: {fileID: 8579816554536744134}
 --- !u!68 &6938044770650750546
 EdgeCollider2D:
@@ -488,7 +523,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 21
   m_Sprite: {fileID: 21300000, guid: ffd0dba5501e0de478ae746fd929b20b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -534,6 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 5199399808260390646}
+  animator: {fileID: 7491914463493859825}
   target: {fileID: 8579816554536744134}
 --- !u!95 &7491914463493859825
 Animator:

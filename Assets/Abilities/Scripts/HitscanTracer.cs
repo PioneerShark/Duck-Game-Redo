@@ -22,14 +22,20 @@ public class HitscanTracer : MonoBehaviour
         trail.widthMultiplier = _scale;
         duration = Vector2.Distance(_endPoint, _startPoint)/_speed;
         force = (_endPoint - _startPoint).normalized * _speed;
+
         endPoint = _endPoint;
         trailDuration = _trailDuration;
+
+        if (trailDuration <= 0) trail.enabled = false;
+        else trail.enabled = true;
+
         trail.Clear();
     }
     public void OnEnable()
     {
         rb.simulated = true;
         trail.time = trailDuration;
+        transform.right = force.normalized;
         rb.AddForce(force, ForceMode2D.Impulse);
         //Debug.Log(duration);
         Invoke("DeactivatePrep", duration);

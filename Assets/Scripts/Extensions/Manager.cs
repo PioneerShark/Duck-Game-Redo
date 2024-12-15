@@ -25,10 +25,17 @@ public class Manager : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     private List<GameObject> pooledBullets = new List<GameObject>();
 
+    [Header("Arrows")]
+
+    [SerializeField] private int arrowAmount = 6;
+    [SerializeField] private GameObject arrowPrefab;
+    private List<GameObject> pooledArrows = new List<GameObject>();
+
     public enum PoolType
     {
         Tracers,
-        Bullets
+        Bullets,
+        Arrows
     };
 
     void Awake()
@@ -54,7 +61,15 @@ public class Manager : MonoBehaviour
             pooledTracers.Add(obj);
         }
 
-        
+        for (int i = 0; i < arrowAmount; i++)
+        {
+            GameObject obj = Instantiate(arrowPrefab);
+            obj.SetActive(false);
+            obj.transform.parent = GameObject.Find("Arrows").transform;
+            pooledArrows.Add(obj);
+        }
+
+
     }
 
     public GameObject GetPooledObject(PoolType pool)
@@ -65,6 +80,8 @@ public class Manager : MonoBehaviour
                 return PoolTask(pooledTracers);
             case PoolType.Bullets:
                 return PoolTask(pooledBullets);
+            case PoolType.Arrows:
+                return PoolTask(pooledArrows);
         };
         return null;
         GameObject PoolTask(List<GameObject> pool)
