@@ -38,11 +38,18 @@ public class Character2D : Entity2D
         {
             Debug.LogWarning($"{gameObject.name}(Character2D) doesn't have a hand!", this);
         }
+        if (this.model != null)
+        {
+            if (this.model.animator == null)
+            {
+                Debug.LogWarning($"{model.gameObject.name}(Model2D) doesn't have a Animator!", this);
+            }
+        }
+        base.IsReady();
     }
 
     void Start()
     {
-        base.IsReady();
         this.IsReady();
     }
 
@@ -74,7 +81,17 @@ public class Character2D : Entity2D
         }
 
         // Set aniamtion stuff
-        
+        if (hasAnimator)
+        {
+            Animator animator = this.model.animator;
+            float dampTime = 0.2f;
+            animator.SetFloat("MoveX", this.moveVector.x, dampTime, Time.deltaTime);
+            animator.SetFloat("AbsMoveX", Mathf.Abs(this.moveVector.x), dampTime, Time.deltaTime);
+            float relativeMoveX = this.moveVector.x * this.transform.localScale.x;
+            relativeMoveX = relativeMoveX > 0 ? 1 : -1;
+            animator.SetFloat("RelativeMoveX", relativeMoveX, dampTime, Time.deltaTime);
+            animator.SetFloat("LookX", this.aimVector.x > 0 ? 1 : -1, dampTime, Time.deltaTime);
+        }
 
         base.Update();
     }
