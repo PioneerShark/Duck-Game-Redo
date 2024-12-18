@@ -24,6 +24,8 @@ public class GunBase2D : Ability
         RaycastHit2D hitinfo = Physics2D.Raycast(origin, character2D.aimVector, weaponRange, Physics2D.GetLayerCollisionMask((int)playerMask));
         if (hitinfo)
         {
+            Debug.Log(hitinfo.transform);
+
             CreateWeaponTracer(origin, hitinfo.point);
             Character2D hitCharacter2D = hitinfo.transform.GetComponent<Character2D>();
             if (hitCharacter2D != null)

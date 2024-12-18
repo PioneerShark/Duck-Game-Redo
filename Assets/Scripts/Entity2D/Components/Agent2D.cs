@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Agent2D : Character2D
 {
+    public GameObject target;
     // Start is called before the first frame update
     void Start()
     {
