@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player2D : Character2D
 {
+    void Start()
+    {
+        base.IsReady();
+    }
 
     protected override void FixedUpdate()
     {
