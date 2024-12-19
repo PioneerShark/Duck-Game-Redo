@@ -27,7 +27,6 @@ public partial class AttackNoTargetAction : Action
     protected override Status OnUpdate()
     {
         agent.target = Target.Value;
-        Debug.Log(Target.Value);
         if (ability.AbilityReady(AbilitySelected))
         {
             ability.TriggerAbility(AbilitySelected);

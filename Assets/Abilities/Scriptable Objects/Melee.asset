@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Melee
   m_EditorClassIdentifier: 
   name: 
-  damage: 1
-  cooldown: 0.3
+  damage: 10
+  cooldown: 0.9
   activeTime: 0
   inputType: 1
   scale: 3
   meleeObject: {fileID: 1421633523605559238, guid: 4d75cb64e84005a439d69e2f1a357147, type: 3}
   playerMask: 11
-  duration: 0.1
+  duration: 1
   hitStop: 0.1

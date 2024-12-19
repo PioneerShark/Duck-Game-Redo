@@ -15,11 +15,11 @@ public class HitscanTracer : MonoBehaviour
         trail = GetComponent<TrailRenderer>();
     }
 
-    public void SetVariables(float _speed, Vector2 _startPoint, Vector2 _endPoint, float _trailDuration, float _scale)
+    public void SetVariables(float _speed, Vector2 _startPoint, Vector2 _endPoint, float _trailDuration, float _scale, float _trailScale)
     {
         transform.position = _startPoint;
         transform.localScale = new Vector3(_scale, _scale, _scale);
-        trail.widthMultiplier = _scale;
+        trail.widthMultiplier = _trailScale;
         duration = Vector2.Distance(_endPoint, _startPoint)/_speed;
         force = (_endPoint - _startPoint).normalized * _speed;
 

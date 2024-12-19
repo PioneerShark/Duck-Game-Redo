@@ -10,7 +10,7 @@ public class GunBase2D : Ability
 {
     public Layers playerMask;
     [SerializeField]
-    protected float hitStop = 0f, velocity = 2f, weaponRange = 10f, trailDuration = 0.1f, scale;
+    protected float hitStop = 0f, velocity = 2f, weaponRange = 10f, trailDuration = 0.1f, scale, trailScale;
     [SerializeField]
     protected Manager.PoolType tracer;
     [SerializeField]
@@ -24,9 +24,8 @@ public class GunBase2D : Ability
         RaycastHit2D hitinfo = Physics2D.Raycast(origin, character2D.aimVector, weaponRange, Physics2D.GetLayerCollisionMask((int)playerMask));
         if (hitinfo)
         {
-            Debug.Log(hitinfo.transform);
 
-            CreateWeaponTracer(origin, hitinfo.point);
+            CreateWeaponTracer(character2D.firePoint.position, hitinfo.point);
             Character2D hitCharacter2D = hitinfo.transform.GetComponent<Character2D>();
             if (hitCharacter2D != null)
             {
@@ -37,7 +36,7 @@ public class GunBase2D : Ability
         else
         {
             Vector3 endpoint = new Vector3(character2D.aimVector.x, character2D.aimVector.y, 0) * weaponRange;
-            CreateWeaponTracer(origin, endpoint + origin);
+            CreateWeaponTracer(character2D.firePoint.position, endpoint + origin);
         }
 
     }
@@ -48,7 +47,7 @@ public class GunBase2D : Ability
         if (currentTracer != null) { 
             HitscanTracer tracerScript = currentTracer.GetComponent<HitscanTracer>();
             currentTracer.GetComponent<SpriteRenderer>().sprite = tracerSprite;
-            tracerScript.SetVariables(velocity, start, end, trailDuration, scale);
+            tracerScript.SetVariables(velocity, start, end, trailDuration, scale, trailScale);
             currentTracer.SetActive(true);
         }
         Vector3 dir = end - start.normalized;

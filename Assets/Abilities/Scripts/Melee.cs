@@ -25,6 +25,7 @@ public class Melee : Ability
     {
         Character2D character2D = (Character2D)parent.GetComponent(typeof(Character2D));
         GameObject currentMelee = Instantiate(meleeObject, character2D.position, Quaternion.identity, parent.transform);
+        
         currentMelee.layer = (int)playerMask;
         currentMelee.GetComponent<MeleeObject>().duration = duration;
         currentMelee.GetComponent<MeleeObject>().damage = damage;

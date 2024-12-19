@@ -53,10 +53,11 @@ public class Projectile : MonoBehaviour
             Debug.Log("Collision");
             charScript.TakeDamage(damage);
             Manager.instance.HitStop(hitStop);
-            DeactivatePrep();
             
+
         }
-        
+        DeactivatePrep();
+
     }
     private void DeactivatePrep()
     {

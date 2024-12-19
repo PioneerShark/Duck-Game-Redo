@@ -179,7 +179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 21
+  m_SortingOrder: 22
   m_Sprite: {fileID: 3015177024873187116, guid: 59b02a6b38416784bb11e0ad16cb5215, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 2770357419807079002}
   - component: {fileID: 3307916460093815063}
   m_Layer: 12
-  m_Name: Bowman
+  m_Name: BowmanAgent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: 9025203313604257350, guid: e2fb2be2fbe9e6147a9b91e5a9e2381d, type: 2}
+  m_Graph: {fileID: 9025203313604257350, guid: be852508621b29b4e8463fb6e8c8c322, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 4200132794953499019
   - rid: 4200132796137865443
@@ -511,6 +511,7 @@ MonoBehaviour:
   armVector: {x: 0, y: 0}
   isAttacking: 0
   showDebugLines: 1
+  target: {fileID: 0}
 --- !u!114 &3307916460093815063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,5 +525,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - {fileID: 11400000, guid: 1d1c7abaa26b0c8439b29f5bf610d2f4, type: 2}
-  - {fileID: 11400000, guid: d3455585df1f7194f8287762b167b33d, type: 2}
+  - {fileID: 11400000, guid: 959d9a85aa296ce4f833d96b0d8d180a, type: 2}
+  - {fileID: 11400000, guid: e644c86c026f89c44a949e26f0cea284, type: 2}

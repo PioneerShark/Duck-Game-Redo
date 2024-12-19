@@ -60,7 +60,6 @@ public class DashAway : Ability
            (Vector2.SqrMagnitude((Vector2)agent.target.transform.position - b)));
         });
         for (int i = 0; i < rayHits.Count; i++) {
-            Debug.Log(i + ": " + (Vector2.SqrMagnitude((Vector2)agent.target.transform.position - rayHits[i])));
         }
 
         pathSelected = Random.Range((rayHits.Count*3)/4, rayHits.Count - 1);

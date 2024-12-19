@@ -21,6 +21,7 @@ public class Character2D : Entity2D
 
     public GameObject arm;
     public GameObject hand;
+    public Transform firePoint;
 
     [Header("Readonly")]
     public Vector2 moveVector = Vector2.zero;

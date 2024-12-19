@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dash Melee
   m_EditorClassIdentifier: 
   name: 
-  damage: 1
+  damage: 10
   cooldown: 6
   activeTime: 2
   inputType: 1
