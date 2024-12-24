@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: PlayerHitscanGun
   m_EditorClassIdentifier: 
   name: 
-  damage: 1
-  cooldown: 0.01
+  damage: 20
+  cooldown: 0.5
   activeTime: 0
   inputType: 0
   playerMask: 9
   hitStop: 0
   velocity: 200
-  weaponRange: 17
+  weaponRange: 20.4
   trailDuration: 0.03
   scale: 1
-  trailScale: 0.1
+  trailScale: 0.52
   tracer: 0
   tracerSprite: {fileID: 0}
