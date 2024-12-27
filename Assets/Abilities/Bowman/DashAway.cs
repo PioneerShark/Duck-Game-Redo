@@ -63,7 +63,6 @@ public class DashAway : Ability
         }
 
         pathSelected = Random.Range((rayHits.Count*3)/4, rayHits.Count - 1);
-        //pathSelected = rayHits.Count - 1;
         float speed = 1f;
         if (activeTime > 0)
         {
