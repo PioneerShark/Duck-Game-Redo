@@ -50,7 +50,6 @@ public class Projectile : MonoBehaviour
         
         if (charScript != null)
         {
-            Debug.Log("Collision");
             charScript.TakeDamage(damage);
             Manager.instance.HitStop(hitStop);
             
