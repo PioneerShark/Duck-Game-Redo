@@ -6,10 +6,15 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     public static Manager instance;
-    public EffectsManager Effects;
     private bool waiting;
+
+    [Header("Modules")]
+    public IndicatorUI IndicatorUI;
+
+    [Header("Damage Effect")]
     public Material flash;
-    [HideInInspector] public float gameTimeScale = 1f;
+    [HideInInspector]
+    public float gameTimeScale = 1f;
     
 
     [Header("Pooling")]
@@ -40,8 +45,9 @@ public class Manager : MonoBehaviour
 
     void Awake()
     {
-        Manager.instance = this;
-        Effects = GetComponent<EffectsManager>();
+        Manager.instance = this;   
+
+        this.IndicatorUI = GetComponentInChildren<IndicatorUI>();
     }
 
     private void Start()

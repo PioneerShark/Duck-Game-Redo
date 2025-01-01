@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using GeneralNameSpace;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
-using Unity.AppUI.Core;
 
 [CreateAssetMenu]
 public class GunBase2D : Ability
@@ -19,7 +18,6 @@ public class GunBase2D : Ability
 
     public override void Activate(GameObject parent)
     {
-        
         Character2D character2D = (Character2D)parent.GetComponent(typeof(Character2D));
         Vector3 origin = parent.transform.position;
 

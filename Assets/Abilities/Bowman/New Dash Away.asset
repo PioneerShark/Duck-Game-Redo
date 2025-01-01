@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   damage: 0
-  cooldown: 4
+  cooldown: 8
   activeTime: 0.2
   inputType: 1
   dashDistance: 10
