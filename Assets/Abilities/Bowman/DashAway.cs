@@ -63,6 +63,7 @@ public class DashAway : Ability
         }
 
         pathSelected = Random.Range((rayHits.Count*3)/4, rayHits.Count - 1);
+        //pathSelected = rayHits.Count - 1;
         float speed = 1f;
         if (activeTime > 0)
         {
@@ -72,7 +73,6 @@ public class DashAway : Ability
         dashDir.Normalize();
 
         agent.VelocityOverride(true, dashDir * speed);
-        Manager.instance.StartCoroutine(EffectsManager.instance.SpawnAfterImagesTask(agent.model.gameObject, activeTime, 0.01f, 0.2f, 1.0f));
         yield return new WaitForSeconds(activeTime);
         agent.VelocityOverride(false, dashDir * speed);
     }
