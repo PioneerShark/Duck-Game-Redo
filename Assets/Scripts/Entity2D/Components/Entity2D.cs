@@ -78,7 +78,7 @@ public class Entity2D : MonoBehaviour
     {
         flashing = true;
         Material material = this.model.sprite.material;
-        this.model.sprite.material = Manager.instance.flash;
+        this.model.sprite.material = Manager.Instance.flash;
         yield return new WaitForSecondsRealtime(duration);
         this.model.sprite.material = material;
         flashing = false;

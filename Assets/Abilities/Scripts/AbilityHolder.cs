@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Playables;
 using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
@@ -112,7 +111,7 @@ public class AbilityHolder : MonoBehaviour
             case AbilityState.active:
                 if (activeTimes[i] > 0)
                 {
-                    activeTimes[i] -= Time.deltaTime * Manager.instance.gameTimeScale;
+                    activeTimes[i] -= Time.deltaTime * Manager.Instance.gameTimeScale;
                 }
                 else
                 {
@@ -129,7 +128,7 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else
                 {
-                    cooldowns[i] -= Time.deltaTime * Manager.instance.gameTimeScale;
+                    cooldowns[i] -= Time.deltaTime * Manager.Instance.gameTimeScale;
                 }
                 break;
         }
@@ -148,7 +147,7 @@ public class AbilityHolder : MonoBehaviour
             case AbilityState.active:
                 if (activeTimes[i] > 0)
                 {
-                    activeTimes[i] -= Time.deltaTime * Manager.instance.gameTimeScale;
+                    activeTimes[i] -= Time.deltaTime * Manager.Instance.gameTimeScale;
                 }
                 else
                 {
@@ -165,7 +164,7 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else
                 {
-                    cooldowns[i] -= Time.deltaTime * Manager.instance.gameTimeScale;
+                    cooldowns[i] -= Time.deltaTime * Manager.Instance.gameTimeScale;
                 }
                 break;
         }

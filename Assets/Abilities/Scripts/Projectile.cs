@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
         if (charScript != null)
         {
             charScript.TakeDamage(damage);
-            Manager.instance.HitStop(hitStop);
+            Manager.Instance.HitStop(hitStop);
             
 
         }

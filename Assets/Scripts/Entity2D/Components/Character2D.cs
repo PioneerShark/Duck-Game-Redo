@@ -106,11 +106,11 @@ public class Character2D : Entity2D
             if (!velocityOverride)
             {
                 Vector2 finalVelocity = moveVector.normalized * moveSpeed + dashVector;
-                rigidbody.linearVelocity = finalVelocity * Manager.instance.gameTimeScale;
+                rigidbody.linearVelocity = finalVelocity * Manager.Instance.gameTimeScale;
             }
             else 
             {
-                rigidbody.linearVelocity = overrideVelocity * Manager.instance.gameTimeScale;
+                rigidbody.linearVelocity = overrideVelocity * Manager.Instance.gameTimeScale;
             }
             
         }
@@ -155,7 +155,7 @@ public class Character2D : Entity2D
         if (dashDirection != Vector2.zero)
         {
             dashVector = dashDirection * dashPower;
-
+            
             isDashing = true;
             dashEndTime = Time.time + dashDuration;
         }

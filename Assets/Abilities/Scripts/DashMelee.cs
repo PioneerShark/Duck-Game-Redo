@@ -11,7 +11,7 @@ public class DashMelee : Melee
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Activate(GameObject parent)
     {
-        Manager.instance.StartCoroutine(MeleeString(parent));
+        Manager.Instance.StartCoroutine(MeleeString(parent));
 
 
     }

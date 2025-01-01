@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using GeneralNameSpace;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using Unity.AppUI.Core;
 
 [CreateAssetMenu]
@@ -32,7 +31,7 @@ public class GunBase2D : Ability
             if (hitCharacter2D != null)
             {
                 hitCharacter2D.TakeDamage(damage);
-                Manager.instance.HitStop(hitStop);
+                Manager.Instance.HitStop(hitStop);
             }
         }
         else
@@ -45,7 +44,7 @@ public class GunBase2D : Ability
 
     protected void CreateWeaponTracer(Vector3 start, Vector3 end)
     {
-        GameObject currentTracer = Manager.instance.GetPooledObject(tracer);
+        GameObject currentTracer = Manager.Instance.GetPooledObject(tracer);
         if (currentTracer != null) { 
             HitscanTracer tracerScript = currentTracer.GetComponent<HitscanTracer>();
             currentTracer.GetComponent<SpriteRenderer>().sprite = tracerSprite;

@@ -11,16 +11,16 @@ public class BowShot : ProjectileGunBase
     private Coroutine co;
     public override void Activate(GameObject parent)
     {
-        co = Manager.instance.StartCoroutine(DelayedActivate(parent));
+        co = Manager.Instance.StartCoroutine(DelayedActivate(parent));
     }
     public override void Deactivate(GameObject parent) {
-        Manager.instance.StopCoroutine(co);
+        Manager.Instance.StopCoroutine(co);
     }
     IEnumerator DelayedActivate(GameObject parent)
     {
         yield return new WaitForSeconds(activeTime);
         Character2D character2D = (Character2D)parent.GetComponent(typeof(Character2D));
-        GameObject currentProjectile = Manager.instance.GetPooledObject(projectile);
+        GameObject currentProjectile = Manager.Instance.GetPooledObject(projectile);
         if (currentProjectile != null)
         {
             Projectile projectileScript = currentProjectile.GetComponent<Projectile>();

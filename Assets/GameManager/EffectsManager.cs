@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class EffectsManager : MonoBehaviour
 {
+    public static EffectsManager Instance;
+
     [Header("Pooling")]
 
     [Header("AfterImages")]
@@ -13,8 +15,13 @@ public class EffectsManager : MonoBehaviour
     [SerializeField] private GameObject afterImage;
     [SerializeField] private int afterImageCount;
     private List<GameObject> afterImages = new List<GameObject>();
+    
 
 
+    void Awake()
+    {
+        EffectsManager.Instance = this;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

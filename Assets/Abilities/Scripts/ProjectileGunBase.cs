@@ -15,7 +15,7 @@ public class ProjectileGunBase : Ability
     public override void Activate(GameObject parent)
     {
         Character2D character2D = (Character2D)parent.GetComponent(typeof(Character2D));
-        GameObject currentProjectile = Manager.instance.GetPooledObject(projectile);
+        GameObject currentProjectile = Manager.Instance.GetPooledObject(projectile);
         if (currentProjectile != null)
         {
             Projectile projectileScript = currentProjectile.GetComponent<Projectile>();

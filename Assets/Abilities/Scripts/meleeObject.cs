@@ -21,7 +21,7 @@ public class MeleeObject : MonoBehaviour
         if (charScript != null)
         {
             charScript.TakeDamage(damage);
-            Manager.instance.HitStop(hitStop);
+            Manager.Instance.HitStop(hitStop);
             //DestroyThis();
         }
 

@@ -5,7 +5,6 @@ using Unity.AppUI.Core;
 using Unity.Behavior;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.LightTransport;
 using UnityEngine.TextCore.Text;
 
 [CreateAssetMenu]
@@ -17,7 +16,7 @@ public class DashAway : Ability
     public Layers playerMask;
     public override void Activate(GameObject parent)
     {
-        Manager.instance.StartCoroutine(ExecuteDash(parent));
+        Manager.Instance.StartCoroutine(ExecuteDash(parent));
         
     }
 
@@ -73,7 +72,7 @@ public class DashAway : Ability
         dashDir.Normalize();
 
         agent.VelocityOverride(true, dashDir * speed);
-        Manager.instance.StartCoroutine(Manager.instance.Effects.SpawnAfterImagesTask(agent.model.gameObject, activeTime, 0.01f, 0.2f, 1.0f));
+        Manager.Instance.StartCoroutine(EffectsManager.Instance.SpawnAfterImagesTask(agent.model.gameObject, activeTime, 0.01f, 0.2f, 1.0f));
         yield return new WaitForSeconds(activeTime);
         agent.VelocityOverride(false, dashDir * speed);
     }
