@@ -10,11 +10,15 @@ public class EffectsManager : MonoBehaviour
 
     [Header("AfterImages")]
 
+    [SerializeField] public static EffectsManager instance;
     [SerializeField] private GameObject afterImage;
     [SerializeField] private int afterImageCount;
     private List<GameObject> afterImages = new List<GameObject>();
 
-
+    private void Awake()
+    {
+        EffectsManager.instance = this;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

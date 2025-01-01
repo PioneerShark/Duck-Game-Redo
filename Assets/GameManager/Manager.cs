@@ -6,7 +6,6 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     public static Manager instance;
-    public EffectsManager Effects;
     private bool waiting;
     public Material flash;
     [HideInInspector] public float gameTimeScale = 1f;
@@ -41,7 +40,6 @@ public class Manager : MonoBehaviour
     void Awake()
     {
         Manager.instance = this;
-        Effects = GetComponent<EffectsManager>();
     }
 
     private void Start()

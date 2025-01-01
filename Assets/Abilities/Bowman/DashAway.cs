@@ -72,7 +72,7 @@ public class DashAway : Ability
         dashDir.Normalize();
 
         agent.VelocityOverride(true, dashDir * speed);
-        Manager.instance.StartCoroutine(Manager.instance.Effects.SpawnAfterImagesTask(agent.model.gameObject, activeTime, 0.01f, 0.2f, 1.0f));
+        Manager.instance.StartCoroutine(EffectsManager.instance.SpawnAfterImagesTask(agent.model.gameObject, activeTime, 0.01f, 0.2f, 1.0f));
         yield return new WaitForSeconds(activeTime);
         agent.VelocityOverride(false, dashDir * speed);
     }

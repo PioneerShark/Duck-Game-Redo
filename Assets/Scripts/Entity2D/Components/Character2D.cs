@@ -140,25 +140,27 @@ public class Character2D : Entity2D
         this.isAttacking = newIsAttacking;
         if (this.isAttacking)
         {
-            abilityHolder.TriggerAbility(0);
+            abilityHolder.TriggerAbility(1);
         }
         else
         {
-            abilityHolder.CancelAbility(0);
+            abilityHolder.CancelAbility(1);
         }
     }
 
     public void TriggerDash()
     {
-        Vector2 dashDirection = this.moveVector.normalized;
+        /*Vector2 dashDirection = this.moveVector.normalized;
 
         if (dashDirection != Vector2.zero)
         {
             dashVector = dashDirection * dashPower;
 
             isDashing = true;
+            
             dashEndTime = Time.time + dashDuration;
-        }
+        }*/
+        abilityHolder.TriggerAbility(0);
     }
 
     public void VelocityOverride(bool start, Vector3 velocity) {
