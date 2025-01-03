@@ -25,8 +25,8 @@ public class Indicator2D : MonoBehaviour
     [Header("Other")]
     public RectTransform zone;
     public Image zoneImage;
-    public float sizeStart = 2;
-    public float sizeEnd = 2;
+    public float sizeStart = 4;
+    public float sizeEnd = 4;
     public Vector3 positionStart;
     public Vector3 positionEnd;
 

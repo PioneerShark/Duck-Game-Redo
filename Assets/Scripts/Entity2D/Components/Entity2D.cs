@@ -58,6 +58,10 @@ public class Entity2D : MonoBehaviour
             Debug.LogWarning($"{gameObject.name}(Entity2D) is invulnerable and cannot have health reduced.", this);
             return;
         }
+        else
+        {
+            if (!flashing) StartCoroutine(Flash(0.1f));
+        }
 
         this.health = Mathf.Clamp(this.health + value, 0, this.healthMax);
     }
@@ -65,13 +69,18 @@ public class Entity2D : MonoBehaviour
     public virtual void TakeDamage(float value)
     {
         ModifyHealth(-value);
-        if (flashing) return;
-        StartCoroutine(Flash(0.1f));
+        
+        
     }
 
     public virtual void GainHealth(float value)
     {
         ModifyHealth(value);
+    }
+
+    public virtual void SetInvulnerable(bool value)
+    {
+        invulnerable = value;
     }
 
     IEnumerator Flash(float duration)

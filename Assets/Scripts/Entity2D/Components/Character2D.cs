@@ -91,7 +91,7 @@ public class Character2D : Entity2D
             float relativeMoveX = this.moveVector.x * this.transform.localScale.x;
             relativeMoveX = relativeMoveX > 0 ? 1 : -1;
             animator.SetFloat("RelativeMoveX", relativeMoveX, dampTime, Time.deltaTime);
-            animator.SetFloat("LookX", this.aimVector.x > 0 ? 1 : -1, dampTime, Time.deltaTime);
+            animator.SetFloat("Velocity", moveVector.magnitude > 0.1f ? 1 : 0, dampTime, Time.deltaTime);
         }
 
         base.Update();

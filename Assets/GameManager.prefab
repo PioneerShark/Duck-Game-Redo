@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1002526523277536987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 126073941796948223}
+  m_Layer: 0
+  m_Name: AfterImages
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &126073941796948223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002526523277536987}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2927158448785090731}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1049783190707140227
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101479554721161955}
   - component: {fileID: 3508560160615064091}
+  - component: {fileID: 5205894781267759141}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f27098310d77b94eb15c018a5340bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IndicatorUI: {fileID: 0}
   flash: {fileID: 2100000, guid: 870f171adeccf9d48b77556b9ba73121, type: 2}
   gameTimeScale: 1
   tracerAmount: 30
@@ -52,7 +85,21 @@ MonoBehaviour:
   bulletAmount: 30
   bulletPrefab: {fileID: 9029234994514343034, guid: 73942bc0fa15a1647a3931f9f4f11b69, type: 3}
   arrowAmount: 6
-  arrowPrefab: {fileID: 0}
+  arrowPrefab: {fileID: 5486626803412366308, guid: ad9a32d2ff5f20242ba2ed5911ba95e2, type: 3}
+--- !u!114 &5205894781267759141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049783190707140227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871e726f00f581e4c8047c80bdddd4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterImage: {fileID: 969422370473921520, guid: 67aded3aab8ef2d4b8af14c418e6388b, type: 3}
+  afterImageCount: 20
 --- !u!1 &2200365445067193738
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +163,7 @@ Transform:
   - {fileID: 5858443069112725340}
   - {fileID: 7081825074994174905}
   - {fileID: 8841411332277809952}
+  - {fileID: 126073941796948223}
   m_Father: {fileID: 1101479554721161955}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5819991013897766781

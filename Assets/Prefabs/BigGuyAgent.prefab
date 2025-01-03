@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7470067633996496028}
   - component: {fileID: 5553708593672915058}
   - component: {fileID: 4065446558208110999}
+  - component: {fileID: 3970159791077115362}
   m_Layer: 0
   m_Name: Model2D
   m_TagString: Untagged
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 4065446558208110999}
-  animator: {fileID: 0}
+  animator: {fileID: 3970159791077115362}
   target: {fileID: 2770357419807079002}
 --- !u!212 &4065446558208110999
 SpriteRenderer:
@@ -90,10 +91,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1301040905
+  m_SortingLayer: 4
   m_SortingOrder: 21
-  m_Sprite: {fileID: -6839233521263939249, guid: 8763d8a3f3a286641a3978707c526523, type: 3}
+  m_Sprite: {fileID: 6438832145514711264, guid: e2fd422a2e7009743b8e734fca4cb5e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,6 +105,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3970159791077115362
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036111152225367383}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9aae4e2f2ae656b498f8e720f077e3d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3665359664335262343
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +203,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 22
-  m_Sprite: {fileID: 3015177024873187116, guid: 59b02a6b38416784bb11e0ad16cb5215, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -188,7 +211,7 @@ SpriteRenderer:
   m_Size: {x: 0.45, y: 0.46}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4180027385651722482
@@ -272,7 +295,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.005425453, y: -0.0054250956}
+  m_Offset: {x: -0.30240119, y: -0.4569044}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -282,7 +305,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0651016, y: 1.0542514}
+  m_Size: {x: 3.2404091, y: 3.0243416}
   m_EdgeRadius: 0
 --- !u!1 &4285799138417869726
 GameObject:
@@ -388,7 +411,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.2873044, y: -1.6520023}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -398,7 +421,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.2573948, y: 0.5690441}
   m_EdgeRadius: 0
 --- !u!50 &4334186011322296401
 Rigidbody2D:
@@ -439,7 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: 9025203313604257350, guid: be852508621b29b4e8463fb6e8c8c322, type: 2}
+  m_Graph: {fileID: 9025203313604257350, guid: 8a06dac2680e7d04d9438070bb166d99, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 4200132794953499019
   - rid: 4200132796137865443
@@ -506,6 +529,7 @@ MonoBehaviour:
   dashDuration: 0.2
   arm: {fileID: 4285799138417869726}
   hand: {fileID: 3665359664335262343}
+  firePoint: {fileID: 0}
   moveVector: {x: 0, y: 0}
   aimVector: {x: 1, y: 0}
   armVector: {x: 0, y: 0}
@@ -525,5 +549,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - {fileID: 11400000, guid: 959d9a85aa296ce4f833d96b0d8d180a, type: 2}
-  - {fileID: 11400000, guid: e644c86c026f89c44a949e26f0cea284, type: 2}
+  - {fileID: 11400000, guid: f94d1e3393c1cf64fbe3bda489594cac, type: 2}

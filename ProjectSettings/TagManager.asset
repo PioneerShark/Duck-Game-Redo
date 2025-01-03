@@ -42,5 +42,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floor
+    uniqueID: 2136614885
+    locked: 0
+  - name: Wall
+    uniqueID: 3660363161
+    locked: 0
+  - name: WallMask
+    uniqueID: 1051127143
+    locked: 0
+  - name: Entities
+    uniqueID: 2993926391
+    locked: 0
+  - name: TopMap
+    uniqueID: 3467723447
+    locked: 0
   m_RenderingLayers:
   - Default
