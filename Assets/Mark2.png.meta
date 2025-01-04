@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 863cc1757e60b1749a512177b2fcfccd
+guid: dc28219bd34f432479375d75a02e8b63
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6153975597840507474
-    second: edge_short_0
+      213: 8514747844585609179
+    second: Mark2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 1024
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: edge_short_0
+      name: Mark2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
+        x: 32
+        y: 33
+        width: 960
+        height: 958
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 252a4b97330576550800000000000000
-      internalID: 6153975597840507474
+      spriteID: bd75c843d067a2670800000000000000
+      internalID: 8514747844585609179
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: db92acd693bd3d8428d24fed301432f3
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      edge_short_0: 6153975597840507474
+      Mark2_0: 8514747844585609179
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
