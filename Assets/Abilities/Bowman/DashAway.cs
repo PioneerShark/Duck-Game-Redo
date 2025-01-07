@@ -71,7 +71,7 @@ public class DashAway : Ability
         }
         Vector2 dashDir = rayHits[pathSelected] - (Vector2)parent.transform.position;
         dashDir.Normalize();
-
+        EffectsManager.instance.SpawnAfterImages(agent.model.gameObject, activeTime, 0.1f, 0.2f, 1f);
         agent.VelocityOverride(true, dashDir * speed);
         yield return new WaitForSeconds(activeTime);
         agent.VelocityOverride(false, dashDir * speed);

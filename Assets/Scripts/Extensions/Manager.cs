@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -10,6 +12,14 @@ public class Manager : MonoBehaviour
 
     [Header("Modules")]
     public IndicatorUI IndicatorUI;
+
+    [Header("HUD")]
+    public Slider healthSlider;
+    public Slider ammoSlider;
+
+    [Header("Camera Effects")]
+    [SerializeField]
+    private GameObject cameraToShake;
 
     [Header("Damage Effect")]
     public Material flash;
@@ -48,6 +58,32 @@ public class Manager : MonoBehaviour
         Manager.instance = this;   
 
         this.IndicatorUI = GetComponentInChildren<IndicatorUI>();
+    }
+    public void ShakeCamera(float duration, float intensity)
+    {
+        StartCoroutine(StartShakeCamera(duration, intensity));
+    }
+
+    private IEnumerator StartShakeCamera(float duration, float intensity)
+    {
+
+        GameObject cam = Camera.main.gameObject;
+        Vector3 origin = cam.transform.localPosition;
+
+        float elasped = 0.0f;
+
+        while (elasped < duration) 
+        { 
+            float x = Random.Range(-0.2f, 0.2f) * intensity;
+            float y = Random.Range(-0.2f, 0.2f) * intensity;
+            cam.transform.localPosition = new Vector3(x, y, origin.z);
+
+            elasped += Time.deltaTime;
+            yield return null;
+        }
+
+        cam.transform.localPosition = origin;
+
     }
 
     private void Start()
@@ -117,5 +153,16 @@ public class Manager : MonoBehaviour
         yield return new WaitForSecondsRealtime(duration);
         gameTimeScale = 1f;
         waiting = false;
+    }
+
+    public void UpdateHealthSlider(float maxHealth, float currentHealth)
+    {
+        healthSlider.value = currentHealth/maxHealth;
+        
+    }
+
+    public void UpdateAmmoSlider(float progress)
+    {
+        ammoSlider.value = progress;
     }
 }

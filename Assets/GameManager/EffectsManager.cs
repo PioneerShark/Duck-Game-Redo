@@ -42,13 +42,12 @@ public class EffectsManager : MonoBehaviour
     }
     public IEnumerator SpawnAfterImagesTask(GameObject image, float duration, float rate, float imageLifespan, float initialAlpha)
     {
-        
         if (duration > rate)
         {
             int imgCount = (int)(duration / rate);
-            Debug.Log(imgCount);
             for (int i = 0; i <= imgCount; i++) {
-                AfterImage _afterImage = PoolTask(afterImages).GetComponent<AfterImage>();
+                GameObject obj = PoolTask(afterImages);
+                AfterImage _afterImage = obj.GetComponent<AfterImage>();
                 _afterImage.UpdateAfterImage(imageLifespan, initialAlpha, image);
                 yield return new WaitForSeconds(rate);
             }

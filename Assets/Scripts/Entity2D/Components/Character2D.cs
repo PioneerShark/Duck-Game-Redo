@@ -12,7 +12,8 @@ public class Character2D : Entity2D
     [Header("Properties")]
     public float moveSpeed = 16f;
     public float dashPower = 20f;
-    public float dashDuration = 0.2f; 
+    public float dashDuration = 0.2f;
+    public bool isPlayer = false;
 
     private bool isDashing = false;
     private bool velocityOverride = false;
@@ -120,6 +121,7 @@ public class Character2D : Entity2D
             dashVector = Vector2.zero;
             isDashing = false;
         }
+        if (isPlayer) Manager.instance.UpdateAmmoSlider(abilityHolder.GetCoolDownRatio(1));
     }
 
     public void SetMoveVector(Vector2 newMoveVector)
@@ -166,6 +168,12 @@ public class Character2D : Entity2D
     public void VelocityOverride(bool start, Vector3 velocity) {
         velocityOverride = start;
         overrideVelocity = velocity;
+    }
+
+    public override void ModifyHealth(float value)
+    {
+        base.ModifyHealth(value);
+        if (isPlayer) Manager.instance.UpdateHealthSlider(healthMax, health);
     }
 
     void OnDrawGizmos()

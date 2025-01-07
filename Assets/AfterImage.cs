@@ -32,7 +32,7 @@ public class AfterImage : MonoBehaviour
         transform.localRotation = original.transform.localRotation;
         transform.position = original.transform.position;
         sprite.sortingOrder = originalSprite.sortingOrder-1;
-
+        sprite.sortingLayerID = originalSprite.sortingLayerID;
         this.gameObject.SetActive(true);
     }
     private void OnEnable()

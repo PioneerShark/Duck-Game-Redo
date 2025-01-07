@@ -20,6 +20,7 @@ public class Crush : Melee
         anim.SetFloat("JumpMult", 8/activeTime);
         anim.Play("Jump");
         agent.SetInvulnerable(true);
+        Manager.instance.ShakeCamera(activeTime / 32, 0.5f);
         yield return new WaitForSeconds(activeTime / 8);
         agent.hitbox.gameObject.layer = (int)Layers.Default;
         yield return new WaitForSeconds(activeTime / 2);
@@ -32,6 +33,8 @@ public class Crush : Melee
         agent.hitbox.gameObject.layer = (int)Layers.Enemy;
         agent.SetInvulnerable(false);
         ExecuteMelee(parent);
+        Manager.instance.ShakeCamera((1.5f*activeTime) / 16, 1f);
         yield return new WaitForSeconds(activeTime / 8);
+        anim.Play("Base");
     }
 }

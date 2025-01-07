@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerHitscanGun
   m_EditorClassIdentifier: 
   name: 
-  damage: 1
-  cooldown: 0.01
+  damage: 5
+  cooldown: 0.5
   activeTime: 0
   inputType: 0
   playerMask: 9

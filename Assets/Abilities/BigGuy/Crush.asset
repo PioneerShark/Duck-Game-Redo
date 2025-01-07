@@ -15,7 +15,7 @@ MonoBehaviour:
   name: 
   damage: 20
   cooldown: 4
-  activeTime: 5
+  activeTime: 4
   inputType: 1
   scale: 4
   meleeObject: {fileID: 1421633523605559238, guid: 4d75cb64e84005a439d69e2f1a357147, type: 3}

@@ -24,6 +24,11 @@ public class AbilityHolder : MonoBehaviour
         RefreshAbilities();
     }
 
+    public float GetCoolDownRatio(int ability)
+    {
+        return 1 - (cooldowns[ability] / abilities[ability].cooldown);
+    }
+
     public void TriggerAbility(int current)
     {
         switch (abilities[current].inputType)
@@ -125,11 +130,13 @@ public class AbilityHolder : MonoBehaviour
             case AbilityState.cooldown:
                 if (cooldowns[i] <= 0)
                 {
+                    
                     states[i] = AbilityState.ready;
                 }
                 else
                 {
                     cooldowns[i] -= Time.deltaTime * Manager.instance.gameTimeScale;
+                    if (cooldowns[i] <= 0) cooldowns[i] = 0;
                 }
                 break;
         }
@@ -180,7 +187,8 @@ public class AbilityHolder : MonoBehaviour
         abilityCount = abilities.Count;
         for (int i = 0; i < abilityCount; i++)
         {
-            cooldowns.Add(abilities[i].cooldown);
+            //abilities[i].cooldown
+            cooldowns.Add(0);
             activeTimes.Add(0);
             states.Add(AbilityState.ready);
             currentPerformer.Add(false);
