@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda7657cfa4b3554d835b116f623d168, type: 3}
+  m_Name: MeleeSpinny
+  m_EditorClassIdentifier: 
+  name: 
+  damage: 10
+  cooldown: 0.9
+  activeTime: 0
+  inputType: 1
+  scale: 3
+  meleeObject: {fileID: 1421633523605559238, guid: 4d75cb64e84005a439d69e2f1a357147, type: 3}
+  playerMask: 11
+  duration: 1
+  hitStop: 0.1
