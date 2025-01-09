@@ -106,4 +106,30 @@ public class Indicator2D : MonoBehaviour
     {
 
     }
+
+    // Setters
+    public virtual void SetSize(float sizeStart, float sizeEnd)
+    {
+        this.sizeStart = sizeStart;
+        this.sizeEnd = sizeEnd;
+    }
+
+    public virtual void SetSize(float size)
+    {
+        this.sizeStart = size;
+        this.sizeEnd = size;
+    }
+
+    public virtual void SetPosition(Vector3 positionStart, Vector3 positionEnd)
+    {
+        this.positionStart = positionStart;
+        this.positionEnd = positionEnd;
+    }
+
+    public virtual void SetPosition(Vector3 position)
+    {
+        this.positionStart = position;
+        this.positionEnd = position;
+    }
 }
+
