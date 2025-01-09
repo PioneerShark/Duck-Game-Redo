@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 3589362778894213389}
   - component: {fileID: 5709496557024259925}
   m_Layer: 0
-  m_Name: AreaIndicator2D Prefab
+  m_Name: AreaIndicator2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
