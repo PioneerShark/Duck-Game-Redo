@@ -48,4 +48,20 @@ public sealed class Framework : MonoBehaviour
             return IndicatorServiceSource;
         }
     }
+
+    private AudioService AudioServiceSource;
+    public AudioService AudioService
+    {
+        get
+        {
+            if (AudioServiceSource == null)
+            {
+                GameObject serviceObject = new GameObject("AudioService");
+                serviceObject.transform.SetParent(this.transform);
+                AudioServiceSource = serviceObject.AddComponent<AudioService>();
+                AudioServiceSource.Init();
+            }
+            return AudioServiceSource;
+        }
+    }
 }

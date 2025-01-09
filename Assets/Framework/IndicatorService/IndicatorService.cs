@@ -29,14 +29,13 @@ public class IndicatorService : FrameworkService
         return indicator2D;
     }
 
-    public AreaIndicator2D CreateAreaIndicator(Vector2 start, Vector2 end, float duration, float scale)
+    public AreaIndicator2D CreateAreaIndicator(Vector2 start, Vector2 end, float duration, float size)
     {
         AreaIndicator2D indicator2D = CreateAreaIndicator();
 
         indicator2D.duration = duration;
         indicator2D.SetPosition(start, end);
-        indicator2D.sizeStart = scale;
-        indicator2D.sizeEnd = scale;
+        indicator2D.SetSize(size);
 
         return indicator2D;
     }
