@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LineIndicator2D : Indicator2D
 {
@@ -18,6 +19,7 @@ public class LineIndicator2D : Indicator2D
         float sizeScaled = Mathf.Lerp(this.sizeStart, this.sizeEnd, timeRemaining);
 
         this.zone.sizeDelta = new Vector2(Vector3.Distance(this.positionStart, this.positionEnd), sizeScaled);
+        this.zoneImage.uvRect = new Rect(0, 0, (int) (this.zone.sizeDelta.x * (1 / this.zone.sizeDelta.y)) , 1);
     }
 
     protected override void ApplyColour(Color c)

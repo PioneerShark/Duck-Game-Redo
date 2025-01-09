@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 0
   cooldown: 0.2
   activeTime: 0
-  cost: 1
+  cost: 0
   inputType: 0
   velocity: 10
   projectile: 1

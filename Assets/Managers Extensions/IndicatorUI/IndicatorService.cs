@@ -10,6 +10,7 @@ public class IndicatorService : FrameworkService
     public override void Init()
     {
         AreaIndicatorPrefab = Resources.Load<AreaIndicator2D>("Prefabs/AreaIndicator2D");
+        LineIndicatorPrefab = Resources.Load<LineIndicator2D>("Prefabs/LineIndicator2D");
     }
 
     public AreaIndicator2D CreateAreaIndicator()
@@ -21,6 +22,34 @@ public class IndicatorService : FrameworkService
     public AreaIndicator2D CreateAreaIndicator(Vector2 start, Vector2 end, float duration)
     {
         AreaIndicator2D indicator2D = CreateAreaIndicator();
+
+        indicator2D.duration = duration;
+        indicator2D.SetPosition(start, end);
+
+        return indicator2D;
+    }
+
+    public AreaIndicator2D CreateAreaIndicator(Vector2 start, Vector2 end, float duration, float scale)
+    {
+        AreaIndicator2D indicator2D = CreateAreaIndicator();
+
+        indicator2D.duration = duration;
+        indicator2D.SetPosition(start, end);
+        indicator2D.sizeStart = scale;
+        indicator2D.sizeEnd = scale;
+
+        return indicator2D;
+    }
+
+    public LineIndicator2D CreateLineIndicator()
+    {
+        LineIndicator2D indicator2D = Instantiate(LineIndicatorPrefab, Vector3.zero, Quaternion.identity);
+        return indicator2D;
+    }
+
+    public LineIndicator2D CreateLineIndicator(Vector2 start, Vector2 end, float duration)
+    {
+        LineIndicator2D indicator2D = CreateLineIndicator();
 
         indicator2D.duration = duration;
         indicator2D.SetPosition(start, end);

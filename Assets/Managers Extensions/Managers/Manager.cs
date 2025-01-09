@@ -10,9 +10,6 @@ public class Manager : MonoBehaviour
     public static Manager instance;
     private bool waiting;
 
-    [Header("Modules")]
-    public IndicatorUI IndicatorUI;
-
     [Header("HUD")]
     public Slider healthSlider;
     public Slider ammoSlider;
@@ -57,7 +54,6 @@ public class Manager : MonoBehaviour
     {
         Manager.instance = this;   
 
-        this.IndicatorUI = GetComponentInChildren<IndicatorUI>();
         Time.timeScale = gameTimeScale;
     }
     public void ShakeCamera(float duration, float intensity)

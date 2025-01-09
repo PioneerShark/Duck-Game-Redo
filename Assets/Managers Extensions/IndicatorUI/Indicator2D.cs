@@ -24,7 +24,7 @@ public class Indicator2D : MonoBehaviour
 
     [Header("Other")]
     public RectTransform zone;
-    public Image zoneImage;
+    public RawImage zoneImage;
     public float sizeStart = 4;
     public float sizeEnd = 4;
     public Vector3 positionStart;
@@ -46,7 +46,7 @@ public class Indicator2D : MonoBehaviour
     protected virtual void Update()
     {
         this.lifetime += Time.deltaTime;
-        if (this.lifetime >= this.duration)
+        if (this.lifetime >= this.duration && this.duration >= 0)
         {
             Destroy(this.gameObject);
         }
