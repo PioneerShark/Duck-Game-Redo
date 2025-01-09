@@ -16,6 +16,7 @@ MonoBehaviour:
   damage: 5
   cooldown: 0.5
   activeTime: 0
+  cost: 2
   inputType: 0
   playerMask: 9
   hitStop: 0

@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   damage: 0
-  cooldown: 0.5
+  cooldown: 0.2
   activeTime: 0
+  cost: 1
   inputType: 0
-  velocity: 5
+  velocity: 10
   projectile: 1
-  spread: 0
+  spreadDeg: 10
   playerMask: 9
-  duration: 1
-  trailDuration: 0.01
-  scale: 1
+  duration: 30
+  trailDuration: 0.1
+  scale: 0.5
   hitStop: 0.01
+  shotCount: 1
+  burstCount: 1

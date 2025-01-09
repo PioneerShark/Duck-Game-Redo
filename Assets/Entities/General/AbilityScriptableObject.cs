@@ -8,6 +8,7 @@ public class Ability : ScriptableObject
     public float damage;
     public float cooldown;
     public float activeTime;
+    public int cost;
     public enum InputType
     {
         repeat,

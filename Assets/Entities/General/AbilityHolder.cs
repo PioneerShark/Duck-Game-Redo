@@ -29,7 +29,7 @@ public class AbilityHolder : MonoBehaviour
         return 1 - (cooldowns[ability] / abilities[ability].cooldown);
     }
 
-    public void TriggerAbility(int current)
+    public bool TriggerAbility(int current)
     {
         switch (abilities[current].inputType)
         {
@@ -38,7 +38,7 @@ public class AbilityHolder : MonoBehaviour
                 switch (states[current])
                 {
                     case AbilityState.ready:
-                        if (performing) return;
+                        if (performing) break;
                         currentPerformer[current] = true;
                         break;
                     case AbilityState.active:
@@ -53,17 +53,18 @@ public class AbilityHolder : MonoBehaviour
         switch (states[current])
         {
             case AbilityState.ready:
-                if (performing) return;
+                if (performing) break;
                 abilities[current].Activate(gameObject);
                 states[current] = AbilityState.active;
                 activeTimes[current] = abilities[current].activeTime;
                 performing = true;
-                break;
+                return true;
             case AbilityState.active:
-                break;
+                return false;
             case AbilityState.cooldown:
-                break;
+                return false;
         }
+        return false;
     }
     public void CancelAbility(int current)
     {
@@ -74,6 +75,10 @@ public class AbilityHolder : MonoBehaviour
                 currentPerformer[current] = false;
                 break;
         }
+    }
+    public int GetCost(int current)
+    {
+        return abilities[current].cost;
     }
     public bool AbilityReady(int current)
     {

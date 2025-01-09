@@ -23,7 +23,7 @@ public class Manager : MonoBehaviour
 
     [Header("Damage Effect")]
     public Material flash;
-    [HideInInspector]
+    //[HideInInspector]
     public float gameTimeScale = 1f;
     
 
@@ -58,6 +58,7 @@ public class Manager : MonoBehaviour
         Manager.instance = this;   
 
         this.IndicatorUI = GetComponentInChildren<IndicatorUI>();
+        Time.timeScale = gameTimeScale;
     }
     public void ShakeCamera(float duration, float intensity)
     {

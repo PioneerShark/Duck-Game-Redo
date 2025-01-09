@@ -13,7 +13,11 @@ public class Character2D : Entity2D
     public float moveSpeed = 16f;
     public float dashPower = 20f;
     public float dashDuration = 0.2f;
+    [SerializeField] private  int ammoMax = 20;
+    [SerializeField] private  float ammoRate = 1f;
+    private float ammo;
     public bool isPlayer = false;
+
 
     private bool isDashing = false;
     private bool velocityOverride = false;
@@ -52,8 +56,11 @@ public class Character2D : Entity2D
 
     void Start()
     {
+        ammo = ammoMax;
         this.IsReady();
     }
+
+
 
     // Update is called once per frame
     protected override void Update()
@@ -94,6 +101,16 @@ public class Character2D : Entity2D
             animator.SetFloat("RelativeMoveX", relativeMoveX, dampTime, Time.deltaTime);
             animator.SetFloat("Velocity", moveVector.magnitude > 0.1f ? 1 : 0, dampTime, Time.deltaTime);
         }
+        if (ammo <= ammoMax)
+        {
+            ammo += Time.deltaTime*ammoRate;
+            if (ammo > ammoMax)
+            {
+                ammo = ammoMax;
+                
+            }
+            if (isPlayer) Manager.instance.UpdateAmmoSlider((float)ammo / (float)ammoMax);
+        }
 
         base.Update();
     }
@@ -121,7 +138,6 @@ public class Character2D : Entity2D
             dashVector = Vector2.zero;
             isDashing = false;
         }
-        if (isPlayer) Manager.instance.UpdateAmmoSlider(abilityHolder.GetCoolDownRatio(1));
     }
 
     public void SetMoveVector(Vector2 newMoveVector)
@@ -142,7 +158,20 @@ public class Character2D : Entity2D
         this.isAttacking = newIsAttacking;
         if (this.isAttacking)
         {
-            abilityHolder.TriggerAbility(1);
+            int cost = abilityHolder.GetCost(1);
+            if (cost <= ammo)
+            {
+                bool shot = abilityHolder.TriggerAbility(1);
+                if (shot)
+                {
+                    ammo -= cost;
+                    Manager.instance.UpdateAmmoSlider((float)ammo / (float)ammoMax);
+                }
+                    
+                
+            }
+            else abilityHolder.CancelAbility(1);
+
         }
         else
         {
