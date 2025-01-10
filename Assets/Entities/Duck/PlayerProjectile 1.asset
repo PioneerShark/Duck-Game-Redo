@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   damage: 0
-  cooldown: 0.2
+  cooldown: 0.1
   activeTime: 0
   cost: 0
   inputType: 0
+  sound: {fileID: 8300000, guid: c3ce541ad26401a4a8dd4dfef1e94e4b, type: 3}
   velocity: 10
   projectile: 1
   spreadDeg: 10

@@ -4,6 +4,7 @@ using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
+using static Framework;
 
 public class Manager : MonoBehaviour
 {
@@ -42,6 +43,9 @@ public class Manager : MonoBehaviour
     [SerializeField] private int arrowAmount = 6;
     [SerializeField] private GameObject arrowPrefab;
     private List<GameObject> pooledArrows = new List<GameObject>();
+
+    [Header("Other")]
+    [SerializeField] private AudioClip ost;
 
     public enum PoolType
     {
@@ -85,6 +89,8 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
+        Game.AudioService.PlayOST(this.ost, 0.33f);
+
         for (int i = 0; i < bulletAmount; i++)
         {
             GameObject obj = Instantiate(bulletPrefab);
@@ -108,8 +114,6 @@ public class Manager : MonoBehaviour
             obj.transform.parent = GameObject.Find("Arrows").transform;
             pooledArrows.Add(obj);
         }
-
-
     }
 
     public GameObject GetPooledObject(PoolType pool)

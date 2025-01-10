@@ -3,9 +3,10 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
-public class Indicator2DTester : MonoBehaviour
+public class FrameworkTester : MonoBehaviour
 {
     public List<GameObject> points = new List<GameObject> {};
+    public AudioClip audioClip;
 
     void Start()
     {
@@ -16,6 +17,8 @@ public class Indicator2DTester : MonoBehaviour
         areaIndicator2D.SetPosition(points[0].transform.position, points[3].transform.position);
 
         LineIndicator2D lineIndicator2D = Game.IndicatorService.CreateLineIndicator(points[1].transform.position, points[2].transform.position, -1);
+
+        Game.AudioService.PlaySound(audioClip, this.transform, 1);
     }
 
     void Update()
