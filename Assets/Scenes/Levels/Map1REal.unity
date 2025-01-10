@@ -5883,8 +5883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f35e08da8158d459e2beb6780f44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AreaIndicatorPrefab: {fileID: 5709496557024259925, guid: bb0b3b0478dd93140bb83bc8a9b643c6, type: 3}
-  LineIndicatorPrefab: {fileID: 0}
 --- !u!1 &914817676
 GameObject:
   m_ObjectHideFlags: 0
@@ -32218,6 +32216,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3508560160615064091, guid: cf6a712e47a659447a7c1c676ddc9499, type: 3}
+      propertyPath: ost
+      value: 
+      objectReference: {fileID: 8300000, guid: 90fa5e985b3a0104d889cdc22225812f, type: 3}
     - target: {fileID: 3508560160615064091, guid: cf6a712e47a659447a7c1c676ddc9499, type: 3}
       propertyPath: ammoSlider
       value: 
