@@ -89,7 +89,7 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-        Game.AudioService.PlayOST(this.ost, 0.33f);
+        Game.AudioService.PlayOST(this.ost, 0.20f);
 
         for (int i = 0; i < bulletAmount; i++)
         {

@@ -21,7 +21,7 @@ public class AudioService : FrameworkService
         this.ostSource.playOnAwake = false;
         this.ostSource.outputAudioMixerGroup = this.audioMixer.FindMatchingGroups("OST")[0];
 
-        GameObject sfxSourceObject = new GameObject("sfxSource");
+        GameObject sfxSourceObject = new GameObject("uiSource");
         sfxSourceObject.transform.parent = this.transform;
         sfxSourceObject.AddComponent<AudioSource>();
         this.uiSource = sfxSourceObject.GetComponent<AudioSource>();

@@ -1,10 +1,12 @@
 using GeneralNameSpace;
 using System.Collections;
 using UnityEngine;
+using static Framework;
 
 [CreateAssetMenu]
 public class ProjectileGunBase : Ability
 {
+    public AudioClip sound;
     public float velocity = 2f;
     public Manager.PoolType projectile;
     public float spreadDeg = 0f;
@@ -31,7 +33,13 @@ public class ProjectileGunBase : Ability
         Vector2 direction;
         direction.x = (cos * x) - (sin * y);
         direction.y = (sin * x) + (cos * y);
-        for (int j = 0; j < burstCount; j++) {
+        for (int j = 0; j < burstCount; j++) 
+        {
+            if (this.sound != null)
+            {
+                Game.AudioService.PlaySound(this.sound, character2D.transform, 1);
+            }
+            
             for (int i = 0; i < shotCount; i++)
             {
                 spreadValue = Random.Range(-spreadDeg / 2, spreadDeg / 2);
