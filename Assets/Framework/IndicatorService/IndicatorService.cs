@@ -1,13 +1,13 @@
 using UnityEditor;
 using UnityEngine;
 
-public class IndicatorService : FrameworkService
+public class IndicatorService : MonoBehaviour, IIndicatorService
 {
     // CREATE TRACKING INDICATOR
     [SerializeField] private AreaIndicator2D AreaIndicatorPrefab;
     [SerializeField] private LineIndicator2D LineIndicatorPrefab;
 
-    public override void Init()
+    public void Setup()
     {
         AreaIndicatorPrefab = Resources.Load<AreaIndicator2D>("Prefabs/AreaIndicator2D");
         LineIndicatorPrefab = Resources.Load<LineIndicator2D>("Prefabs/LineIndicator2D");

@@ -3,14 +3,14 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
 
-public class AudioService : FrameworkService
+public class AudioService : MonoBehaviour, IAudioService
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource ostSource;
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource uiSource;
 
-    public override void Init()
+    public void Setup()
     {
         audioMixer = Resources.Load<AudioMixer>("Audio/MainMixer");
 
@@ -31,7 +31,7 @@ public class AudioService : FrameworkService
         sfxSource = Resources.Load<AudioSource>("Audio/SoundObject");
     }
 
-    public void PlaySound(AudioClip audioClip, Transform spawnTransform, float volume)
+    public void PlaySFX(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(sfxSource, spawnTransform.position, Quaternion.identity);
         audioSource.outputAudioMixerGroup = this.audioMixer.FindMatchingGroups("SFX")[0];

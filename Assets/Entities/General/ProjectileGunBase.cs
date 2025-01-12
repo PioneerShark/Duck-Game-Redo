@@ -38,7 +38,7 @@ public class ProjectileGunBase : Ability
         {
             if (this.sound != null)
             {
-                Game.AudioService.PlaySound(this.sound, character2D.transform, 1);
+                Game.AudioService.PlaySFX(this.sound, character2D.transform, 1);
             }
             
             for (int i = 0; i < shotCount; i++)

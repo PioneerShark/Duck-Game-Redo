@@ -18,7 +18,7 @@ public class FrameworkTester : MonoBehaviour
 
         LineIndicator2D lineIndicator2D = Game.IndicatorService.CreateLineIndicator(points[1].transform.position, points[2].transform.position, -1);
 
-        Game.AudioService.PlaySound(audioClip, this.transform, 1);
+        Game.AudioService.PlaySFX(audioClip, this.transform);
     }
 
     void Update()

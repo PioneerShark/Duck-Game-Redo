@@ -124,7 +124,7 @@ public class Projectile : MonoBehaviour
     {
         if (this.destroySound != null)
         {
-            Game.AudioService.PlaySound(this.destroySound, transform, 0.25f);
+            Game.AudioService.PlaySFX(this.destroySound, transform, 0.25f);
         }
 
         rb.simulated = false;

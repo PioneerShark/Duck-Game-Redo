@@ -31,37 +31,20 @@ public sealed class Framework : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    private T CreateService<T>(string serviceName) where T : MonoBehaviour, IFrameworkService
+    {
+        GameObject serviceObject = new GameObject(serviceName);
+        serviceObject.transform.SetParent(this.transform);
+        T service = serviceObject.AddComponent<T>();
+        service.Setup();
+        return service;
+    }
+
     public static Framework Instance => Game;
 
-    private IndicatorService IndicatorServiceSource;
-    public IndicatorService IndicatorService
-    {
-        get
-        {
-            if (IndicatorServiceSource == null)
-            {
-                GameObject serviceObject = new GameObject("IndicatorService");
-                serviceObject.transform.SetParent(this.transform);
-                IndicatorServiceSource = serviceObject.AddComponent<IndicatorService>();
-                IndicatorServiceSource.Init();
-            }
-            return IndicatorServiceSource;
-        }
-    }
+    private IIndicatorService IndicatorServiceSource;
+    public IIndicatorService IndicatorService => IndicatorServiceSource ??= CreateService<IndicatorService>("IndicatorService");
 
-    private AudioService AudioServiceSource;
-    public AudioService AudioService
-    {
-        get
-        {
-            if (AudioServiceSource == null)
-            {
-                GameObject serviceObject = new GameObject("AudioService");
-                serviceObject.transform.SetParent(this.transform);
-                AudioServiceSource = serviceObject.AddComponent<AudioService>();
-                AudioServiceSource.Init();
-            }
-            return AudioServiceSource;
-        }
-    }
+    private IAudioService AudioServiceSource;
+    public IAudioService AudioService => AudioServiceSource ??= CreateService<AudioService>("AudioService");
 }
