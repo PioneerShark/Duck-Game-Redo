@@ -34,6 +34,7 @@ public class AudioService : FrameworkService
     public void PlaySound(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(sfxSource, spawnTransform.position, Quaternion.identity);
+        audioSource.outputAudioMixerGroup = this.audioMixer.FindMatchingGroups("SFX")[0];
         audioSource.clip = audioClip;
         audioSource.volume = volume;
         audioSource.Play();
@@ -50,20 +51,15 @@ public class AudioService : FrameworkService
         this.ostSource.Play();
     }
 
-    public void SetOSTVolume(float volume)
+    public void SetMixerParameter(string parameterName, float value)
     {
-        // Change to alter mixer in future
-        this.ostSource.volume = volume;
+        this.audioMixer.SetFloat(parameterName, value);
     }
 
-    public void SetUIVolume(float volume)
+    public void SetMixerVolume(string volumeName, float level)
     {
-        // Change to alter mixer in future
-        this.uiSource.volume = volume;
-    }
-
-    public void SetSFXVolume(float volume)
-    {
-
+        level = Mathf.Clamp(level, 0.0001f, 1);
+        float scaledLevel = Mathf.Log10(level) * 20f;
+        SetMixerParameter(volumeName, scaledLevel);
     }
 }

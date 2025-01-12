@@ -89,7 +89,8 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-        Game.AudioService.PlayOST(this.ost, 0.20f);
+        Game.AudioService.PlayOST(this.ost);
+        Game.AudioService.SetMixerVolume("OSTVolume", 0.08f);
 
         for (int i = 0; i < bulletAmount; i++)
         {

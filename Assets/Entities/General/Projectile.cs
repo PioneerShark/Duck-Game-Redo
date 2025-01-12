@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Framework;
 
 public class Projectile : MonoBehaviour
 {
@@ -11,9 +12,10 @@ public class Projectile : MonoBehaviour
     private Vector3 lastPos;
     private Vector3 beforeLast;
     private bool detectLast;
+    private AudioClip destroySound;
 
     public void SetVariables(float _trailDuration, float _duration, float _damage, float _scale,
-                             float _hitStop, Vector2 _force, Vector2 _newPos,Vector3 _newRot,  int _layer) 
+                             float _hitStop, Vector2 _force, Vector2 _newPos,Vector3 _newRot,  int _layer, AudioClip _destroySound = null) 
     { 
         trailDuration = _trailDuration;
         duration = _duration;
@@ -31,6 +33,7 @@ public class Projectile : MonoBehaviour
         currentPos = newPos;
         transform.right = newRot;
         trail.Clear();
+        destroySound = _destroySound;
     }
     public void OnEnable()
     {
@@ -84,8 +87,6 @@ public class Projectile : MonoBehaviour
             Debug.Log("Collision");
             charScript.TakeDamage(damage);
             Manager.instance.HitStop(hitStop);
-
-
         }
         DeactivatePrep();
     }
@@ -121,9 +122,13 @@ public class Projectile : MonoBehaviour
     //}
     private void DeactivatePrep()
     {
+        if (this.destroySound != null)
+        {
+            Game.AudioService.PlaySound(this.destroySound, transform, 0.25f);
+        }
+
         rb.simulated = false;
         Invoke("Deactivate", trail.time);
-        
     }
     
 

@@ -7,6 +7,7 @@ using static Framework;
 public class ProjectileGunBase : Ability
 {
     public AudioClip sound;
+    public AudioClip hitSound;
     public float velocity = 2f;
     public Manager.PoolType projectile;
     public float spreadDeg = 0f;
@@ -70,7 +71,8 @@ public class ProjectileGunBase : Ability
                                               new Vector2(velocity * 5, velocity * 5),
                                               pos,
                                               direction,
-                                              (int)playerMask
+                                              (int)playerMask,
+                                              hitSound
                                               );
                 currentProjectile.SetActive(true);
             }
