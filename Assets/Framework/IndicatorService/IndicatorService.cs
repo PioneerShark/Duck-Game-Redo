@@ -55,4 +55,15 @@ public class IndicatorService : MonoBehaviour, IIndicatorService
 
         return indicator2D;
     }
+
+    public LineIndicator2D CreateLineIndicator(Vector2 start, Vector2 end, float duration, float width)
+    {
+        LineIndicator2D indicator2D = CreateLineIndicator();
+
+        indicator2D.duration = duration;
+        indicator2D.SetPosition(start, end);
+        indicator2D.SetSize(width);
+
+        return indicator2D;
+    }
 }

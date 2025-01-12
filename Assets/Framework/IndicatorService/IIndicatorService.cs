@@ -8,4 +8,5 @@ public interface IIndicatorService : IFrameworkService
     
     LineIndicator2D CreateLineIndicator();
     LineIndicator2D CreateLineIndicator(Vector2 start, Vector2 end, float duration);
+    LineIndicator2D CreateLineIndicator(Vector2 start, Vector2 end, float duration, float width);
 }

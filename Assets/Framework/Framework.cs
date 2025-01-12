@@ -1,7 +1,6 @@
 using UnityEngine;
 
 // NOTE Lazy Loading is being used, the framework itself, nor the services it has won't be instanced unless needed.
-
 public sealed class Framework : MonoBehaviour
 {
     private Framework() {}
