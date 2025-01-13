@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class Character2D : Entity2D
@@ -155,26 +154,24 @@ public class Character2D : Entity2D
 
     public void SetAttack(bool newIsAttacking)
     {
+        
         this.isAttacking = newIsAttacking;
         if (this.isAttacking)
         {
             int cost = abilityHolder.GetCost(1);
             if (cost <= ammo)
             {
+                Debug.Log("trigger");
                 bool shot = abilityHolder.TriggerAbility(1);
-                if (shot)
-                {
-                    ammo -= cost;
-                    Manager.instance.UpdateAmmoSlider((float)ammo / (float)ammoMax);
-                }
-                    
-                
             }
-            else abilityHolder.CancelAbility(1);
+            
+            //else abilityHolder.CancelAbility(1);
+            
 
         }
         else
         {
+            Debug.Log("cancel");
             abilityHolder.CancelAbility(1);
         }
     }
@@ -194,6 +191,16 @@ public class Character2D : Entity2D
         abilityHolder.TriggerAbility(0);
     }
 
+    public bool DeductAmmo(int cost)
+    {
+        if (cost<= ammo)
+        {
+            ammo -= cost;
+            return true;
+        }
+        return false;
+    }
+
     public void VelocityOverride(bool start, Vector3 velocity) {
         velocityOverride = start;
         overrideVelocity = velocity;
@@ -203,6 +210,12 @@ public class Character2D : Entity2D
     {
         base.ModifyHealth(value);
         if (isPlayer) Manager.instance.UpdateHealthSlider(healthMax, health);
+    }
+
+    public void SwapWeapon(ProjectileGunBase weapon) {
+        //weapon.model;
+        abilityHolder.abilities[1] = weapon;
+        abilityHolder.RefreshAbilities();
     }
 
     void OnDrawGizmos()

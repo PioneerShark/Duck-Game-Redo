@@ -15,14 +15,20 @@ MonoBehaviour:
   name: 
   damage: 1
   cooldown: 5
-  activeTime: 1.2
+  activeTime: 0
+  cost: 0
   inputType: 0
-  velocity: 5
   projectile: 2
-  spread: 0
-  playerMask: 11
   duration: 2
-  trailDuration: 0
+  trailDuration: 2
   scale: 0.5
   hitStop: 0.01
+  model: {fileID: 0}
+  shotCount: 1
+  burstCount: 1
+  spreadDeg: 0
+  velocity: 2
+  damageType: 11
+  sound: {fileID: 0}
+  hitSound: {fileID: 0}
   activationTime: 1.2

@@ -8,9 +8,10 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Melee : Ability
 {
+    [Header("Melee Properties")]
     public float scale = 2f;
     public GameObject meleeObject;
-    public Layers playerMask;
+    public Layers damageType;
     public float duration = 0.1f;
     public float hitStop = 1f;
 
@@ -26,7 +27,7 @@ public class Melee : Ability
         Character2D character2D = (Character2D)parent.GetComponent(typeof(Character2D));
         GameObject currentMelee = Instantiate(meleeObject, character2D.position, Quaternion.identity, parent.transform);
         
-        currentMelee.layer = (int)playerMask;
+        currentMelee.layer = (int)damageType;
         currentMelee.GetComponent<MeleeObject>().duration = duration;
         currentMelee.GetComponent<MeleeObject>().damage = damage;
         currentMelee.GetComponent<MeleeObject>().hitStop = hitStop;

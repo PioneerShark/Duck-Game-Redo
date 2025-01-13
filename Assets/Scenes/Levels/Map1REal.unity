@@ -5502,6 +5502,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!4 &589570658 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4360805661639088671, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
+  m_PrefabInstance: {fileID: 4184059624752760020}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &593414068
 GameObject:
   m_ObjectHideFlags: 0
@@ -6647,11 +6652,6 @@ CanvasRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6347569173108510222, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
   m_PrefabInstance: {fileID: 282848561141899681}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1691235056 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1790853277565802706, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-  m_PrefabInstance: {fileID: 4184059624752760020}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1811844343
 GameObject:
@@ -8605,11 +8605,15 @@ PrefabInstance:
     - target: {fileID: 1439335135913094813, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
       propertyPath: 'abilities.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 3ee31a27c9b6dc94d9a6c4d6981597a5, type: 2}
+      objectReference: {fileID: 11400000, guid: 850e659ff4eb75d4cacb9ae88a1a3bc1, type: 2}
     - target: {fileID: 1460911977412180869, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
       propertyPath: m_Name
       value: TestCharacter2D
       objectReference: {fileID: 0}
+    - target: {fileID: 2370332419356842494, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5184893276893406594, guid: 5fdc025e913ce82449cec6ecb43cdfa0, type: 3}
     - target: {fileID: 7045350247206220744, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
@@ -8649,6 +8653,10 @@ PrefabInstance:
     - target: {fileID: 7045350247206220744, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111962211318127075, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.273
       objectReference: {fileID: 0}
     - target: {fileID: 8579816554536744134, guid: 5324282ad7d1dc9499e2536fb10d9cd1, type: 3}
       propertyPath: ammoMax
@@ -32033,22 +32041,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2649255861128105271, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Size.x
-      value: 1.1807308
-      objectReference: {fileID: 0}
-    - target: {fileID: 2649255861128105271, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Size.y
-      value: 0.5428581
-      objectReference: {fileID: 0}
-    - target: {fileID: 2649255861128105271, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.1860466
-      objectReference: {fileID: 0}
-    - target: {fileID: 2649255861128105271, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.9621258
-      objectReference: {fileID: 0}
     - target: {fileID: 2709496097427487344, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -32060,46 +32052,10 @@ PrefabInstance:
     - target: {fileID: 2770357419807079002, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
       propertyPath: firePoint
       value: 
-      objectReference: {fileID: 1691235056}
-    - target: {fileID: 4334186011322296401, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Mass
-      value: 1000000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4334186011322296401, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4572506313856203944, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 589570658}
     - target: {fileID: 5231098806425881985, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
       propertyPath: m_Name
       value: BowmanAgent
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231098806425881985, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495402007275487844, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Size.x
-      value: 1.0757332
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495402007275487844, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Size.y
-      value: 1.9685345
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495402007275487844, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.11705303
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495402007275487844, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.18615627
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495402007275487844, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7471554550794943527, guid: 5c206da7dc266ff45969b8192394f238, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32230,7 +32186,7 @@ PrefabInstance:
       objectReference: {fileID: 881300167}
     - target: {fileID: 3508560160615064091, guid: cf6a712e47a659447a7c1c676ddc9499, type: 3}
       propertyPath: bulletAmount
-      value: 300
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3508560160615064091, guid: cf6a712e47a659447a7c1c676ddc9499, type: 3}
       propertyPath: healthSlider

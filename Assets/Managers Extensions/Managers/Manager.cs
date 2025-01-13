@@ -96,7 +96,8 @@ public class Manager : MonoBehaviour
         {
             GameObject obj = Instantiate(bulletPrefab);
             obj.SetActive(false);
-            obj.transform.parent = GameObject.Find("Bullets").transform;
+            obj.transform.SetParent(GameObject.Find("Bullets").transform);
+            obj.GetComponent<Projectile>().SetPool(GameObject.Find("Bullets").transform);
             pooledBullets.Add(obj);
         }
 
@@ -104,7 +105,7 @@ public class Manager : MonoBehaviour
         {
             GameObject obj = Instantiate(tracerPrefab);
             obj.SetActive(false);
-            obj.transform.parent = GameObject.Find("Tracers").transform;
+            obj.transform.SetParent(GameObject.Find("Tracers").transform);
             pooledTracers.Add(obj);
         }
 
@@ -112,7 +113,8 @@ public class Manager : MonoBehaviour
         {
             GameObject obj = Instantiate(arrowPrefab);
             obj.SetActive(false);
-            obj.transform.parent = GameObject.Find("Arrows").transform;
+            obj.transform.SetParent(GameObject.Find("Arrows").transform);
+            obj.GetComponent<Projectile>().SetPool(GameObject.Find("Arrows").transform);
             pooledArrows.Add(obj);
         }
     }

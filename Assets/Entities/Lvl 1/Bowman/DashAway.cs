@@ -5,8 +5,8 @@ using Unity.AppUI.Core;
 using Unity.Behavior;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.LightTransport;
 using UnityEngine.TextCore.Text;
+using static Framework;
 
 [CreateAssetMenu]
 public class DashAway : Ability
@@ -65,6 +65,9 @@ public class DashAway : Ability
         pathSelected = Random.Range((rayHits.Count*3)/4, rayHits.Count - 1);
         //pathSelected = rayHits.Count - 1;
         float speed = 1f;
+        Game.IndicatorService.CreateAreaIndicator(parent.transform.position, parent.transform.position, 1f, 2f);
+        Game.IndicatorService.CreateLineIndicator(parent.transform.position, rayHits[pathSelected], 1f, 2f);
+        Game.IndicatorService.CreateAreaIndicator(rayHits[pathSelected], rayHits[pathSelected], 1f, 2f);
         if (activeTime > 0)
         {
             speed = Vector2.Distance((Vector2)parent.transform.position , rayHits[pathSelected]) / activeTime;

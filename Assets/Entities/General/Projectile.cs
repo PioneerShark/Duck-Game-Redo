@@ -3,6 +3,7 @@ using static Framework;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField]
     private TrailRenderer trail;
     private Rigidbody2D rb;
     private float damage, duration, hitStop, trailDuration;
@@ -13,6 +14,8 @@ public class Projectile : MonoBehaviour
     private Vector3 beforeLast;
     private bool detectLast;
     private AudioClip destroySound;
+    private Transform pool;
+    private Vector3 trailPos;
 
     public void SetVariables(float _trailDuration, float _duration, float _damage, float _scale,
                              float _hitStop, Vector2 _force, Vector2 _newPos,Vector3 _newRot,  int _layer, AudioClip _destroySound = null) 
@@ -37,20 +40,32 @@ public class Projectile : MonoBehaviour
     }
     public void OnEnable()
     {
+        
+        Debug.Log("activated");
         rb.simulated = true;
         trail.time = trailDuration;
         rb.AddForce(force, ForceMode2D.Impulse);
         detectLast = true;
         //Debug.Log(duration);
         Invoke("DeactivatePrep", duration);
-
+        trail.transform.localPosition = trailPos;
 
     }
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        trail = this.GetComponent<TrailRenderer>();
+        trailPos = trail.transform.localPosition;
     }
+    private void Start()
+    {
+        
+    }
+    public void SetPool(Transform setPool)
+    {
+        pool = setPool;
+        transform.SetParent(pool, true);
+    }
+
     private void Update()
     {
         currentPos = transform.position;
@@ -88,6 +103,8 @@ public class Projectile : MonoBehaviour
             charScript.TakeDamage(damage);
             Manager.instance.HitStop(hitStop);
         }
+        trail.transform.SetParent(null, true);
+        transform.SetParent(collision.transform, true);
         DeactivatePrep();
     }
 
@@ -124,7 +141,7 @@ public class Projectile : MonoBehaviour
     {
         if (this.destroySound != null)
         {
-            Game.AudioService.PlaySFX(this.destroySound, transform, 0.25f);
+            //Game.AudioService.PlaySFX(this.destroySound, transform, 0.25f);
         }
 
         rb.simulated = false;
@@ -135,6 +152,10 @@ public class Projectile : MonoBehaviour
     void Deactivate()
     {
         CancelInvoke();
+        
+        
         this.gameObject.SetActive(false);
+        trail.gameObject.transform.SetParent(transform, true);
+        transform.SetParent(pool, true);
     }
 }

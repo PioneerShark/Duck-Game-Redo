@@ -157,7 +157,7 @@ MonoBehaviour:
   colourChangeTime: 0.5
   transparency: 0
   zone: {fileID: 4269829539057694110}
-  zoneImage: {fileID: 481644141040344453}
+  zoneImage: {fileID: 0}
   sizeStart: 4
   sizeEnd: 4
   positionStart: {x: 0, y: 0, z: 0}
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8514747844585609179, guid: dc28219bd34f432479375d75a02e8b63, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebaac0d18c369ef4bb7f6ce318786b59, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

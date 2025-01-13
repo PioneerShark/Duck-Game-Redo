@@ -16,6 +16,7 @@ MonoBehaviour:
   damage: 0
   cooldown: 6
   activeTime: 0.4
+  cost: 0
   inputType: 1
   dashDistance: 10
   playerMask: 11

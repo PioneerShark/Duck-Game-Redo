@@ -16,9 +16,10 @@ MonoBehaviour:
   damage: 10
   cooldown: 6
   activeTime: 2
+  cost: 0
   inputType: 1
   scale: 2
   meleeObject: {fileID: 1421633523605559238, guid: 4d75cb64e84005a439d69e2f1a357147, type: 3}
-  playerMask: 11
+  damageType: 11
   duration: 0.1
   hitStop: 0.1

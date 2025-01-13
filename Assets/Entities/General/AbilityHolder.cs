@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Playables;
 using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
@@ -13,6 +12,7 @@ public class AbilityHolder : MonoBehaviour
     private List<AbilityState> states;
     private List<bool> currentPerformer;
     private bool performing;
+    [SerializeField]
     int abilityCount;
     enum AbilityState { 
         ready,
@@ -117,6 +117,7 @@ public class AbilityHolder : MonoBehaviour
 
     private void SingleInputUpdate(int i)
     {
+        Debug.Log("singleState");
         switch (states[i])
         {
             case AbilityState.active:
@@ -149,6 +150,7 @@ public class AbilityHolder : MonoBehaviour
 
     private void RepeatInputUpdate(int i)
     {
+        Debug.Log("repeatState");
         switch (states[i])
         {
             case AbilityState.ready:

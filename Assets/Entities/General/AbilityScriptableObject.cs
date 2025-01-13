@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ability : ScriptableObject
 {
+    [Header("Base Properties")]
     public new string name;
     public float damage;
     public float cooldown;

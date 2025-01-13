@@ -6,18 +6,28 @@ using static Framework;
 [CreateAssetMenu]
 public class ProjectileGunBase : Ability
 {
-    public AudioClip sound;
-    public AudioClip hitSound;
-    public float velocity = 2f;
     public Manager.PoolType projectile;
-    public float spreadDeg = 0f;
-    public Layers playerMask;
+
+    
     public float duration = 2f;
     public float trailDuration = 1f;
     public float scale = 2f;
     public float hitStop = 0.01f;
+
+    public Sprite model;
+
+    [Header("Shooting Properties")]
     public int shotCount = 1;
     public int burstCount = 1;
+    public float spreadDeg = 0f;
+    public float velocity = 2f;
+    public Layers damageType;
+
+    [Header("Sound Properties")]
+    public AudioClip sound;
+    public AudioClip hitSound;
+    
+    
     public override void Activate(GameObject parent)
     {
         Character2D character2D = (Character2D)parent.GetComponent(typeof(Character2D));
@@ -36,6 +46,7 @@ public class ProjectileGunBase : Ability
         direction.y = (sin * x) + (cos * y);
         for (int j = 0; j < burstCount; j++) 
         {
+            if (!character2D.DeductAmmo(cost)) break;
             if (this.sound != null)
             {
                 Game.AudioService.PlaySFX(this.sound, character2D.transform, 1);
@@ -71,7 +82,7 @@ public class ProjectileGunBase : Ability
                                               new Vector2(velocity * 5, velocity * 5),
                                               pos,
                                               direction,
-                                              (int)playerMask,
+                                              (int)damageType,
                                               hitSound
                                               );
                 currentProjectile.SetActive(true);

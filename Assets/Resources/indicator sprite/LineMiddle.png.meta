@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: a8ac5c5351150994e9914c0a43a81245
+guid: 7b3695e7cfc2b9349a4ae68dc231e93c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4346244404228752641
-    second: Arrow_0
+      213: 42320129730748190
+    second: LineMiddle_0
+  - first:
+      213: -4052990977442578539
+    second: LineMiddle_1
+  - first:
+      213: 7555115070908555971
+    second: LineMiddle_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,13 +46,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,40 +102,71 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Arrow_0
+      name: LineMiddle_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 256
-        height: 55
-      alignment: 9
-      pivot: {x: 0.5006107, y: 0.639323}
+        x: 0
+        y: 929
+        width: 1024
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ffa7ae2edb90fa3c0800000000000000
-      internalID: -4346244404228752641
+      spriteID: e1f137b0fe9569000800000000000000
+      internalID: 42320129730748190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LineMiddle_1
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 202
+        width: 494
+        height: 624
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59ffbaffd22e0c7c0800000000000000
+      internalID: -4052990977442578539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LineMiddle_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 33
+        width: 1024
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c264b6d02929d860800000000000000
+      internalID: 7555115070908555971
       vertices: []
       indices: 
       edges: []
@@ -138,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5ccf589d7741e7b43b65860e4862bcca
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Arrow_0: -4346244404228752641
+      LineMiddle_0: 42320129730748190
+      LineMiddle_1: -4052990977442578539
+      LineMiddle_2: 7555115070908555971
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

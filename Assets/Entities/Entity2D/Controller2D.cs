@@ -36,6 +36,7 @@ public class Controller2D : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         attackInput = context.action.triggered;
+        targetCharacter.SetAttack(attackInput);
     }
 
     void Update()
@@ -43,7 +44,7 @@ public class Controller2D : MonoBehaviour
         if (targetCharacter != null)
         {
             targetCharacter.SetMoveVector(movementInput);
-            targetCharacter.SetAttack(attackInput);
+            
 
             if (dashInput)
             {
