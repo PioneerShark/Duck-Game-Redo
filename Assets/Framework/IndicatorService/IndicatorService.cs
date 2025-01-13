@@ -1,16 +1,25 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IndicatorService : MonoBehaviour, IIndicatorService
 {
     // CREATE TRACKING INDICATOR
     [SerializeField] private ZoneIndicator2D AreaIndicatorPrefab;
     [SerializeField] private LineIndicator2D LineIndicatorPrefab;
+    private Texture lineStart, lineMiddle, lineEnd, lineEndSimple, lineMiddleSimple, lineStartSimple, areaBase;
 
     public void Setup()
     {
         AreaIndicatorPrefab = Resources.Load<ZoneIndicator2D>("Prefabs/AreaIndicator2D");
         LineIndicatorPrefab = Resources.Load<LineIndicator2D>("Prefabs/LineIndicator2D");
+        areaBase = Resources.Load<Texture>("Indicator Sprites/Mark2");
+        lineStart = Resources.Load<Texture>("Indicator Sprites/LineStart");
+        lineMiddle = Resources.Load<Texture>("Indicator Sprites/LineMiddle");
+        lineEnd = Resources.Load<Texture>("Indicator Sprites/LineEnd");
+        //lineStartSimple = Resources.Load<RawImage>("Indicator Sprites/");
+        //lineEndSimple = Resources.Load<RawImage>("Indicator Sprites/");
+        
     }
 
     public ZoneIndicator2D CreateZone()
@@ -33,6 +42,7 @@ public class IndicatorService : MonoBehaviour, IIndicatorService
     {
         ZoneIndicator2D indicator2D = CreateZone();
 
+        indicator2D.SetImage(areaBase);
         indicator2D.duration = duration;
         indicator2D.SetPosition(start, end);
         indicator2D.SetSize(size);
@@ -67,11 +77,15 @@ public class IndicatorService : MonoBehaviour, IIndicatorService
         return indicator2D;
     }
 
-    public (LineIndicator2D line, ZoneIndicator2D startZone, ZoneIndicator2D endZone) CreateCompositeLine(Vector2 start, Vector2 end, float duration = 3, float width = 1)
+    public (LineIndicator2D line, ZoneIndicator2D startZone, ZoneIndicator2D endZone) CreateCompositeLine(Vector2 start, Vector2 end, float duration = 3, float width = 1, bool lineSimple = false)
     {
         LineIndicator2D line = CreateLine(start, end, duration, width);
         ZoneIndicator2D startZone = CreateZone(start, start, duration, width);
         ZoneIndicator2D endZone = CreateZone(end, end, duration, width);
+
+        line.SetImage(lineMiddle);
+        startZone.SetImage(lineEnd);
+        endZone.SetImage(lineEnd);
 
         startZone.lookAt = endZone.transform;
         startZone.lockTo = line.startTransform;
@@ -81,4 +95,5 @@ public class IndicatorService : MonoBehaviour, IIndicatorService
 
         return (line, startZone, endZone);
     }
+
 }

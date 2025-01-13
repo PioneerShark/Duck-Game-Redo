@@ -8,7 +8,7 @@ public class ProjectileGunBase : Ability
 {
     public Manager.PoolType projectile;
 
-    
+    [Header("Projectile Properties")]
     public float duration = 2f;
     public float trailDuration = 1f;
     public float scale = 2f;
@@ -17,8 +17,11 @@ public class ProjectileGunBase : Ability
     public Sprite model;
 
     [Header("Shooting Properties")]
+    public bool aimed = true;
+    public bool equalSpread = false;
     public int shotCount = 1;
     public int burstCount = 1;
+    public float burstRotDegStep = 0f;
     public float spreadDeg = 0f;
     public float velocity = 2f;
     public Layers damageType;
@@ -34,16 +37,14 @@ public class ProjectileGunBase : Ability
         ShootProjectile(character2D);
         
     }
-    private IEnumerator StartShootProjectile(Character2D character2D)
+    protected virtual IEnumerator StartShootProjectile(Character2D character2D)
     {
-        float spreadValue = Random.Range(-spreadDeg / 2, spreadDeg / 2);
-        float sin = Mathf.Sin(spreadValue * Mathf.Deg2Rad);
-        float cos = Mathf.Cos(spreadValue * Mathf.Deg2Rad);
-        float x = character2D.aimVector.x;
-        float y = character2D.aimVector.y;
+        float spreadValue;
+        float sin;
+        float cos;
+        float x;
+        float y;
         Vector2 direction;
-        direction.x = (cos * x) - (sin * y);
-        direction.y = (sin * x) + (cos * y);
         for (int j = 0; j < burstCount; j++) 
         {
             if (!character2D.DeductAmmo(cost)) break;
@@ -54,18 +55,67 @@ public class ProjectileGunBase : Ability
             
             for (int i = 0; i < shotCount; i++)
             {
-                spreadValue = Random.Range(-spreadDeg / 2, spreadDeg / 2);
-                sin = Mathf.Sin(spreadValue * Mathf.Deg2Rad);
-                cos = Mathf.Cos(spreadValue * Mathf.Deg2Rad);
-                x = character2D.aimVector.x;
-                y = character2D.aimVector.y;
-                direction.x = (cos * x) - (sin * y);
-                direction.y = (sin * x) + (cos * y);
+                //if (equalSpread && shotCount % 2 == 1)
+                //{
+                //    Debug.Log("eqeven");
+                //    if (i == 1)
+                //        spreadValue = 0;
+                //    else if (i == (shotCount / 2))
+                //        spreadValue = -spreadDeg;
+                //    else 
+                //        spreadValue = (((i+1) * spreadDeg) / shotCount) - spreadDeg/2;
+
+                //    sin = Mathf.Sin(spreadValue * Mathf.Deg2Rad);
+                //    cos = Mathf.Cos(spreadValue * Mathf.Deg2Rad);
+                //    x = character2D.aimVector.x;
+                //    y = character2D.aimVector.y;
+                //    direction.x = (cos * x) - (sin * y);
+                //    direction.y = (sin * x) + (cos * y);
+                //}
+                //else
+                if (equalSpread)
+                {
+                    Debug.Log("equal");
+                    spreadValue = (spreadDeg / 2 - (spreadDeg / shotCount) * i) - spreadDeg / (shotCount * 2);
+                    spreadValue += burstRotDegStep * j;
+                    sin = Mathf.Sin(spreadValue * Mathf.Deg2Rad);
+                    cos = Mathf.Cos(spreadValue * Mathf.Deg2Rad);
+                    if (aimed) 
+                    {
+                        x = character2D.aimVector.x;
+                        y = character2D.aimVector.y;
+                    }
+                    else
+                    {
+                        x = 0;
+                        y = 0;
+                    }
+                    
+                    direction.x = (cos * x) - (sin * y);
+                    direction.y = (sin * x) + (cos * y);
+                }
+                else
+                {
+                    spreadValue = Random.Range(-spreadDeg / 2, spreadDeg / 2);
+                    sin = Mathf.Sin(spreadValue * Mathf.Deg2Rad);
+                    cos = Mathf.Cos(spreadValue * Mathf.Deg2Rad);
+                    if (aimed)
+                    {
+                        x = character2D.aimVector.x;
+                        y = character2D.aimVector.y;
+                    }
+                    else
+                    {
+                        x = 0;
+                        y = 0;
+                    }
+                    direction.x = (cos * x) - (sin * y);
+                    direction.y = (sin * x) + (cos * y);
+                }
+                
                 ShootObj(character2D.firePoint.position, direction);
             }
-            Debug.Log(activeTime / (float)burstCount);
             yield return new WaitForSeconds(activeTime / (float)burstCount);
-            //activeTime / (float)burstCount;
         }
 
         void ShootObj(Vector3 pos, Vector2 direction)

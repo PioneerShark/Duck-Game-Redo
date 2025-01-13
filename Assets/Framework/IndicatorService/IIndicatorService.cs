@@ -10,5 +10,5 @@ public interface IIndicatorService : IFrameworkService
     LineIndicator2D CreateLine(Vector2 start, Vector2 end, float duration);
     LineIndicator2D CreateLine(Vector2 start, Vector2 end, float duration, float width);
 
-    (LineIndicator2D line, ZoneIndicator2D startZone, ZoneIndicator2D endZone) CreateCompositeLine(Vector2 start, Vector2 end, float duration, float width);
+    (LineIndicator2D line, ZoneIndicator2D startZone, ZoneIndicator2D endZone) CreateCompositeLine(Vector2 start, Vector2 end, float duration, float width, bool lineSimple);
 }

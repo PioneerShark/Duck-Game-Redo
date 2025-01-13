@@ -9,26 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 690f389e3028ac2469bdf6824cc934c2, type: 3}
-  m_Name: New Bow Shot
+  m_Script: {fileID: 11500000, guid: ad2a177e64d816b4ab9ec9799be6f30f, type: 3}
+  m_Name: Shuriken Spread
   m_EditorClassIdentifier: 
-  name: 
-  damage: 1
-  cooldown: 5
-  activeTime: 0
+  name: ShurikenSpread
+  damage: 3
+  cooldown: 3
+  activeTime: 5
   cost: 0
-  inputType: 0
-  projectile: 1
-  duration: 2
-  trailDuration: 2
-  scale: 0.5
+  inputType: 1
+  projectile: 0
+  duration: 10
+  trailDuration: 1
+  scale: 2
   hitStop: 0.01
   model: {fileID: 0}
-  shotCount: 1
-  burstCount: 1
+  aimed: 1
+  equalSpread: 0
+  shotCount: 4
+  burstCount: 30
+  burstRotDegStep: 10
   spreadDeg: 0
   velocity: 2
   damageType: 11
   sound: {fileID: 0}
   hitSound: {fileID: 0}
-  activationTime: 1.2

@@ -161,7 +161,6 @@ public class Character2D : Entity2D
             int cost = abilityHolder.GetCost(1);
             if (cost <= ammo)
             {
-                Debug.Log("trigger");
                 bool shot = abilityHolder.TriggerAbility(1);
             }
             
@@ -171,7 +170,6 @@ public class Character2D : Entity2D
         }
         else
         {
-            Debug.Log("cancel");
             abilityHolder.CancelAbility(1);
         }
     }

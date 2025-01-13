@@ -13,8 +13,7 @@ public class Ability : ScriptableObject
     public enum InputType
     {
         repeat,
-        single,
-        extend
+        single
     };
     public InputType inputType;
     

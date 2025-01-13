@@ -26,11 +26,7 @@ public class Manager : MonoBehaviour
     
 
     [Header("Pooling")]
-    [Header("Tracers")]
 
-    [SerializeField] private int tracerAmount = 20;
-    [SerializeField] private GameObject tracerPrefab;
-    private List<GameObject> pooledTracers = new List<GameObject>();
 
     [Header("Bullets")]
 
@@ -49,7 +45,6 @@ public class Manager : MonoBehaviour
 
     public enum PoolType
     {
-        Tracers,
         Bullets,
         Arrows
     };
@@ -101,13 +96,6 @@ public class Manager : MonoBehaviour
             pooledBullets.Add(obj);
         }
 
-        for (int i = 0; i < tracerAmount; i++)
-        {
-            GameObject obj = Instantiate(tracerPrefab);
-            obj.SetActive(false);
-            obj.transform.SetParent(GameObject.Find("Tracers").transform);
-            pooledTracers.Add(obj);
-        }
 
         for (int i = 0; i < arrowAmount; i++)
         {
@@ -123,8 +111,6 @@ public class Manager : MonoBehaviour
     {
         switch (pool) 
         {
-            case PoolType.Tracers:
-                return PoolTask(pooledTracers);
             case PoolType.Bullets:
                 return PoolTask(pooledBullets);
             case PoolType.Arrows:

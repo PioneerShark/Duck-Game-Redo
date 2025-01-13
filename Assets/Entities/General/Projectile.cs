@@ -41,7 +41,6 @@ public class Projectile : MonoBehaviour
     public void OnEnable()
     {
         
-        Debug.Log("activated");
         rb.simulated = true;
         trail.time = trailDuration;
         rb.AddForce(force, ForceMode2D.Impulse);
