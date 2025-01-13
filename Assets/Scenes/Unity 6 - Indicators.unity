@@ -652,6 +652,9 @@ MonoBehaviour:
   - {fileID: 705542590}
   - {fileID: 2067283126}
   audioClip: {fileID: 8300000, guid: c3ce541ad26401a4a8dd4dfef1e94e4b, type: 3}
+  textures:
+  - {fileID: 2800000, guid: 66a728126f5bdb242ba01c0de89e30fa, type: 3}
+  - {fileID: 2800000, guid: ebaac0d18c369ef4bb7f6ce318786b59, type: 3}
 --- !u!4 &1305986149
 Transform:
   m_ObjectHideFlags: 0

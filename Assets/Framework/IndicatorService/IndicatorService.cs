@@ -4,24 +4,24 @@ using UnityEngine;
 public class IndicatorService : MonoBehaviour, IIndicatorService
 {
     // CREATE TRACKING INDICATOR
-    [SerializeField] private AreaIndicator2D AreaIndicatorPrefab;
+    [SerializeField] private ZoneIndicator2D AreaIndicatorPrefab;
     [SerializeField] private LineIndicator2D LineIndicatorPrefab;
 
     public void Setup()
     {
-        AreaIndicatorPrefab = Resources.Load<AreaIndicator2D>("Prefabs/AreaIndicator2D");
+        AreaIndicatorPrefab = Resources.Load<ZoneIndicator2D>("Prefabs/AreaIndicator2D");
         LineIndicatorPrefab = Resources.Load<LineIndicator2D>("Prefabs/LineIndicator2D");
     }
 
-    public AreaIndicator2D CreateAreaIndicator()
+    public ZoneIndicator2D CreateZone()
     {
-        AreaIndicator2D indicator2D = Instantiate(AreaIndicatorPrefab, Vector3.zero, Quaternion.identity);
+        ZoneIndicator2D indicator2D = Instantiate(AreaIndicatorPrefab, Vector3.zero, Quaternion.identity);
         return indicator2D;
     }
 
-    public AreaIndicator2D CreateAreaIndicator(Vector2 start, Vector2 end, float duration)
+    public ZoneIndicator2D CreateZone(Vector2 start, Vector2 end, float duration)
     {
-        AreaIndicator2D indicator2D = CreateAreaIndicator();
+        ZoneIndicator2D indicator2D = CreateZone();
 
         indicator2D.duration = duration;
         indicator2D.SetPosition(start, end);
@@ -29,9 +29,9 @@ public class IndicatorService : MonoBehaviour, IIndicatorService
         return indicator2D;
     }
 
-    public AreaIndicator2D CreateAreaIndicator(Vector2 start, Vector2 end, float duration, float size)
+    public ZoneIndicator2D CreateZone(Vector2 start, Vector2 end, float duration, float size)
     {
-        AreaIndicator2D indicator2D = CreateAreaIndicator();
+        ZoneIndicator2D indicator2D = CreateZone();
 
         indicator2D.duration = duration;
         indicator2D.SetPosition(start, end);
@@ -40,15 +40,15 @@ public class IndicatorService : MonoBehaviour, IIndicatorService
         return indicator2D;
     }
 
-    public LineIndicator2D CreateLineIndicator()
+    public LineIndicator2D CreateLine()
     {
         LineIndicator2D indicator2D = Instantiate(LineIndicatorPrefab, Vector3.zero, Quaternion.identity);
         return indicator2D;
     }
 
-    public LineIndicator2D CreateLineIndicator(Vector2 start, Vector2 end, float duration)
+    public LineIndicator2D CreateLine(Vector2 start, Vector2 end, float duration)
     {
-        LineIndicator2D indicator2D = CreateLineIndicator();
+        LineIndicator2D indicator2D = CreateLine();
 
         indicator2D.duration = duration;
         indicator2D.SetPosition(start, end);
@@ -56,14 +56,29 @@ public class IndicatorService : MonoBehaviour, IIndicatorService
         return indicator2D;
     }
 
-    public LineIndicator2D CreateLineIndicator(Vector2 start, Vector2 end, float duration, float width)
+    public LineIndicator2D CreateLine(Vector2 start, Vector2 end, float duration, float width)
     {
-        LineIndicator2D indicator2D = CreateLineIndicator();
+        LineIndicator2D indicator2D = CreateLine();
 
         indicator2D.duration = duration;
         indicator2D.SetPosition(start, end);
         indicator2D.SetSize(width);
 
         return indicator2D;
+    }
+
+    public (LineIndicator2D line, ZoneIndicator2D startZone, ZoneIndicator2D endZone) CreateCompositeLine(Vector2 start, Vector2 end, float duration = 3, float width = 1)
+    {
+        LineIndicator2D line = CreateLine(start, end, duration, width);
+        ZoneIndicator2D startZone = CreateZone(start, start, duration, width);
+        ZoneIndicator2D endZone = CreateZone(end, end, duration, width);
+
+        startZone.lookAt = endZone.transform;
+        startZone.lockTo = line.startTransform;
+
+        endZone.lookAt = startZone.transform;
+        endZone.lockTo = line.endTransform;
+
+        return (line, startZone, endZone);
     }
 }

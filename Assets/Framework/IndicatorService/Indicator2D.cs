@@ -131,5 +131,10 @@ public class Indicator2D : MonoBehaviour
         this.positionStart = position;
         this.positionEnd = position;
     }
+
+    public virtual void SetImage(Texture image)
+    {
+        this.zoneImage.texture = image;
+    }
 }
 

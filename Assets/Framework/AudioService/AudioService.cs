@@ -31,7 +31,7 @@ public class AudioService : MonoBehaviour, IAudioService
         sfxSource = Resources.Load<AudioSource>("Audio/SoundObject");
     }
 
-    public void PlaySFX(AudioClip audioClip, Transform spawnTransform, float volume)
+    public AudioSource PlaySFX(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(sfxSource, spawnTransform.position, Quaternion.identity);
         audioSource.outputAudioMixerGroup = this.audioMixer.FindMatchingGroups("SFX")[0];
@@ -41,6 +41,7 @@ public class AudioService : MonoBehaviour, IAudioService
 
         float audioLength = audioSource.clip.length;
         Destroy(audioSource.gameObject, audioLength);
+        return audioSource;
     }
 
     public void PlayOST(AudioClip audioClip, float volume = 1)

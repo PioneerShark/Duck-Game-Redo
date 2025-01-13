@@ -2,11 +2,13 @@ using UnityEngine;
 
 public interface IIndicatorService : IFrameworkService
 {
-    AreaIndicator2D CreateAreaIndicator();
-    AreaIndicator2D CreateAreaIndicator(Vector2 start, Vector2 end, float duration);
-    AreaIndicator2D CreateAreaIndicator(Vector2 start, Vector2 end, float duration, float size);
+    ZoneIndicator2D CreateZone();
+    ZoneIndicator2D CreateZone(Vector2 start, Vector2 end, float duration);
+    ZoneIndicator2D CreateZone(Vector2 start, Vector2 end, float duration, float size);
     
-    LineIndicator2D CreateLineIndicator();
-    LineIndicator2D CreateLineIndicator(Vector2 start, Vector2 end, float duration);
-    LineIndicator2D CreateLineIndicator(Vector2 start, Vector2 end, float duration, float width);
+    LineIndicator2D CreateLine();
+    LineIndicator2D CreateLine(Vector2 start, Vector2 end, float duration);
+    LineIndicator2D CreateLine(Vector2 start, Vector2 end, float duration, float width);
+
+    (LineIndicator2D line, ZoneIndicator2D startZone, ZoneIndicator2D endZone) CreateCompositeLine(Vector2 start, Vector2 end, float duration, float width);
 }

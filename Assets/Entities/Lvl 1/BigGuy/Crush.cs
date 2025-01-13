@@ -28,7 +28,7 @@ public class Crush : Melee
         //create indicator for where it lands and the radius for activeTime/4 or maybe 3*activeTime/4
         
         parent.transform.position = agent.target.GetComponentInParent<Transform>().position;
-        AreaIndicator2D areaIndicator2D = Game.IndicatorService.CreateAreaIndicator(parent.transform.position, parent.transform.position, activeTime/4, scale*1.5f);
+        ZoneIndicator2D areaIndicator2D = Game.IndicatorService.CreateZone(parent.transform.position, parent.transform.position, activeTime/4, scale*1.5f);
         anim.Play("Crush");
         yield return new WaitForSeconds(activeTime / 4);
         agent.hitbox.gameObject.layer = (int)Layers.Enemy;

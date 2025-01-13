@@ -1,8 +1,27 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LineIndicator2D : Indicator2D
 {
+    public Transform startTransform;
+    public Transform endTransform;
+
+    protected void Awake()
+    {
+        GameObject startObject = new GameObject("StartPoint");
+        startTransform = startObject.transform;
+
+        GameObject endObject = new GameObject("EndPoint");
+        endTransform = endObject.transform;
+
+        startTransform.SetParent(this.transform);
+        endTransform.SetParent(this.transform);
+
+        startTransform.position = positionStart;
+        endTransform.position = positionEnd;
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -11,6 +30,12 @@ public class LineIndicator2D : Indicator2D
     protected override void Update()
     {
         base.Update();
+
+        if (startTransform != null)
+            startTransform.position = positionStart;
+
+        if (endTransform != null)
+            endTransform.position = positionEnd;
 
         this.transform.position = Vector3.Lerp(this.positionStart, this.positionEnd, 0.5f);
         this.transform.right = (this.positionEnd - this.positionStart).normalized;
