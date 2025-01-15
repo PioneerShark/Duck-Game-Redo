@@ -2,13 +2,15 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
+using static Framework;
 
 public class AudioService : MonoBehaviour, IAudioService
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource ostSource;
-    [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource uiSource;
+    
+    [SerializeField] private SFXObject sfxObjectPrefab;
 
     public void Setup()
     {
@@ -28,19 +30,38 @@ public class AudioService : MonoBehaviour, IAudioService
         this.uiSource.playOnAwake = false;
         this.uiSource.outputAudioMixerGroup = this.audioMixer.FindMatchingGroups("UI")[0];
 
-        sfxSource = Resources.Load<AudioSource>("Audio/SoundObject");
+        sfxObjectPrefab = Resources.Load<AudioSource>("Audio/SFXObject").GetComponent<SFXObject>();
+        Game.PoolService.CreatePool(sfxObjectPrefab, 32);
+    }
+
+    public SFXObject CreateSFX(AudioClip audioClip, float volume)
+    {
+        AudioSource audioSource = Instantiate(sfxObjectPrefab, Vector3.zero, Quaternion.identity).GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = this.audioMixer.FindMatchingGroups("SFX")[0];
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+
+        return audioSource.gameObject.GetComponent<SFXObject>();
     }
 
     public AudioSource PlaySFX(AudioClip audioClip, Transform spawnTransform, float volume)
     {
-        AudioSource audioSource = Instantiate(sfxSource, spawnTransform.position, Quaternion.identity);
+        return PlaySFX(audioClip, spawnTransform.position, volume);
+    }
+
+    public AudioSource PlaySFX(AudioClip audioClip, Vector3 spawnPosition, float volume)
+    {
+        SFXObject sfxObject = Game.PoolService.FetchObject<SFXObject>();
+        sfxObject.transform.position = spawnPosition;
+
+        AudioSource audioSource = sfxObject.GetComponent<AudioSource>();
         audioSource.outputAudioMixerGroup = this.audioMixer.FindMatchingGroups("SFX")[0];
         audioSource.clip = audioClip;
         audioSource.volume = volume;
         audioSource.Play();
 
         float audioLength = audioSource.clip.length;
-        Destroy(audioSource.gameObject, audioLength);
+        sfxObject.ScheduleRelease(audioLength);
         return audioSource;
     }
 
