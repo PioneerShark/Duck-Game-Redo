@@ -13,20 +13,23 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   name: Sniper
-  damage: 40
-  cooldown: 1
-  activeTime: 0.5
-  cost: 40
+  damage: 45
+  cooldown: 0.75
+  activeTime: 1
+  cost: 50
   inputType: 0
   projectile: 0
   duration: 5
-  trailDuration: 0.01
+  trailDuration: 0.02
   scale: 0.5
   hitStop: 0.01
   model: {fileID: 5184893276893406594, guid: 5fdc025e913ce82449cec6ecb43cdfa0, type: 3}
+  firepoint: {x: 1.254, y: 0.046, z: 0}
+  aimed: 1
   equalSpread: 0
   shotCount: 1
   burstCount: 1
+  burstRotDegStep: 0
   spreadDeg: 0
   velocity: 50
   damageType: 9

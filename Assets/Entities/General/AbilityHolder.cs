@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Playables;
 using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
@@ -11,7 +12,7 @@ public class AbilityHolder : MonoBehaviour
     private List<float> activeTimes;
     private List<AbilityState> states;
     private List<bool> currentPerformer;
-    private bool performing;
+    public bool performing;
     [SerializeField]
     int abilityCount;
     enum AbilityState { 
@@ -28,7 +29,24 @@ public class AbilityHolder : MonoBehaviour
     {
         return 1 - (cooldowns[ability] / abilities[ability].cooldown);
     }
-
+    public Ability getAbilityByString(string ability) { 
+        for (int i = 0; i < abilities.Count; i++)
+        {
+            if (abilities[i].name == ability)
+            {
+                return abilities[i];
+            }
+        }
+        return null;
+    }
+    public bool TriggerAbility(string ability)
+    {
+        for (int i = 0; i < abilities.Count; i++)
+        {
+            if (abilities[i].name == ability) return TriggerAbility(i);
+        }
+        return false;
+    }
     public bool TriggerAbility(int current)
     {
         switch (abilities[current].inputType)
@@ -72,14 +90,42 @@ public class AbilityHolder : MonoBehaviour
             case Ability.InputType.repeat:
                 currentPerformer[current] = false;
                 break;
+            case Ability.InputType.single:
+                break;
         }
+    }
+    public void StopAbility(int current)
+    {
+        abilities[current].Deactivate(gameObject);
+    }
+    public void StopAbility(string current)
+    {
+        getAbilityByString(current).Deactivate(gameObject);
+    }
+
+    public void CancelAbility(string current)
+    {
+        for (int i = 0; i < abilities.Count; i++)
+        {
+            if (abilities[i].name == current)
+            {
+                CancelAbility(i); ;
+            }
+        }
+        
+        
     }
     public int GetCost(int current)
     {
         return abilities[current].cost;
     }
+    public int GetCost(string current)
+    {
+        return getAbilityByString(current).cost;
+    }
     public bool AbilityReady(int current)
     {
+        Debug.Log("state is " + states[current]);
         if (states[current] == AbilityState.ready)
         {
             return true;

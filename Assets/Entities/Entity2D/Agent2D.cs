@@ -31,5 +31,12 @@ public class Agent2D : Character2D
         Debug.Log(barValue);
         healthBar.value = barValue;
     }
-    
+    public void OnDisable()
+    {
+        for (int i = 0; i < abilityHolder.abilities.Count; i++)
+        {
+            abilityHolder.StopAbility(i);
+        }
+    }
+
 }

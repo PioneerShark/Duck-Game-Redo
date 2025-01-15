@@ -30,7 +30,7 @@ public partial class LookTowardsAction : Action
         targetPosition = target.transform.position;
         agent.SetAimVector((targetPosition - agent.position).normalized);
 
-        return Status.Running;
+        return Status.Success;
     }
 
     protected override void OnEnd()

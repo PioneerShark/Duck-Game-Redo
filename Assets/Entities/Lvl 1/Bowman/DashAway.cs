@@ -65,7 +65,7 @@ public class DashAway : Ability
         pathSelected = Random.Range((rayHits.Count*3)/4, rayHits.Count - 1);
         //pathSelected = rayHits.Count - 1;
         float speed = 1f;
-        Game.IndicatorService.CreateCompositeLine(parent.transform.position, rayHits[pathSelected], 1f, 2f, false);
+        //Game.IndicatorService.CreateCompositeLine(parent.transform.position, rayHits[pathSelected], 1f, 2f, false);
         if (activeTime > 0)
         {
             speed = Vector2.Distance((Vector2)parent.transform.position , rayHits[pathSelected]) / activeTime;

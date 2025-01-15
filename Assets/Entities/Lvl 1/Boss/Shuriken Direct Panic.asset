@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad2a177e64d816b4ab9ec9799be6f30f, type: 3}
-  m_Name: Shuriken Spread
+  m_Name: Shuriken Direct Panic
   m_EditorClassIdentifier: 
   name: ShurikenSpread
   damage: 3
@@ -26,10 +26,10 @@ MonoBehaviour:
   model: {fileID: 0}
   aimed: 1
   equalSpread: 0
-  shotCount: 4
+  shotCount: 1
   burstCount: 30
-  burstRotDegStep: 10
-  spreadDeg: 0
+  burstRotDegStep: 0
+  spreadDeg: 30
   velocity: 2
   damageType: 11
   sound: {fileID: 0}

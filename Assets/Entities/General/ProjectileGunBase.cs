@@ -15,16 +15,23 @@ public class ProjectileGunBase : Ability
     public float hitStop = 0.01f;
 
     public Sprite model;
+    public Vector3 firepoint;
 
     [Header("Shooting Properties")]
     public bool aimed = true;
     public bool equalSpread = false;
+    protected bool killCoroutine = false;
     public int shotCount = 1;
     public int burstCount = 1;
     public float burstRotDegStep = 0f;
     public float spreadDeg = 0f;
     public float velocity = 2f;
     public Layers damageType;
+
+    [HideInInspector]
+    protected float activeTimeEffective;
+
+    protected Coroutine co;
 
     [Header("Sound Properties")]
     public AudioClip sound;
@@ -33,9 +40,18 @@ public class ProjectileGunBase : Ability
     
     public override void Activate(GameObject parent)
     {
+        killCoroutine = false;
+        activeTimeEffective = activeTime;
         Character2D character2D = (Character2D)parent.GetComponent(typeof(Character2D));
-        ShootProjectile(character2D);
-        
+        Coroutine co = Manager.instance.StartCoroutine(StartShootProjectile(character2D));
+
+
+    }
+    public override void Deactivate(GameObject parent)
+    {
+        killCoroutine = true;
+        Debug.Log("break");
+        base.Deactivate(parent);
     }
     protected virtual IEnumerator StartShootProjectile(Character2D character2D)
     {
@@ -47,6 +63,9 @@ public class ProjectileGunBase : Ability
         Vector2 direction;
         for (int j = 0; j < burstCount; j++) 
         {
+            if (killCoroutine) {
+                Debug.Log("break");
+                yield break; }
             if (!character2D.DeductAmmo(cost)) break;
             if (this.sound != null)
             {
@@ -87,7 +106,7 @@ public class ProjectileGunBase : Ability
                     }
                     else
                     {
-                        x = 0;
+                        x = 1;
                         y = 0;
                     }
                     
@@ -106,16 +125,17 @@ public class ProjectileGunBase : Ability
                     }
                     else
                     {
-                        x = 0;
+                        x = 1;
                         y = 0;
                     }
+                    
                     direction.x = (cos * x) - (sin * y);
                     direction.y = (sin * x) + (cos * y);
                 }
-                
+
                 ShootObj(character2D.firePoint.position, direction);
             }
-            yield return new WaitForSeconds(activeTime / (float)burstCount);
+            yield return new WaitForSeconds(activeTimeEffective / (float)burstCount);
         }
 
         void ShootObj(Vector3 pos, Vector2 direction)
@@ -140,10 +160,5 @@ public class ProjectileGunBase : Ability
         }
     }
 
-    protected void ShootProjectile(Character2D character2D)
-    {
-        Manager.instance.StartCoroutine(StartShootProjectile(character2D));
-        
-    }
 
 }

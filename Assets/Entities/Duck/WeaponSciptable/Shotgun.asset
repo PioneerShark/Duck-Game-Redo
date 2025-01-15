@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   name: Shotgun
-  damage: 1
+  damage: 5
   cooldown: 0.4
-  activeTime: 2
-  cost: 4
+  activeTime: 0.5
+  cost: 30
   inputType: 0
   projectile: 0
   duration: 5
@@ -24,12 +24,14 @@ MonoBehaviour:
   scale: 0.5
   hitStop: 0.01
   model: {fileID: 935762482167548972, guid: ba7a15922311dcb4ab87f6d24f6e0eff, type: 3}
-  equalSpread: 1
-  shotCount: 4
-  burstCount: 18
-  burstRotDegStep: 40
-  spreadDeg: 360
-  velocity: 4
+  firepoint: {x: 0.599, y: 0.075, z: 0}
+  aimed: 1
+  equalSpread: 0
+  shotCount: 8
+  burstCount: 2
+  burstRotDegStep: 0
+  spreadDeg: 30
+  velocity: 5
   damageType: 9
   sound: {fileID: 8300000, guid: c3ce541ad26401a4a8dd4dfef1e94e4b, type: 3}
   hitSound: {fileID: 8300000, guid: eb9223b69ff747d4eb3a1f878b14f531, type: 3}

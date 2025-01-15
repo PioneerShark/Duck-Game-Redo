@@ -21,6 +21,6 @@ public class BowShot : ProjectileGunBase
         yield return new WaitForSeconds(activeTime);
         Character2D character2D = (Character2D)parent.GetComponent(typeof(Character2D));
         GameObject currentProjectile = Manager.instance.GetPooledObject(projectile);
-        ShootProjectile(character2D);
+        Manager.instance.StartCoroutine(StartShootProjectile(character2D));
     }
 }

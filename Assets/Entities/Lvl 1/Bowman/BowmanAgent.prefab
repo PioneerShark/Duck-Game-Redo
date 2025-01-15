@@ -663,8 +663,8 @@ MonoBehaviour:
   hitbox: {fileID: 186755964113448519}
   rigidbody: {fileID: 4334186011322296401}
   model: {fileID: 5553708593672915058}
-  healthMax: 40
-  health: 40
+  healthMax: 80
+  health: 80
   anchored: 0
   invulnerable: 0
   abilityHolder: {fileID: 3307916460093815063}
@@ -676,11 +676,15 @@ MonoBehaviour:
   isPlayer: 0
   arm: {fileID: 4285799138417869726}
   hand: {fileID: 3665359664335262343}
-  firePoint: {fileID: 1790853277565802706}
+  firePoint: {fileID: 4360805661639088671}
   moveVector: {x: 0, y: 0}
   aimVector: {x: 1, y: 0}
   armVector: {x: 0, y: 0}
   isAttacking: 0
+  weaponInUse: Pistol
+  weaponInUseSecondary: 
+  weaponAlt: 
+  weaponAltSecondary: 
   showDebugLines: 1
   target: {fileID: 0}
   healthBar: {fileID: 3303384566029061247}
@@ -700,6 +704,7 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: 959d9a85aa296ce4f833d96b0d8d180a, type: 2}
   - {fileID: 11400000, guid: e644c86c026f89c44a949e26f0cea284, type: 2}
+  performing: 0
   abilityCount: 0
 --- !u!1 &8840759967387091716
 GameObject:

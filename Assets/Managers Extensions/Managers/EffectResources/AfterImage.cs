@@ -28,6 +28,7 @@ public class AfterImage : MonoBehaviour
         Material material = originalSprite.material;
         sprite.material = material;
         sprite.sprite = originalSprite.sprite;
+        sprite.flipX = originalSprite.flipX;
         transform.localScale = original.transform.lossyScale;
         transform.localRotation = original.transform.localRotation;
         transform.position = original.transform.position;

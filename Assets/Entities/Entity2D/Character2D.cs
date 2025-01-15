@@ -33,6 +33,10 @@ public class Character2D : Entity2D
     public Vector2 armVector = Vector2.zero;
     private Vector2 dashVector = Vector2.zero;
     public bool isAttacking = false;
+    public string weaponInUse = "Pistol";
+    public string weaponInUseSecondary = null;
+    public string weaponAlt = "";
+    public string weaponAltSecondary = null;
 
     [Header("Debugging")]
     public bool showDebugLines = true;
@@ -158,34 +162,20 @@ public class Character2D : Entity2D
         this.isAttacking = newIsAttacking;
         if (this.isAttacking)
         {
-            int cost = abilityHolder.GetCost(1);
-            if (cost <= ammo)
-            {
-                bool shot = abilityHolder.TriggerAbility(1);
-            }
-            
+
+            bool shot = abilityHolder.TriggerAbility(weaponInUse);
             //else abilityHolder.CancelAbility(1);
             
 
         }
         else
         {
-            abilityHolder.CancelAbility(1);
+            abilityHolder.CancelAbility(weaponInUse);
         }
     }
 
     public void TriggerDash()
     {
-        /*Vector2 dashDirection = this.moveVector.normalized;
-
-        if (dashDirection != Vector2.zero)
-        {
-            dashVector = dashDirection * dashPower;
-
-            isDashing = true;
-            
-            dashEndTime = Time.time + dashDuration;
-        }*/
         abilityHolder.TriggerAbility(0);
     }
 
@@ -210,10 +200,47 @@ public class Character2D : Entity2D
         if (isPlayer) Manager.instance.UpdateHealthSlider(healthMax, health);
     }
 
-    public void SwapWeapon(ProjectileGunBase weapon) {
-        //weapon.model;
-        abilityHolder.abilities[1] = weapon;
-        abilityHolder.RefreshAbilities();
+    public void SwapWeapon() 
+    {
+        if (abilityHolder.performing)
+        {
+            Invoke("SwapWeapon", abilityHolder.getAbilityByString(weaponInUse).activeTime);
+            return;
+        }
+        string prime = weaponInUse;
+        string second = weaponInUseSecondary;
+        abilityHolder.StopAbility(weaponInUse);
+        abilityHolder.CancelAbility(weaponInUse);
+        weaponInUse = weaponAlt;
+        weaponInUseSecondary = weaponAltSecondary;
+        weaponAlt = prime;
+        weaponInUseSecondary = second;
+        ProjectileGunBase gun = abilityHolder.getAbilityByString(weaponInUse) as ProjectileGunBase;
+        Transform grip = hand.transform.GetChild(0);
+        grip.GetComponent<SpriteRenderer>().sprite = gun.model;
+        grip.GetChild(0).transform.localPosition = gun.firepoint;
+    }
+
+    public void EquipWeapon(string primary, string secondary) 
+    {
+        if (primary == "Pistol")
+        {
+            weaponAlt = primary;
+            weaponAltSecondary = secondary;
+        }
+        else
+        {
+            weaponInUse = primary;
+            weaponInUseSecondary = secondary;
+        }
+        abilityHolder.StopAbility(weaponInUse);
+        abilityHolder.CancelAbility(weaponInUse);
+        
+        ProjectileGunBase gun = abilityHolder.getAbilityByString(weaponInUse) as ProjectileGunBase;
+        Transform grip = hand.transform.GetChild(0);
+        grip.GetComponent<SpriteRenderer>().sprite = gun.model;
+        grip.GetChild(0).transform.localPosition = gun.firepoint;
+
     }
 
     void OnDrawGizmos()

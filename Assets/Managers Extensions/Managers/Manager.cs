@@ -48,7 +48,11 @@ public class Manager : MonoBehaviour
         Bullets,
         Arrows
     };
+    public Transform FindTransform(string location)
+    {
 
+        return null;
+    }
     void Awake()
     {
         Manager.instance = this;   

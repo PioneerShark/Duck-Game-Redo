@@ -12,6 +12,7 @@ public class Controller2D : MonoBehaviour
     private Vector2 aimInput = Vector2.zero;
     private bool dashInput = false;
     private bool attackInput = false;
+    private bool swapWeaponInput = false;
 
     public void SetCharacter(Character2D character)
     {
@@ -37,6 +38,12 @@ public class Controller2D : MonoBehaviour
     {
         attackInput = context.action.triggered;
         targetCharacter.SetAttack(attackInput);
+    }
+
+    public void OnSwapWeapon(InputAction.CallbackContext context)
+    {
+        swapWeaponInput = context.action.triggered;
+        targetCharacter.SwapWeapon();
     }
 
     void Update()

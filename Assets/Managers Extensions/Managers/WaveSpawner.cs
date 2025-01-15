@@ -9,7 +9,10 @@ public class WaveSpawner : MonoBehaviour
 {
     private int currWave;
     private int maxWaves;
+    private bool spawnerActive = false;
     private bool waveInProgress = false;
+    public GameObject barrier;
+    public GameObject barrierVisual;
     public List<Wave> waves = new List<Wave>();
     public List<GameObject> wave = new List<GameObject>();
     // Start is called before the first frame update
@@ -17,10 +20,14 @@ public class WaveSpawner : MonoBehaviour
     {
         currWave = -1;
         maxWaves = waves.Count;
-        NextWave();
+        //NextWave();
     }
     private void Update()
     {
+        if (!spawnerActive)
+            return;
+        barrier.SetActive(true);
+        barrierVisual.SetActive(true);
         if (waveInProgress)
         {
             if (wave.Count <= 0)
@@ -38,6 +45,14 @@ public class WaveSpawner : MonoBehaviour
             }
         }
         
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && !spawnerActive)
+        {
+            spawnerActive = true;
+            NextWave();
+        }
     }
 
     private void NextWave()
@@ -64,6 +79,8 @@ public class WaveSpawner : MonoBehaviour
     }
     private void StopSpawner()
     {
+        Destroy(barrier);
+        Destroy(barrierVisual);
         Destroy(gameObject);
     }
 }
