@@ -46,4 +46,7 @@ public sealed class Framework : MonoBehaviour
 
     private IAudioService AudioServiceSource;
     public IAudioService AudioService => AudioServiceSource ??= CreateService<AudioService>("AudioService");
+
+    private PoolService PoolServiceSource;
+    public PoolService PoolService => PoolServiceSource ??= CreateService<PoolService>("PoolService");
 }

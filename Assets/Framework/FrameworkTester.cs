@@ -23,8 +23,6 @@ public class FrameworkTester : MonoBehaviour
         endZone.SetImage(textures[1]);
         endZone.lookAt = null;
         endZone.SetSize(3);
-
-        Game.AudioService.PlaySFX(audioClip, this.transform);
     }
 
     void Update()

@@ -32200,6 +32200,10 @@ PrefabInstance:
       propertyPath: gameTimeScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3508560160615064091, guid: cf6a712e47a659447a7c1c676ddc9499, type: 3}
+      propertyPath: bulletPrefabTest
+      value: 
+      objectReference: {fileID: -1037031506670889469, guid: 73942bc0fa15a1647a3931f9f4f11b69, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

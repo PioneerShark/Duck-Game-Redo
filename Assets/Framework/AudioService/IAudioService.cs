@@ -2,7 +2,9 @@ using UnityEngine;
 
 public interface IAudioService : IFrameworkService
 {
-    AudioSource PlaySFX(AudioClip audioClip, Transform spawnTransform, float volume = 1f);
+    SFXObject CreateSFX(AudioClip audioClip, float volume);
+    AudioSource PlaySFX(AudioClip audioClip, Transform spawnTransform, float volume);
+    AudioSource PlaySFX(AudioClip audioClip, Vector3 spawnPosition, float volume);
     void PlayOST(AudioClip audioClip, float volume = 1f);
 
     void SetMixerParameter(string parameterName, float value);
