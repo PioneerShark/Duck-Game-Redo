@@ -108,14 +108,11 @@ public class PoolService : MonoBehaviour, IFrameworkService
 
         if (pools[key].Count == 0)
         {
-            Debug.Log("Expanding pool");
-
             T prefabObject = poolPrefabs[key].Peek() as T;
             GameObject newObject = this.CreatePoolObject(prefabObject, variant);
             T clonedObject = newObject.GetComponent<T>();
 
             clonedObject.gameObject.SetActive(true);
-            pools[key].Enqueue(clonedObject); // Add the new object back to the pool
             return clonedObject;
         }
 

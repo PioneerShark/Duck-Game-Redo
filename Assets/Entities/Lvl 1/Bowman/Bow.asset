@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58bfcd9872dc6bc4bab9e4be23b7101b, type: 3}
-  m_Name: Cannon
+  m_Name: Bow
   m_EditorClassIdentifier: 
-  name: Sniper
-  damage: 40
-  cooldown: 1
-  activeTime: 0.5
-  cost: 40
-  inputType: 0
-  projectile: Bullet
-  duration: 5
-  trailDuration: 2
-  scale: 5
+  name: 
+  damage: 0
+  cooldown: 0.5
+  activeTime: 0
+  cost: 0
+  inputType: 1
+  projectile: Arrow
+  duration: 2
+  trailDuration: 0.1
+  scale: 0.5
   hitStop: 0.01
-  model: {fileID: 5184893276893406594, guid: 5fdc025e913ce82449cec6ecb43cdfa0, type: 3}
+  model: {fileID: 0}
   firepoint: {x: 0, y: 0, z: 0}
   aimed: 1
   equalSpread: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
   burstCount: 1
   burstRotDegStep: 0
   spreadDeg: 0
-  velocity: 50
-  damageType: 0
-  sound: {fileID: 8300000, guid: c3ce541ad26401a4a8dd4dfef1e94e4b, type: 3}
-  hitSound: {fileID: 8300000, guid: eb9223b69ff747d4eb3a1f878b14f531, type: 3}
+  velocity: 2
+  damageType: 11
+  sound: {fileID: 0}
+  hitSound: {fileID: 0}

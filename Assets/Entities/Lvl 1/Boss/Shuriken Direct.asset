@@ -18,12 +18,13 @@ MonoBehaviour:
   activeTime: 7
   cost: 0
   inputType: 1
-  projectile: 0
+  projectile: Bullet
   duration: 10
   trailDuration: 1
   scale: 1
   hitStop: 0.01
   model: {fileID: 0}
+  firepoint: {x: 0, y: 0, z: 0}
   aimed: 1
   equalSpread: 0
   shotCount: 1

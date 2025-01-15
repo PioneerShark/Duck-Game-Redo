@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static Framework;
@@ -91,6 +92,13 @@ public class Manager : MonoBehaviour
         Game.AudioService.PlayOST(this.ost);
         Game.AudioService.SetMixerVolume("OSTVolume", 0.08f);
 
+        Projectile arrowObject = arrowPrefab.GetComponent<Projectile>();
+        Game.PoolService.CreatePool(arrowObject, 20, "Arrow");
+
+        Projectile bulletObject = bulletPrefab.GetComponent<Projectile>();
+        Game.PoolService.CreatePool(bulletObject, 20, "Bullet");
+
+        /*
         for (int i = 0; i < bulletAmount; i++)
         {
             GameObject obj = Instantiate(bulletPrefab);
@@ -109,6 +117,7 @@ public class Manager : MonoBehaviour
             obj.GetComponent<Projectile>().SetPool(GameObject.Find("Arrows").transform);
             pooledArrows.Add(obj);
         }
+        */
     }
 
     public GameObject GetPooledObject(PoolType pool)

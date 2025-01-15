@@ -6,7 +6,7 @@ using static Framework;
 [CreateAssetMenu]
 public class ProjectileGunBase : Ability
 {
-    public Manager.PoolType projectile;
+    public string projectile;
 
     [Header("Projectile Properties")]
     public float duration = 2f;
@@ -44,15 +44,15 @@ public class ProjectileGunBase : Ability
         activeTimeEffective = activeTime;
         Character2D character2D = (Character2D)parent.GetComponent(typeof(Character2D));
         Coroutine co = Manager.instance.StartCoroutine(StartShootProjectile(character2D));
-
-
     }
+    
     public override void Deactivate(GameObject parent)
     {
         killCoroutine = true;
         Debug.Log("break");
         base.Deactivate(parent);
     }
+
     protected virtual IEnumerator StartShootProjectile(Character2D character2D)
     {
         float spreadValue;
@@ -74,24 +74,6 @@ public class ProjectileGunBase : Ability
             
             for (int i = 0; i < shotCount; i++)
             {
-                //if (equalSpread && shotCount % 2 == 1)
-                //{
-                //    Debug.Log("eqeven");
-                //    if (i == 1)
-                //        spreadValue = 0;
-                //    else if (i == (shotCount / 2))
-                //        spreadValue = -spreadDeg;
-                //    else 
-                //        spreadValue = (((i+1) * spreadDeg) / shotCount) - spreadDeg/2;
-
-                //    sin = Mathf.Sin(spreadValue * Mathf.Deg2Rad);
-                //    cos = Mathf.Cos(spreadValue * Mathf.Deg2Rad);
-                //    x = character2D.aimVector.x;
-                //    y = character2D.aimVector.y;
-                //    direction.x = (cos * x) - (sin * y);
-                //    direction.y = (sin * x) + (cos * y);
-                //}
-                //else
                 if (equalSpread)
                 {
                     Debug.Log("equal");
@@ -140,25 +122,18 @@ public class ProjectileGunBase : Ability
 
         void ShootObj(Vector3 pos, Vector2 direction)
         {
-            GameObject currentProjectile = Manager.instance.GetPooledObject(projectile);
-            if (currentProjectile != null)
-            {
-                Projectile projectileScript = currentProjectile.GetComponent<Projectile>();
-                projectileScript.SetVariables(trailDuration,
-                                              duration,
-                                              damage,
-                                              scale,
-                                              hitStop,
-                                              new Vector2(velocity * 5, velocity * 5),
-                                              pos,
-                                              direction,
-                                              (int)damageType,
-                                              hitSound
-                                              );
-                currentProjectile.SetActive(true);
-            }
+            Projectile projectileScript = Game.PoolService.FetchObject<Projectile>(projectile);
+            projectileScript.SetVariables(trailDuration,
+                                            duration,
+                                            damage,
+                                            scale,
+                                            hitStop,
+                                            new Vector2(velocity * 5, velocity * 5),
+                                            pos,
+                                            direction,
+                                            (int)damageType,
+                                            hitSound
+                                            );
         }
     }
-
-
 }

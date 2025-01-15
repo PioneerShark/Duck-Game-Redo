@@ -18,7 +18,7 @@ MonoBehaviour:
   activeTime: 1
   cost: 50
   inputType: 0
-  projectile: 0
+  projectile: Bullet
   duration: 5
   trailDuration: 0.02
   scale: 0.5

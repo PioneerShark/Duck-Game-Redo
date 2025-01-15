@@ -1,10 +1,10 @@
 using UnityEngine;
 using static Framework;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IPoolObject
 {
-    [SerializeField]
-    private TrailRenderer trail;
+    [SerializeField] private string poolID;
+    [SerializeField] private TrailRenderer trail;
     private Rigidbody2D rb;
     private float damage, duration, hitStop, trailDuration;
     private Vector2 force, newPos;
@@ -37,27 +37,27 @@ public class Projectile : MonoBehaviour
         transform.right = newRot;
         trail.Clear();
         destroySound = _destroySound;
-    }
-    public void OnEnable()
-    {
-        
+
         rb.simulated = true;
         trail.time = trailDuration;
+        rb.linearVelocity = Vector2.zero;
         rb.AddForce(force, ForceMode2D.Impulse);
         detectLast = true;
         //Debug.Log(duration);
         Invoke("DeactivatePrep", duration);
-        trail.transform.localPosition = trailPos;
+        trailPos = trail.transform.localPosition;
+    }
+    public void OnEnable()
+    {
 
     }
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        trailPos = trail.transform.localPosition;
     }
     private void Start()
     {
-        
+
     }
     public void SetPool(Transform setPool)
     {
@@ -107,47 +107,20 @@ public class Projectile : MonoBehaviour
         DeactivatePrep();
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    Character2D charScript = collision.transform.parent.gameObject.GetComponent<Character2D>();
-    //    detectLast = false;
-    //    if (charScript != null)
-    //    {
-    //        Debug.Log("Collision");
-    //        charScript.TakeDamage(damage);
-    //        Manager.instance.HitStop(hitStop);
-            
-
-    //    }
-    //    DeactivatePrep();
-
-    //}
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Character2D charScript = collision.transform.parent.gameObject.GetComponent<Character2D>();
-
-    //    if (charScript != null)
-    //    {
-    //        Debug.Log("Collision");
-    //        charScript.TakeDamage(damage);
-    //        Manager.instance.HitStop(hitStop);
-
-
-    //    }
-    //    DeactivatePrep();
-    //}
     private void DeactivatePrep()
     {
+        CancelInvoke();
+        
         if (this.destroySound != null)
         {
             //Game.AudioService.PlaySFX(this.destroySound, transform, 0.25f);
         }
 
         rb.simulated = false;
-        Invoke("Deactivate", trail.time);
+        //Invoke("Deactivate", trail.time);
+        Game.PoolService.ReleaseAfterDelay(this, trail.time);
     }
     
-
     void Deactivate()
     {
         CancelInvoke();
@@ -156,5 +129,27 @@ public class Projectile : MonoBehaviour
         this.gameObject.SetActive(false);
         trail.gameObject.transform.SetParent(transform, true);
         transform.SetParent(pool, true);
+    }
+
+    public void SetPoolID(string newPoolID)
+    {
+        poolID = newPoolID;
+    }
+
+    public string GetPoolID()
+    {
+        return poolID;
+    }
+
+    public void ResetState()
+    {
+        CancelInvoke();
+        trail.gameObject.transform.SetParent(transform, true);
+        trail.transform.localPosition = trailPos;
+    }
+
+    public void ScheduleRelease(float delay)
+    {
+        Game.PoolService.ReleaseAfterDelay(this, delay);
     }
 }

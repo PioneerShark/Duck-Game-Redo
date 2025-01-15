@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89c39c37bf8414a98f591e1a66f6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolID: Bullet
   trail: {fileID: 5205952258435799444}
 --- !u!58 &5565795710630145761
 CircleCollider2D:
