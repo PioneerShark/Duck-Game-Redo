@@ -18,12 +18,13 @@ MonoBehaviour:
   activeTime: 0.5
   cost: 40
   inputType: 0
-  projectile: 1
+  projectile: 0
   duration: 5
-  trailDuration: 2
+  trailDuration: 0.01
   scale: 0.5
   hitStop: 0.01
   model: {fileID: 5184893276893406594, guid: 5fdc025e913ce82449cec6ecb43cdfa0, type: 3}
+  equalSpread: 0
   shotCount: 1
   burstCount: 1
   spreadDeg: 0

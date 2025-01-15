@@ -15,19 +15,21 @@ MonoBehaviour:
   name: Shotgun
   damage: 1
   cooldown: 0.4
-  activeTime: 0.5
-  cost: 40
+  activeTime: 2
+  cost: 4
   inputType: 0
-  shotCount: 6
-  burstCount: 2
-  spreadDeg: 45
-  velocity: 10
-  sound: {fileID: 8300000, guid: c3ce541ad26401a4a8dd4dfef1e94e4b, type: 3}
-  hitSound: {fileID: 8300000, guid: eb9223b69ff747d4eb3a1f878b14f531, type: 3}
-  projectile: 1
-  playerMask: 9
+  projectile: 0
   duration: 5
   trailDuration: 0.1
   scale: 0.5
   hitStop: 0.01
   model: {fileID: 935762482167548972, guid: ba7a15922311dcb4ab87f6d24f6e0eff, type: 3}
+  equalSpread: 1
+  shotCount: 4
+  burstCount: 18
+  burstRotDegStep: 40
+  spreadDeg: 360
+  velocity: 4
+  damageType: 9
+  sound: {fileID: 8300000, guid: c3ce541ad26401a4a8dd4dfef1e94e4b, type: 3}
+  hitSound: {fileID: 8300000, guid: eb9223b69ff747d4eb3a1f878b14f531, type: 3}

@@ -34,7 +34,6 @@ public class AbilityHolder : MonoBehaviour
         switch (abilities[current].inputType)
         {
             case Ability.InputType.repeat:
-            case Ability.InputType.extend:
                 switch (states[current])
                 {
                     case AbilityState.ready:
@@ -71,7 +70,6 @@ public class AbilityHolder : MonoBehaviour
         switch (abilities[current].inputType)
         {
             case Ability.InputType.repeat:
-            case Ability.InputType.extend:
                 currentPerformer[current] = false;
                 break;
         }
@@ -117,7 +115,6 @@ public class AbilityHolder : MonoBehaviour
 
     private void SingleInputUpdate(int i)
     {
-        Debug.Log("singleState");
         switch (states[i])
         {
             case AbilityState.active:
@@ -150,7 +147,6 @@ public class AbilityHolder : MonoBehaviour
 
     private void RepeatInputUpdate(int i)
     {
-        Debug.Log("repeatState");
         switch (states[i])
         {
             case AbilityState.ready:

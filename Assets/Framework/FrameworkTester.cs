@@ -18,7 +18,7 @@ public class FrameworkTester : MonoBehaviour
         areaIndicator2D.positionEnd = points[3].transform.position;
         areaIndicator2D.SetPosition(points[0].transform.position, points[3].transform.position);
 
-        var (line, startZone, endZone) = Game.IndicatorService.CreateCompositeLine(points[1].transform.position, points[2].transform.position, -1, 1f);
+        var (line, startZone, endZone) = Game.IndicatorService.CreateCompositeLine(points[1].transform.position, points[2].transform.position, -1, 1f, false);
         startZone.SetImage(textures[0]);
         endZone.SetImage(textures[1]);
         endZone.lookAt = null;
