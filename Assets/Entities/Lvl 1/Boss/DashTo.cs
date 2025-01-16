@@ -20,11 +20,12 @@ public class DashTo : Ability
     IEnumerator ExecuteDash(GameObject parent)
     {
         if (activeTime <= 0) activeTime = 0.5f;
-        float timeToWait = 1f;
+        float timeToWait;
         Agent2D agent = parent.GetComponent<Agent2D>();
         Vector2 dashLocation = dashLocations[Random.Range(0, dashLocations.Count)].position;
-        timeToWait = Vector2.Distance((Vector2)parent.transform.position, dashLocation) / speed;
         Vector2 dashDir = dashLocation - (Vector2)parent.transform.position;
+
+        timeToWait = Vector2.Distance((Vector2)parent.transform.position, dashLocation) / speed;
         dashDir.Normalize();
         agent.aimVector = dashDir;
 
@@ -32,6 +33,7 @@ public class DashTo : Ability
         agent.VelocityOverride(true, dashDir * speed);
         yield return new WaitForSeconds(timeToWait);
         agent.VelocityOverride(false, dashDir * speed);
+
 
         yield return null;
     }

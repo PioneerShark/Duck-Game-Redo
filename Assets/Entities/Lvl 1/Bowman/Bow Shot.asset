@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 690f389e3028ac2469bdf6824cc934c2, type: 3}
-  m_Name: New Bow Shot
+  m_Name: Bow Shot
   m_EditorClassIdentifier: 
   name: 
   damage: 1

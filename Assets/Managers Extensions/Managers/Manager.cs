@@ -11,6 +11,8 @@ public class Manager : MonoBehaviour
 {
     public static Manager instance;
     private bool waiting;
+    private Vector2 a;
+    private Vector2 b;
 
     [Header("HUD")]
     public Slider healthSlider;
@@ -167,5 +169,15 @@ public class Manager : MonoBehaviour
     public void UpdateAmmoSlider(float progress)
     {
         ammoSlider.value = progress;
+    }
+    public void GizmoCapsule(Vector2 start, Vector2 end)
+    {
+        a = start;
+        b = end;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(a, 1f);
+        Gizmos.DrawSphere(b, 1f);
     }
 }
