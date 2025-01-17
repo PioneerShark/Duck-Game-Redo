@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   damage: 0
-  cooldown: 2
+  cooldown: 0.5
   activeTime: 0.5
+  cost: 0
   inputType: 1
   rollSpeed: 2

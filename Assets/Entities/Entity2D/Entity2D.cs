@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -83,11 +84,21 @@ public class Entity2D : MonoBehaviour
         invulnerable = value;
     }
 
-    IEnumerator Flash(float duration)
+    public IEnumerator Flash(float duration)
     {
+        yield return StartCoroutine(Flash(duration, UnityEngine.Color.white));
+    }
+
+    public IEnumerator Flash(float duration, UnityEngine.Color colour)
+    {
+        
         flashing = true;
         Material material = this.model.sprite.material;
-        this.model.sprite.material = Manager.instance.flash;
+        Material flashMat = new Material(Manager.instance.flash);
+        flashMat.color = colour;
+
+
+        this.model.sprite.material = flashMat;
         yield return new WaitForSecondsRealtime(duration);
         this.model.sprite.material = material;
         flashing = false;

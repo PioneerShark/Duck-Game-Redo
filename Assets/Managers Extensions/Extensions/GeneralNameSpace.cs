@@ -11,6 +11,7 @@ namespace GeneralNameSpace
         PlayerDamage = 9,
         NeutralDamage = 10,
         EnemyDamage = 11,
-        FootCollider = 12
+        FootCollider = 12,
+        CringeCast = 13
     }
 }

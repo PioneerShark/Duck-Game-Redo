@@ -197,6 +197,17 @@
                 },
                 {
                     "name": "",
+                    "id": "25de67d2-c90c-46bf-90d6-5e34863a38d3",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controller",
+                    "action": "Swap Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6782953f-2c23-403e-9b07-1bcd68575eb5",
                     "path": "<Keyboard>/f",
                     "interactions": "",

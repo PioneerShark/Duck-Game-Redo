@@ -314,8 +314,8 @@ MonoBehaviour:
   hitbox: {fileID: 7469225211868712746}
   rigidbody: {fileID: 1158302058226746}
   model: {fileID: 6747669520710374718}
-  healthMax: 40
-  health: 40
+  healthMax: 50
+  health: 50
   anchored: 0
   invulnerable: 0
   abilityHolder: {fileID: 3520486265915979918}

@@ -328,6 +328,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1de83c0dd2c208a48a6c9a79e9b60dee, type: 2}
   - {fileID: 11400000, guid: 1445ee29266ae7f48a3204d71e230897, type: 2}
   - {fileID: 11400000, guid: 34d1eae8ab9308c48ba495eeca5bfefe, type: 2}
+  - {fileID: 11400000, guid: f9e8ff3e13bcbbb488759353aee8ec13, type: 2}
+  - {fileID: 11400000, guid: 6de55fe17589ae5429812bdaa3b2ee96, type: 2}
   performing: 0
   abilityCount: 0
 --- !u!1 &1546542010331851701
@@ -444,7 +446,7 @@ Transform:
   m_GameObject: {fileID: 1559268082318108658}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -567,7 +569,7 @@ Transform:
   m_GameObject: {fileID: 4280766553999863324}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33, y: -1.83, z: 0}
+  m_LocalPosition: {x: 0.15, y: -1.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -819,7 +821,7 @@ Transform:
   m_GameObject: {fileID: 8149046314840479270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 1.39, z: 0}
+  m_LocalPosition: {x: -0.44, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

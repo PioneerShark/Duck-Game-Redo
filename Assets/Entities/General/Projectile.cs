@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour, IPoolObject
 {
     [SerializeField] private string poolID;
     [SerializeField] private TrailRenderer trail;
+    [SerializeField] private GameObject model;
     private Rigidbody2D rb;
     private float damage, duration, hitStop, trailDuration;
     private Vector2 force, newPos;
@@ -37,7 +38,8 @@ public class Projectile : MonoBehaviour, IPoolObject
         transform.right = newRot;
         trail.Clear();
         destroySound = _destroySound;
-
+        if (model != null) 
+            model.GetComponent<Animator>().SetFloat("Speed", 1f);
         rb.simulated = true;
         trail.time = trailDuration;
         rb.linearVelocity = Vector2.zero;
@@ -46,6 +48,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         //Debug.Log(duration);
         Invoke("DeactivatePrep", duration);
         trailPos = trail.transform.localPosition;
+        
     }
     public void OnEnable()
     {
@@ -109,6 +112,8 @@ public class Projectile : MonoBehaviour, IPoolObject
 
     private void DeactivatePrep()
     {
+        if (model != null)
+            model.GetComponent<Animator>().SetFloat("Speed", 0f);
         CancelInvoke();
         
         if (this.destroySound != null)

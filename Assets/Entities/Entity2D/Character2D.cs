@@ -16,6 +16,9 @@ public class Character2D : Entity2D
     [SerializeField] private  float ammoRate = 1f;
     private float ammo;
     public bool isPlayer = false;
+    private bool isDown = false;
+    [SerializeField]
+    GameObject reticle;
 
 
     private bool isDashing = false;
@@ -61,6 +64,7 @@ public class Character2D : Entity2D
     {
         ammo = ammoMax;
         this.IsReady();
+        Cursor.visible = false;
     }
 
 
@@ -91,6 +95,8 @@ public class Character2D : Entity2D
                 arm.transform.right = armVector;               
             }
         }
+        if (reticle != null)
+            reticle.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Set aniamtion stuff
         if (hasAnimator)
@@ -145,11 +151,16 @@ public class Character2D : Entity2D
 
     public void SetMoveVector(Vector2 newMoveVector)
     {
+        if (isDown) 
+            newMoveVector = Vector2.zero;
         this.moveVector = newMoveVector;
     }
 
     public void SetAimVector(Vector2 newAimVector)
     {
+        if (isDown)
+            return;
+        this.aimVector = newAimVector;
         if (newAimVector != Vector2.zero)
         {
             this.aimVector = newAimVector.normalized;
@@ -158,7 +169,7 @@ public class Character2D : Entity2D
 
     public void SetAttack(bool newIsAttacking)
     {
-        
+        if (isDown) newIsAttacking = false;
         this.isAttacking = newIsAttacking;
         if (this.isAttacking)
         {
@@ -176,6 +187,8 @@ public class Character2D : Entity2D
 
     public void TriggerDash()
     {
+        if (isDown)
+            return;
         abilityHolder.TriggerAbility(0);
     }
 
@@ -202,6 +215,8 @@ public class Character2D : Entity2D
 
     public void SwapWeapon() 
     {
+        if (isDown)
+            return;
         if (abilityHolder.performing)
         {
             Invoke("SwapWeapon", abilityHolder.getAbilityByString(weaponInUse).activeTime);
@@ -241,6 +256,42 @@ public class Character2D : Entity2D
         grip.GetComponent<SpriteRenderer>().sprite = gun.model;
         grip.GetChild(0).transform.localPosition = gun.firepoint;
 
+    }
+    protected override void Deactivate()
+    {
+        if (isPlayer)
+        {
+            invulnerable = true;
+            model.animator.SetFloat("Velocity", 0f);
+            isDown = true;
+            abilityHolder.StopAbility(weaponInUse);
+            abilityHolder.CancelAbility(weaponInUse);
+            StartCoroutine(DownTime());
+            return;
+        }
+        base.Deactivate();
+    }
+
+    private IEnumerator DownTime()
+    {
+           
+        while (health != healthMax)
+        {
+            if (isPlayer) Manager.instance.UpdateHealthSlider(healthMax, health);
+            health += healthMax * 0.1f;
+            
+            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.25f);
+            Color c = new Color(0.3f, 0.9f, 0.3f);
+            yield return StartCoroutine(Flash(0.2f, c));
+            if ( health > healthMax )
+                health = healthMax;
+        }
+        isDown = false;
+        invulnerable = false;
+        model.animator.SetFloat("Velocity", 1f);
+        if (isPlayer) Manager.instance.UpdateHealthSlider(healthMax, health);
+        yield return null;
     }
 
     void OnDrawGizmos()

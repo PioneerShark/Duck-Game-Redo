@@ -19,19 +19,19 @@ public class DashTo : Ability
     }
     IEnumerator ExecuteDash(GameObject parent)
     {
-        if (activeTime <= 0) activeTime = 0.5f;
+        //if (activeTime <= 0) activeTime = 0.5f;
         float timeToWait;
         Agent2D agent = parent.GetComponent<Agent2D>();
         Vector2 dashLocation = dashLocations[Random.Range(0, dashLocations.Count)].position;
         Vector2 dashDir = dashLocation - (Vector2)parent.transform.position;
 
-        timeToWait = Vector2.Distance((Vector2)parent.transform.position, dashLocation) / speed;
+        speed = Vector2.Distance((Vector2)parent.transform.position, dashLocation) / activeTime;
         dashDir.Normalize();
         agent.aimVector = dashDir;
 
-        EffectsManager.instance.SpawnAfterImages(agent.model.gameObject, timeToWait, 0.1f, 0.2f, 1f);
+        EffectsManager.instance.SpawnAfterImages(agent.model.gameObject, activeTime, 0.1f, 0.2f, 1f);
         agent.VelocityOverride(true, dashDir * speed);
-        yield return new WaitForSeconds(timeToWait);
+        yield return new WaitForSeconds(activeTime);
         agent.VelocityOverride(false, dashDir * speed);
 
 

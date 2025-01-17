@@ -12,25 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2a177e64d816b4ab9ec9799be6f30f, type: 3}
   m_Name: Shuriken Random
   m_EditorClassIdentifier: 
-  name: ShurikenSpread
-  damage: 3
+  name: ShurikenRandom
+  damage: 10
   cooldown: 3
   activeTime: 7
   cost: 0
   inputType: 1
-  projectile: 0
+  projectile: Shuriken
   duration: 10
   trailDuration: 1
-  scale: 1
+  scale: 0.25
   hitStop: 0.01
   model: {fileID: 0}
+  firepoint: {x: 0, y: 0, z: 0}
   aimed: 0
   equalSpread: 0
-  shotCount: 1
-  burstCount: 90
+  shotCount: 4
+  burstCount: 30
   burstRotDegStep: 0
   spreadDeg: 360
-  velocity: 2
+  velocity: 1.5
   damageType: 11
   sound: {fileID: 0}
   hitSound: {fileID: 0}

@@ -15,13 +15,13 @@ MonoBehaviour:
   name: Sniper
   damage: 45
   cooldown: 0.75
-  activeTime: 1
-  cost: 50
+  activeTime: 0
+  cost: 40
   inputType: 0
   projectile: Bullet
   duration: 5
-  trailDuration: 0.02
-  scale: 0.5
+  trailDuration: 0.06
+  scale: 0.75
   hitStop: 0.01
   model: {fileID: 5184893276893406594, guid: 5fdc025e913ce82449cec6ecb43cdfa0, type: 3}
   firepoint: {x: 1.254, y: 0.046, z: 0}

@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: 
   name: 
-  damage: 0
-  cooldown: 0.5
+  damage: 10
+  cooldown: 3
   activeTime: 0
   cost: 0
   inputType: 1
   projectile: Arrow
   duration: 2
   trailDuration: 0.1
-  scale: 0.5
+  scale: 0.55
   hitStop: 0.01
   model: {fileID: 0}
   firepoint: {x: 0, y: 0, z: 0}
@@ -31,7 +31,7 @@ MonoBehaviour:
   burstCount: 1
   burstRotDegStep: 0
   spreadDeg: 0
-  velocity: 2
+  velocity: 3
   damageType: 11
   sound: {fileID: 0}
   hitSound: {fileID: 0}

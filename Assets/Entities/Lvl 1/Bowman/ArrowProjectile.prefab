@@ -326,3 +326,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolID: Arrow
   trail: {fileID: 8006713771269067664}
+  model: {fileID: 0}

@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 5
   cooldown: 0.4
   activeTime: 0.5
-  cost: 30
+  cost: 25
   inputType: 0
   projectile: Bullet
   duration: 5

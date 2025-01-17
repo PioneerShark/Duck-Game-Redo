@@ -49,7 +49,6 @@ public class ProjectileGunBase : Ability
     public override void Deactivate(GameObject parent)
     {
         killCoroutine = true;
-        Debug.Log("break");
         base.Deactivate(parent);
     }
 
@@ -69,7 +68,7 @@ public class ProjectileGunBase : Ability
             if (!character2D.DeductAmmo(cost)) break;
             if (this.sound != null)
             {
-                Game.AudioService.PlaySFX(this.sound, character2D.transform, 1);
+                //Game.AudioService.PlaySFX(this.sound, character2D.transform, 1);
             }
             
             for (int i = 0; i < shotCount; i++)

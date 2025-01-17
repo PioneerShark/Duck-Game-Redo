@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: MeleeSpinny
   m_EditorClassIdentifier: 
   name: 
-  damage: 10
+  damage: 5
   cooldown: 0.9
   activeTime: 0
   cost: 0
   inputType: 1
-  scale: 3
+  scale: 1.5
   meleeObject: {fileID: 1421633523605559238, guid: 4d75cb64e84005a439d69e2f1a357147, type: 3}
   damageType: 11
   duration: 1

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ab434aa994c81141851a1d39c1a2e4f, type: 3}
-  m_Name: Iai
+  m_Name: IaiPanic
   m_EditorClassIdentifier: 
-  name: Iai
-  damage: 10
+  name: IaiPanic
+  damage: 5
   cooldown: 0
-  activeTime: 1.5
+  activeTime: 1
   cost: 0
   inputType: 1
   layerMask: 11

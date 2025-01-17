@@ -43,6 +43,8 @@ public class Manager : MonoBehaviour
     [SerializeField] private GameObject arrowPrefab;
     private List<GameObject> pooledArrows = new List<GameObject>();
 
+    [SerializeField] private GameObject shurikenPrefab;
+
     [Header("Other")]
     [SerializeField] private AudioClip ost;
 
@@ -99,6 +101,9 @@ public class Manager : MonoBehaviour
 
         Projectile bulletObject = bulletPrefab.GetComponent<Projectile>();
         Game.PoolService.CreatePool(bulletObject, 20, "Bullet");
+        
+        Projectile shurikenObject = shurikenPrefab.GetComponent<Projectile>();
+        Game.PoolService.CreatePool(shurikenObject, 20, "Shuriken");
 
         /*
         for (int i = 0; i < bulletAmount; i++)
