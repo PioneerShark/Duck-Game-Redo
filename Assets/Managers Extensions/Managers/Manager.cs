@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using static Framework;
 
 public class Manager : MonoBehaviour
@@ -15,8 +16,11 @@ public class Manager : MonoBehaviour
     private Vector2 b;
 
     [Header("HUD")]
-    public Slider healthSlider;
-    public Slider ammoSlider;
+    //public Slider healthSlider;
+    //public Slider ammoSlider;
+    public UIDocument gameUI;
+    private SegmentedMeter healthMeter;
+    private SegmentedMeter ammoMeter;
 
     [Header("Camera Effects")]
     [SerializeField]
@@ -105,26 +109,15 @@ public class Manager : MonoBehaviour
         Projectile shurikenObject = shurikenPrefab.GetComponent<Projectile>();
         Game.PoolService.CreatePool(shurikenObject, 20, "Shuriken");
 
-        /*
-        for (int i = 0; i < bulletAmount; i++)
-        {
-            GameObject obj = Instantiate(bulletPrefab);
-            obj.SetActive(false);
-            obj.transform.SetParent(GameObject.Find("Bullets").transform);
-            obj.GetComponent<Projectile>().SetPool(GameObject.Find("Bullets").transform);
-            pooledBullets.Add(obj);
-        }
+        var root = gameUI.rootVisualElement;
 
-
-        for (int i = 0; i < arrowAmount; i++)
+        healthMeter = root.Q<SegmentedMeter>("HealthMeter");
+        if (healthMeter != null)
         {
-            GameObject obj = Instantiate(arrowPrefab);
-            obj.SetActive(false);
-            obj.transform.SetParent(GameObject.Find("Arrows").transform);
-            obj.GetComponent<Projectile>().SetPool(GameObject.Find("Arrows").transform);
-            pooledArrows.Add(obj);
+            healthMeter.valueMax = 100;
+            healthMeter.valueCurrent = 100;
         }
-        */
+        ammoMeter = root.Q<SegmentedMeter>("AmmoMeter");
     }
 
     public GameObject GetPooledObject(PoolType pool)
@@ -167,14 +160,23 @@ public class Manager : MonoBehaviour
 
     public void UpdateHealthSlider(float maxHealth, float currentHealth)
     {
-        healthSlider.value = currentHealth/maxHealth;
-        
+        //healthSlider.value = currentHealth/maxHealth;
+        if (healthMeter != null)
+        {
+            healthMeter.valueMax = maxHealth;
+            healthMeter.valueCurrent = currentHealth;
+        }
     }
 
     public void UpdateAmmoSlider(float progress)
     {
-        ammoSlider.value = progress;
+        //ammoSlider.value = progress;
+        if (ammoMeter != null)
+        {
+            ammoMeter.valueCurrent = progress * 100;
+        }
     }
+
     public void GizmoCapsule(Vector2 start, Vector2 end)
     {
         a = start;
