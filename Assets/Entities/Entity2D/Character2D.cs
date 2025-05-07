@@ -64,7 +64,6 @@ public class Character2D : Entity2D
     {
         ammo = ammoMax;
         this.IsReady();
-        Cursor.visible = false;
     }
 
 

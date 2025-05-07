@@ -60,5 +60,8 @@ TagManager:
   - name: Edge
     uniqueID: 3467723447
     locked: 0
+  - name: Player
+    uniqueID: 2763191713
+    locked: 0
   m_RenderingLayers:
   - Default

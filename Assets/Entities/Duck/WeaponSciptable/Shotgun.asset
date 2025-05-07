@@ -33,5 +33,6 @@ MonoBehaviour:
   spreadDeg: 30
   velocity: 5
   damageType: 9
-  sound: {fileID: 8300000, guid: c3ce541ad26401a4a8dd4dfef1e94e4b, type: 3}
+  sound: {fileID: 8300000, guid: 049b02ce832c46346bd736592c72cbb9, type: 3}
+  soundVolume: 0.8
   hitSound: {fileID: 8300000, guid: eb9223b69ff747d4eb3a1f878b14f531, type: 3}

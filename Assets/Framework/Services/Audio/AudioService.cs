@@ -44,12 +44,12 @@ public class AudioService : MonoBehaviour, IAudioService
         return audioSource.gameObject.GetComponent<SFXObject>();
     }
 
-    public AudioSource PlaySFX(AudioClip audioClip, Transform spawnTransform, float volume)
+    public AudioSource PlaySFX(AudioClip audioClip, Transform spawnTransform, float volume, int pitchVariance = 0)
     {
-        return PlaySFX(audioClip, spawnTransform.position, volume);
+        return PlaySFX(audioClip, spawnTransform.position, volume, pitchVariance);
     }
 
-    public AudioSource PlaySFX(AudioClip audioClip, Vector3 spawnPosition, float volume)
+    public AudioSource PlaySFX(AudioClip audioClip, Vector3 spawnPosition, float volume, int pitchVariance = 0)
     {
         SFXObject sfxObject = Game.PoolService.FetchObject<SFXObject>();
         sfxObject.transform.position = spawnPosition;
@@ -58,6 +58,11 @@ public class AudioService : MonoBehaviour, IAudioService
         audioSource.outputAudioMixerGroup = this.audioMixer.FindMatchingGroups("SFX")[0];
         audioSource.clip = audioClip;
         audioSource.volume = volume;
+        audioSource.pitch = 1;
+        for (int i = 0; i < pitchVariance; i++)
+        {
+            audioSource.pitch *= 1.059463f;
+        }
         audioSource.Play();
 
         float audioLength = audioSource.clip.length;
