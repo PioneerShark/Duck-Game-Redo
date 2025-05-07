@@ -35,6 +35,7 @@ public class ProjectileGunBase : Ability
 
     [Header("Sound Properties")]
     public AudioClip sound;
+    public float soundVolume = 1f;
     public AudioClip hitSound;
     
     
@@ -68,7 +69,7 @@ public class ProjectileGunBase : Ability
             if (!character2D.DeductAmmo(cost)) break;
             if (this.sound != null)
             {
-                //Game.AudioService.PlaySFX(this.sound, character2D.transform, 1);
+                Game.AudioService.PlaySFX(this.sound, character2D.transform, soundVolume, Random.Range(0, 3));
             }
             
             for (int i = 0; i < shotCount; i++)

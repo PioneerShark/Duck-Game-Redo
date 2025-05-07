@@ -49,4 +49,7 @@ public sealed class Framework : MonoBehaviour
 
     private PoolService PoolServiceSource;
     public PoolService PoolService => PoolServiceSource ??= CreateService<PoolService>("PoolService");
+
+    private PauseService PauseServiceSource;
+    public PauseService PauseService => PauseServiceSource ??= CreateService<PauseService>("PauseService");
 }

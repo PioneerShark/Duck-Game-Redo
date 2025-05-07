@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sniper
   damage: 45
-  cooldown: 0.75
+  cooldown: 1.25
   activeTime: 0
   cost: 40
-  inputType: 0
+  inputType: 1
   projectile: Bullet
   duration: 5
   trailDuration: 0.06
-  scale: 0.75
+  scale: 0.65
   hitStop: 0.01
   model: {fileID: 5184893276893406594, guid: 5fdc025e913ce82449cec6ecb43cdfa0, type: 3}
   firepoint: {x: 1.254, y: 0.046, z: 0}
@@ -33,5 +33,6 @@ MonoBehaviour:
   spreadDeg: 0
   velocity: 50
   damageType: 9
-  sound: {fileID: 8300000, guid: c3ce541ad26401a4a8dd4dfef1e94e4b, type: 3}
+  sound: {fileID: 8300000, guid: 57f6bec31ac877449913344b29872628, type: 3}
+  soundVolume: 0.75
   hitSound: {fileID: 8300000, guid: eb9223b69ff747d4eb3a1f878b14f531, type: 3}

@@ -4,8 +4,9 @@ using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 using static Framework;
+using UnityEngine.InputSystem;
 
 public class Manager : MonoBehaviour
 {
@@ -15,8 +16,13 @@ public class Manager : MonoBehaviour
     private Vector2 b;
 
     [Header("HUD")]
-    public Slider healthSlider;
-    public Slider ammoSlider;
+    public PlayerInput playerInput;
+    public UIDocument gameUI;
+    public UIDocument menuUI;
+    private SegmentedMeter healthMeter;
+    private SegmentedMeter ammoMeter;
+    private Button resumeButton;
+    private Button exitButton;
 
     [Header("Camera Effects")]
     [SerializeField]
@@ -105,26 +111,22 @@ public class Manager : MonoBehaviour
         Projectile shurikenObject = shurikenPrefab.GetComponent<Projectile>();
         Game.PoolService.CreatePool(shurikenObject, 20, "Shuriken");
 
-        /*
-        for (int i = 0; i < bulletAmount; i++)
+        var gameUIRoot = gameUI.rootVisualElement;
+        healthMeter = gameUIRoot.Q<SegmentedMeter>("HealthMeter");
+        ammoMeter = gameUIRoot.Q<SegmentedMeter>("AmmoMeter");
+        if (healthMeter != null)
         {
-            GameObject obj = Instantiate(bulletPrefab);
-            obj.SetActive(false);
-            obj.transform.SetParent(GameObject.Find("Bullets").transform);
-            obj.GetComponent<Projectile>().SetPool(GameObject.Find("Bullets").transform);
-            pooledBullets.Add(obj);
+            healthMeter.valueMax = 100;
+            healthMeter.valueCurrent = 100;
         }
 
+        var menuUIRoot = menuUI.rootVisualElement;
+        resumeButton = menuUIRoot.Q<Button>("ResumeButton");
+        resumeButton.RegisterCallback<ClickEvent>(OnResumeClicked);
+        exitButton = menuUIRoot.Q<Button>("ExitButton");
+        exitButton.RegisterCallback<ClickEvent>(OnExitClicked);
 
-        for (int i = 0; i < arrowAmount; i++)
-        {
-            GameObject obj = Instantiate(arrowPrefab);
-            obj.SetActive(false);
-            obj.transform.SetParent(GameObject.Find("Arrows").transform);
-            obj.GetComponent<Projectile>().SetPool(GameObject.Find("Arrows").transform);
-            pooledArrows.Add(obj);
-        }
-        */
+        Pause(false);
     }
 
     public GameObject GetPooledObject(PoolType pool)
@@ -167,14 +169,23 @@ public class Manager : MonoBehaviour
 
     public void UpdateHealthSlider(float maxHealth, float currentHealth)
     {
-        healthSlider.value = currentHealth/maxHealth;
-        
+        //healthSlider.value = currentHealth/maxHealth;
+        if (healthMeter != null)
+        {
+            healthMeter.valueMax = maxHealth;
+            healthMeter.valueCurrent = currentHealth;
+        }
     }
 
     public void UpdateAmmoSlider(float progress)
     {
-        ammoSlider.value = progress;
+        //ammoSlider.value = progress;
+        if (ammoMeter != null)
+        {
+            ammoMeter.valueCurrent = progress * 100;
+        }
     }
+
     public void GizmoCapsule(Vector2 start, Vector2 end)
     {
         a = start;
@@ -184,5 +195,58 @@ public class Manager : MonoBehaviour
     {
         Gizmos.DrawSphere(a, 1f);
         Gizmos.DrawSphere(b, 1f);
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        var pauseInput = context.action.triggered;
+        if (pauseInput)
+        {
+            Pause(!Game.PauseService.GameIsPaused());
+        }
+    }
+
+    public void OnResume(InputAction.CallbackContext context)
+    {
+        var resumeInput = context.action.triggered;
+        if (resumeInput)
+        {
+            Pause(!Game.PauseService.GameIsPaused());
+        }
+    }
+
+    private void Pause(bool value)
+    {
+        if (value)
+        {
+            Debug.Log("Visible");
+            playerInput.SwitchCurrentActionMap("UI");
+            menuUI.rootVisualElement.style.display = DisplayStyle.Flex;
+            UnityEngine.Cursor.visible = true;
+            Game.PauseService.PauseGame();
+        }
+        else
+        {
+            Debug.Log("Hidden");
+            menuUI.rootVisualElement.style.display = DisplayStyle.None;
+            playerInput.SwitchCurrentActionMap("Game");
+            UnityEngine.Cursor.visible = false;
+            Game.PauseService.ResumeGame();
+        }
+    }
+
+    private void OnResumeClicked(ClickEvent clickEvent)
+    {
+        Pause(false);
+    }
+
+    private void OnExitClicked(ClickEvent clickEvent)
+    {
+        #if UNITY_STANDALONE
+            Application.Quit();
+        #endif
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }
