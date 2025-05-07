@@ -13,6 +13,7 @@ public class Controller2D : MonoBehaviour
     private bool dashInput = false;
     private bool attackInput = false;
     private bool swapWeaponInput = false;
+    private bool isPaused = false;
 
     public void SetCharacter(Character2D character)
     {
@@ -42,8 +43,16 @@ public class Controller2D : MonoBehaviour
 
     public void OnSwapWeapon(InputAction.CallbackContext context)
     {
-        swapWeaponInput = context.action.triggered;
         targetCharacter.SwapWeapon();
+        
+    }
+
+    public void OnPauseToggle(InputAction.CallbackContext context)
+    {
+        Debug.Log(context.action.triggered);
+        isPaused = !isPaused;
+        if (isPaused) Time.timeScale = 0;
+        else Time.timeScale = 1;
     }
 
     void Update()

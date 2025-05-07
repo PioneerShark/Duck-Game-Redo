@@ -72,6 +72,24 @@ public class Character2D : Entity2D
     // Update is called once per frame
     protected override void Update()
     {
+        
+        if (ammo <= ammoMax)
+        {
+            ammo += Time.deltaTime*ammoRate;
+            if (ammo > ammoMax)
+            {
+                ammo = ammoMax;
+                
+            }
+            if (isPlayer) Manager.instance.UpdateAmmoSlider((float)ammo / (float)ammoMax);
+        }
+
+        base.Update();
+    }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
         bool hasArm = (this.arm != null);
         bool hasModel = (this.model != null);
         bool hasAnimator = (hasModel) ? (this.model.animator != null) : false;
@@ -92,7 +110,7 @@ public class Character2D : Entity2D
             if (hasArm)
             {
                 armVector = new Vector2(Mathf.Abs(aimVector.x), -aimVector.y);
-                arm.transform.right = armVector;               
+                arm.transform.right = armVector;
             }
         }
         if (reticle != null)
@@ -110,24 +128,6 @@ public class Character2D : Entity2D
             animator.SetFloat("RelativeMoveX", relativeMoveX, dampTime, Time.deltaTime);
             animator.SetFloat("Velocity", moveVector.magnitude > 0.1f ? 1 : 0, dampTime, Time.deltaTime);
         }
-        if (ammo <= ammoMax)
-        {
-            ammo += Time.deltaTime*ammoRate;
-            if (ammo > ammoMax)
-            {
-                ammo = ammoMax;
-                
-            }
-            if (isPlayer) Manager.instance.UpdateAmmoSlider((float)ammo / (float)ammoMax);
-        }
-
-        base.Update();
-    }
-
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
-
         if (rigidbody != null)
         {
             if (!velocityOverride)
